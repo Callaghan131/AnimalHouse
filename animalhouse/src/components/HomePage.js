@@ -1,17 +1,17 @@
-import './App.css';
-import Navbar from './components/navbar';
-import Card from './components/card';
-import LoginPage from './components/LoginPage';
-import Game from './components/GamePage'
-import ImmagineGame from './images/game.jpg';
-import ImmagineLogin from './images/immagine.jpg';
+
+import Navbar from './navbar';
+import Card from './card';
+import LoginPage from './LoginPage';
+import Game from './GamePage'
+import ImmagineGame from '../images/game.jpg';
+import ImmagineLogin from '../images/immagine.jpg';
 import React, {Component} from "react";
-import history from './history';
+import history from '../history';
 
 
 
 
-class App extends Component {
+class HomePage extends Component {
   
   state={
     Cards:[
@@ -66,4 +66,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default HomePage;
