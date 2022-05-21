@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import HomePage from './components/HomePage';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Routes from './Routes';
+import Home from './components/HomePage';
+import Game from './components/GamePage';
+import Curiosità from './components/curiosity';
+import GamePage from './components/GamePage';
+import HomePage from './components/HomePage';
+import App from './components/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HomePage />
+    <App/>
   </React.StrictMode>
 );
 

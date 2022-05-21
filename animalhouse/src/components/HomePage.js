@@ -1,61 +1,66 @@
-
 import Navbar from './navbar';
-import Card from './card';
-import LoginPage from './LoginPage';
-import Game from './GamePage'
-import ImmagineGame from '../images/game.jpg';
-import ImmagineLogin from '../images/immagine.jpg';
+import CardSfondo from './cardSfondo';
+import ImmagineSfondo from '../images/sfondo.jpg';
 import React, {Component} from "react";
-import history from '../history';
-
-
+import { withRouter } from '../withRouter';
+import Card from './card';
+import Bottone from './Button';
 
 
 class HomePage extends Component {
-  
   state={
-    Cards:[
+    CardSfondo:[
       {
         id:0,
-        immagine:ImmagineGame,
-        tipo:"Game",
-        descrizione:"Metti alla prova le tue capacità con tanti giochi a tema animale!",
-        bottone:"Gioco"
-      },
-      {
-        id:1,
-        immagine:ImmagineLogin,
-        tipo:"Login",
-        descrizione:"Registrati per ottenere tante altre funzionalità!",
-        bottone:"Login"
+        immagine:ImmagineSfondo,
+        descrizione:"Da sempre Animal House si occupa di sviluppare software per prodotti e servizi per animali domestici. Metti alla prova le tue capacità all'interno dell'area game con tanti giochi divertenti e accedi con le tue credenziali alla tua area personale per poter interagire con altri amanti degli animali.",
+        
       }
     ],
+    Bottone:[
+      {
+        id:1,
+        tipo:"Game"
+      },
+      {
+        id:2,
+        tipo:"Login"
+      }
+    ]
   }
 
   handleClick=cardId=>{
     if(cardId==1){
-      history.push('./components/LoginPage');
+      this.props.navigate('/GamePage');
       
     }
-    else if(cardId==0){
-      history.push('./components/Game');
+    else if(cardId==2){
+      this.props.navigate('/LoginPage');
       
     }
   };
-  
+
   render(){
     return (
       <>
       <Navbar/>
       <div className='container'>
         <h1>La pagina preferita dagli amanti degli animali!</h1>
+         {
+          this.state.Bottone.map(bottone=>(
+            <Bottone
+            key={bottone.id}
+            bottone={bottone}
+            onClick={this.handleClick}
+            />
+          ))
+          }
         <div className='row'>
           {
-            this.state.Cards.map(card=>(
-              <Card
-              key={card.id}
-              onClick= {this.handleClick}
-              card={card}
+            this.state.CardSfondo.map(cardSfondo=>(
+              <CardSfondo
+              key={cardSfondo.id}
+              cardSfondo={cardSfondo}
               />
             ))
           }
@@ -66,4 +71,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default withRouter(HomePage);

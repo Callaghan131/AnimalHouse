@@ -9,7 +9,7 @@ class Card extends Component{
                         <div className="card-body">
                             <h5 className="card-title">{this.props.card.tipo}</h5>
                             <p className="card-text">{this.props.card.descrizione}</p>
-                            <button type="submit" onClick={()=>this.props.onClick(this.props.card.id)} className="btn btn-primary">{this.props.card.bottone}</button>
+                            <button type="submit" onClick={()=>this.props.onClick(this.props.card.id)} className="btn">{this.props.card.bottone}</button>
                         </div>
                 </div>
             </div>
