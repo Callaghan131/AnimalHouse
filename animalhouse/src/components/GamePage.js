@@ -5,22 +5,22 @@ import ImmagineCuriosità from '../images/curiosity.jpg';
 import { withRouter } from '../withRouter';
 class GamePage extends Component{
     state={
-    Cards:[
-      {
-        id:0,
-        immagine:ImmagineMemory,
-        tipo:"Memory",
-        descrizione:"La memoria gioca brutti scherzi? Testate le vostre capacità con questo stimolante gioco!",
-        bottone:"Memory"
-      },
-      {
-        id:1,
-        immagine:ImmagineCuriosità,
-        tipo:"Curiosità",
-        descrizione:"Arrichisci la tua conoscenza sugli animali con tanti brevi ma interessanti fatti",
-        bottone:"Curiosità"
-      }
-    ],
+      Cards:[
+        {
+          id:0,
+          immagine:ImmagineMemory,
+          tipo:"Memory",
+          descrizione:"La memoria gioca brutti scherzi? Testate le vostre capacità con questo stimolante gioco!",
+          bottone:"Memory"
+        },
+        {
+          id:1,
+          immagine:ImmagineCuriosità,
+          tipo:"Curiosità",
+          descrizione:"Arrichisci la tua conoscenza sugli animali con tanti brevi ma interessanti fatti",
+          bottone:"Curiosità"
+        }
+      ],
   }
   handleClick=cardId=>{
     if(cardId==0){
