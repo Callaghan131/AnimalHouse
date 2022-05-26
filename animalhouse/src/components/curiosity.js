@@ -1,14 +1,14 @@
 import React, {Component} from "react";
-
+import { ZooService } from "./utilities/ZooAPI";
 
 class Curiosità extends Component{
-    render(){
+    render()
+    {
         return(
             <section id="animal">
-                <script src="/animalhouse/src/components/utilities/ZooAPI.js"></script>
                 <div className="primaRiga">
                         <p id="titolo">Nome dell'animale: <span id="name"></span></p>
-                        <button id="btn" className="button-1" type="button" onClick={requestZOO()}>Nuovo animale</button>
+                        <button id="btn" className="button-1" type="button" onClick={this.getZoo}>Nuovo animale</button>
                 </div>
                     <div id="listoffacts">
                         <p> Ecco alcune info su <span id="name"></span>:</p>
@@ -23,11 +23,37 @@ class Curiosità extends Component{
                             </ol>
                     </div>
                     <div id="immagine">
-                    <figure><img id="image_link"></img></figure>
+                    <figure><img id="image_link" width="900px" height="600px"></img></figure>
                     </div>
             </section>
-                );
-            }
+        );
+    }
+
+    getZoo = () => {
+        this.zooService.get()
+        .then(data => {
+            this.JSONsetupZOO(data);
+        });
+    }
+
+    constructor(){
+        super()
+        this.zooService = new ZooService();
+    }
+
+    JSONsetupZOO(elementoJSON)
+    {  
+        var factsArray =["name", "image_link", "animal_type", "length_min", "length_max", "weight_min", "weight_max", "habitat", "diet", "geo_range"];
+        var arrayLength = factsArray.length;
+        for (var i = 0; i < arrayLength; i++) {
+        console.log(factsArray[i]);
+        let fact_name = factsArray[i] //prendiamo nome parametro
+        let fact_content = elementoJSON[factsArray[i]] //prendiamo l'effettivo contenuto del parametro
+        document.getElementById(fact_name).innerHTML = fact_content ; //scrive all'Id che presenta lo stesso nome dell'elemento nell'HTML
+        };
+        // CAPIRE COME RITORNARE i valori all'interno della pagina HTML
+        document.getElementById("image_link").src= elementoJSON.image_link;
+    }
 }
 /*
 function animalRequest(){
