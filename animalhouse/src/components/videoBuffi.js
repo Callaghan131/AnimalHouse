@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import '../videoBuffi.css'
+
 
 class VideoBuffi extends Component{
     render(){
