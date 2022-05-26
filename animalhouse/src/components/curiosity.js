@@ -8,7 +8,7 @@ class Curiosità extends Component{
                 <script src="/animalhouse/src/components/utilities/ZooAPI.js"></script>
                 <div className="primaRiga">
                         <p id="titolo">Nome dell'animale: <span id="name"></span></p>
-                        <button id="btn" className="button-1" type="button" onClick={requestZOO()}>Nuovo animale</button>
+                        <button id="btn" className="button-1" type="button" /*onClick={requestZOO()}*/>Nuovo animale</button>
                 </div>
                     <div id="listoffacts">
                         <p> Ecco alcune info su <span id="name"></span>:</p>

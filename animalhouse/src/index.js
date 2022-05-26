@@ -9,11 +9,13 @@ import Curiosità from './components/curiosity';
 import GamePage from './components/GamePage';
 import HomePage from './components/HomePage';
 import App from './components/App';
+import VideoBuffi from './components/videoBuffi';
+import './videoBuffi.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App/>
+    <VideoBuffi/>
   </React.StrictMode>
 );
 
