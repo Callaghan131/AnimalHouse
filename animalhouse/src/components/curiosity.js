@@ -1,11 +1,10 @@
 import React, {Component} from "react";
 
-
 class Curiosità extends Component{
     render(){
         return(
             <section id="animal">
-                <script src="/animalhouse/src/components/utilities/ZooAPI.js"></script>
+                <script src="./utilities/ZooAPI.js"></script>
                 <div className="primaRiga">
                         <p id="titolo">Nome dell'animale: <span id="name"></span></p>
                         <button id="btn" className="button-1" type="button" /*onClick={requestZOO()}*/>Nuovo animale</button>

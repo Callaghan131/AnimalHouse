@@ -16,11 +16,11 @@ function RequestZOO()
 function JSONsetupZOO(elementoJSON)
 {  
     var parametri =["name", "image_link", "animal_type", "length_min", "length_max", "weight_min", "weight_max", "habitat", "diet", "geo_range"];
-    var arrayLength = factsArray.length;
+    var arrayLength = parametri.length;
 	for (var i = 0; i < arrayLength; i++) {
-  	console.log(factsArray[i]);
-  	fact_name = factsArray[i] //prendiamo nome parametro
-    fact_content = animalJSON[factsArray[i]] //prendiamo l'effettivo contenuto del parametro
+  	console.log(parametri[i]);
+  	var fact_name = parametri[i] //prendiamo nome parametro
+    var fact_content = elementoJSON[parametri[i]] //prendiamo l'effettivo contenuto del parametro
     document.getElementById(fact_name).innerHTML = fact_content ; //scrive all'Id che presenta lo stesso nome dell'elemento nell'HTML
     };
     // CAPIRE COME RITORNARE i valori all'interno della pagina HTML
