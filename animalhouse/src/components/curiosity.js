@@ -43,12 +43,12 @@ class Curiosità extends Component{
 
     JSONsetupZOO(elementoJSON)
     {  
-        var factsArray =["name", "image_link", "animal_type", "length_min", "length_max", "weight_min", "weight_max", "habitat", "diet", "geo_range"];
-        var arrayLength = factsArray.length;
+        var parametri =["name", "image_link", "animal_type", "length_min", "length_max", "weight_min", "weight_max", "habitat", "diet", "geo_range"];
+        var arrayLength = parametri.length;
         for (var i = 0; i < arrayLength; i++) {
-        console.log(factsArray[i]);
-        let fact_name = factsArray[i] //prendiamo nome parametro
-        let fact_content = elementoJSON[factsArray[i]] //prendiamo l'effettivo contenuto del parametro
+          console.log(parametri[i]);
+          var fact_name = parametri[i] //prendiamo nome parametro
+        var fact_content = elementoJSON[parametri[i]] //prendiamo l'effettivo contenuto del parametro
         document.getElementById(fact_name).innerHTML = fact_content ; //scrive all'Id che presenta lo stesso nome dell'elemento nell'HTML
         };
         // CAPIRE COME RITORNARE i valori all'interno della pagina HTML
