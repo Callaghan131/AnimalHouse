@@ -1,9 +1,11 @@
 import { toBeChecked } from "@testing-library/jest-dom/dist/matchers";
 import React, {Component} from "react";
-import {useState} from "react";
+import EndGame from './EndGame';
 import CardMemory from './cardMemory';
+import BoxScore from "./boxScore";
 import '../css/memory.css';
-import ImmagineCuriosità from '../images/curiosity.jpg';
+import { withRouter } from '../withRouter';
+
 
 class Memory extends Component{
     state={
@@ -26,7 +28,10 @@ class Memory extends Component{
             {  id: 16, img: '/immagini/scimpanze.jpg', stat: "" }
         ].sort(()=>Math.random()-0.5),
         prec: -1,
-        indovinati: 0
+        punteggio: 0,
+        trovati: 0,
+        showEndGame:false,
+        restart:true
 
     }
     
@@ -37,7 +42,7 @@ class Memory extends Component{
             const newArr=[...this.state.CardMemory];
             const prev=cardId;
             
-            console.log(newArr);
+            
             for(var i=0; i<newArr.length; i++){
                 if(newArr[i].id==cardId){
                     newArr[i].stat="attivo";
@@ -46,10 +51,10 @@ class Memory extends Component{
             }
             this.setState({CardMemory:newArr}); 
             this.setState({prec:prev});
-            console.log("index: "+cardId);
+            
         }
         else{
-            console.log("index: "+cardId);
+            
             this.check(cardId);
             
         }
@@ -57,8 +62,8 @@ class Memory extends Component{
 
     check(idCorrente){
         const newArr=[...this.state.CardMemory];
-        console.log(newArr);
         const idPrec=[this.state.prec];
+        
         var img1;
         var img2;
         var sceltaAttuale;
@@ -90,16 +95,25 @@ class Memory extends Component{
             newArr[sceltaAttuale].stat="corretto";
             newArr[sceltaPrecedente].stat="corretto";
             const idPrev=-1;
-            const numTrovati=[this.state.prec]+2;
+            const score=parseInt([this.state.punteggio])+5;
+            const find=parseInt([this.state.trovati])+2;
+            
             this.setState({CardMemory:newArr});
             this.setState({prec:idPrev});
-            this.setState({trovati:numTrovati});
-            console.log("corretto");
+            this.setState({punteggio:score});
+            this.setState({trovati:find});
+            if(find==16){
+                const endgame=true;
+                this.setState({showEndGame:endgame});
+            }
+
         }
         else{
             newArr[sceltaAttuale].stat="sbagliato";
             newArr[sceltaPrecedente].stat="sbagliato";
+            const score=parseInt([this.state.punteggio])-1;
             this.setState({CardMemory:newArr});
+            this.setState({punteggio:score});
            
             setTimeout(()=>{
                 newArr[sceltaAttuale].stat="";
@@ -110,31 +124,31 @@ class Memory extends Component{
         }
     }
 
-    startTimer(){
-        var s = 0, m = 0,  h = 0;
-        var interval = setInterval(function(){
-        var timer=document.getElementById("timer");
-        timer.innerHTML = 'Tempo: ' + m + " min " + s + " sec";
-          s++;
-          if(s == 60){
-            m++;
-            console.log(m);
-            s = 0;
-          }
-          if(m == 60){
-            h++;
-            m = 0;
-          }
-        },1000);
+    handleEndGame=()=>{
+        const newArr=[...this.state.CardMemory];
+        for(var i=0; i<newArr.length; i++){
+            newArr[i].stat="";
+        }
+        newArr.sort(()=>Math.random()-0.5);
+        this.setState({CardMemory:newArr});
+        this.setState({punteggio:0})
+        this.setState({showEndGame:false});
+        this.setState({prec: -1});
+        this.setState({trovati:0});
+    }
+
+    handleGamePage=()=>{
+        this.props.navigate("/GamePage");
     }
 
     render(){
-        
+        const { punteggio, showEndGame } = this.state;
+        console.log(showEndGame);
         return(
             <div id="sfondo">
+                
                 <div className="conteiner" id="memory">
                 {
-                    
                     this.state.CardMemory.map((card, index)=>(
                         
                         <CardMemory
@@ -146,9 +160,10 @@ class Memory extends Component{
                     ))
                 }
                 </div>
-                <div className="timer" id="timer"></div>
+                <BoxScore score={punteggio}/>
+                {showEndGame ? <EndGame score={punteggio} onClick={this.handleEndGame} onClickGamePage={this.handleGamePage}/>:null }
             </div>
         );
     }
 }
-export default Memory;
+export default withRouter(Memory);

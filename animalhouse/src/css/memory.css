@@ -3,9 +3,10 @@
     height: 90vh;
     width: 60vw;
     display: grid;
+    float:left;
     margin-top:5vh;
     margin-bottom:5vh;
-    margin-left:15vw;
+    margin-left:10vw;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 1em;
@@ -22,7 +23,7 @@ body{
     text-align:center;
     border-radius: 5px;
     transform: rotateY(180deg);
-    animation: 2s hideCard linear;
+    animation: 0.5s hideCard linear;
     transition: transform 0.5s;
     width: 15vw;
     height: 20vh;
@@ -52,7 +53,7 @@ body{
     max-height: 15vh;
     transition: transform 0.5s;
     transform: scale(0);
-    animation: 2s hideImage linear;
+    animation: 0.5s hideImage linear;
     margin-top: 2vh;
 }
 
@@ -74,7 +75,62 @@ body{
     }
 }
 
-#timer{
-    color:black;
+
+
+.modal-background {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
     
 }
+
+.modal-card {
+    margin: 0 auto;
+    display: block;
+    margin-top: 30vh;
+    width: 30vw;
+    height: 38vh;
+    background-color: white;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+.card-score{
+    display: absolute;
+    top: 5vh;
+    width: 15vw;
+    background-color: aqua;
+    margin-left: 8vw;
+    margin-top:8vh;
+    float:left;
+}
+
+.card-header{
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+
+.card-body{
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+.modal-header h1{
+    
+    font-size: large;
+    font-weight: bold;
+}
+
+.modal-body p{
+    margin-top: 2vh;
+    font-size: large;
+    font-weight: bold;
+}
+
