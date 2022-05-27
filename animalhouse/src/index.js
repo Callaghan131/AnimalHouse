@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import 'bootstrap/dist/css/bootstrap.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Home from './components/HomePage';
@@ -9,6 +8,8 @@ import Curiosità from './components/curiosity';
 import GamePage from './components/GamePage';
 import HomePage from './components/HomePage';
 import App from './components/App';
+import VideoBuffi from './components/videoBuffi';
+import ImmaginiBuffe from './components/immaginiBuffe';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
