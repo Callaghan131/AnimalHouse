@@ -4,10 +4,10 @@ class BoxScore extends Component{
     render(){
         return(
             <div className="card-score">
-                <div className="card-header">
+                <div className="card-score-header">
                     <p>PUNTEGGIO</p>
                 </div>
-                <div className="card-body">
+                <div className="card-score-body">
                     <p>{this.props.score}</p>
                 </div>
             </div>

@@ -23,7 +23,7 @@ body{
     text-align:center;
     border-radius: 5px;
     transform: rotateY(180deg);
-    animation: 0.5s hideCard linear;
+    animation: 1s hideCard linear;
     transition: transform 0.5s;
     width: 15vw;
     height: 20vh;
@@ -53,7 +53,7 @@ body{
     max-height: 15vh;
     transition: transform 0.5s;
     transform: scale(0);
-    animation: 0.5s hideImage linear;
+    animation: 1s hideImage linear;
     margin-top: 2vh;
 }
 
@@ -98,30 +98,6 @@ body{
     opacity: 1;
 }
 
-.card-score{
-    display: absolute;
-    top: 5vh;
-    width: 15vw;
-    background-color: aqua;
-    margin-left: 8vw;
-    margin-top:8vh;
-    float:left;
-}
-
-.card-header{
-    background-color: black;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    font-size: large;
-}
-
-.card-body{
-    text-align: center;
-    font-weight: bold;
-    font-size: large;
-}
-
 .modal-header h1{
     
     font-size: large;
@@ -133,4 +109,30 @@ body{
     font-size: large;
     font-weight: bold;
 }
+
+.card-score{
+    display: absolute;
+    top: 5vh;
+    width: 15vw;
+    background-color: aqua;
+    margin-left: 8vw;
+    margin-top:8vh;
+    float:left;
+}
+
+.card-score-header{
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+
+.card-score-body{
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+
 
