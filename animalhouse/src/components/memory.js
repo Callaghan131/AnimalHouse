@@ -7,31 +7,58 @@ import '../css/memory.css';
 import { withRouter } from '../withRouter';
 
 
+
 class Memory extends Component{
+
+  
+
     state={
         CardMemory:[
-            { id: 1, img: '/immagini/asparagi.jpg', stat: "" },
-            { id: 2, img: '/immagini/asparagi.jpg', stat: "" },
-            {  id: 3, img: '/immagini/casetta.jpg', stat: "" },
-            {  id: 4, img: '/immagini/casetta.jpg', stat: "" },
-            {  id: 5, img: '/immagini/cetrioli.jpg', stat: "" },
-            {  id: 6, img: '/immagini/cetrioli.jpg', stat: "" },
-            {  id: 7, img: '/immagini/decespugliatore.jpg', stat: "" },
-            {  id: 8, img: '/immagini/decespugliatore.jpg', stat: "" },
-            {  id: 9, img: '/immagini/rasaerba.jpg', stat: "" },
-            {  id: 10, img: '/immagini/rasaerba.jpg', stat: "" },
-            {  id: 11, img: '/immagini/game.jpg', stat: "" },
-            {  id: 12, img: '/immagini/game.jpg', stat: "" },
-            {  id: 13, img: '/immagini/curiosity.jpg', stat: "" },
-            { id: 14, img: '/immagini/curiosity.jpg', stat: "" },
-            {  id: 15, img: '/immagini/scimpanze.jpg', stat: "" },
-            {  id: 16, img: '/immagini/scimpanze.jpg', stat: "" }
-        ].sort(()=>Math.random()-0.5),
+            { id: 1, img: '', stat: "" },
+            { id: 2, img: '', stat: "" },
+            {  id: 3, img: '', stat: "" },
+            {  id: 4, img: '', stat: "" },
+            {  id: 5, img: '', stat: "" },
+            {  id: 6, img: '', stat: "" },
+            {  id: 7, img: '', stat: "" },
+            {  id: 8, img: '', stat: "" },
+            {  id: 9, img: '', stat: "" },
+            {  id: 10, img: '', stat: "" },
+            {  id: 11, img: '', stat: "" },
+            {  id: 12, img: '', stat: "" },
+            {  id: 13, img: '', stat: "" },
+            { id: 14, img: '', stat: "" },
+            {  id: 15, img: '', stat: "" },
+            {  id: 16, img: '', stat: "" }
+        ],
         prec: -1,
         punteggio: 0,
         trovati: 0,
         showEndGame:false,
         restart:true
+
+    }
+
+    componentDidMount() {
+        var data=[];
+        var newArray=[...this.state.CardMemory];
+        fetch("https://zoo-animal-api.herokuapp.com/animals/rand/8")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              data=result;
+              var cont=0;
+              for(var i=0; i<data.length;i++){
+                newArray[cont]["img"]=data[i]["image_link"];
+                newArray[cont+1]["img"]=data[i]["image_link"];
+                cont+=2;
+                
+              }
+              console.log(1);
+              newArray.sort(()=>Math.random()-0.5);
+              this.setState({CardMemory:newArray});
+            }
+        )
 
     }
     
@@ -64,6 +91,8 @@ class Memory extends Component{
         const newArr=[...this.state.CardMemory];
         const idPrec=[this.state.prec];
         
+       
+
         var img1;
         var img2;
         var sceltaAttuale;
@@ -143,7 +172,7 @@ class Memory extends Component{
 
     render(){
         const { punteggio, showEndGame } = this.state;
-        console.log(showEndGame);
+     
         return(
             <div id="sfondo">
                 
