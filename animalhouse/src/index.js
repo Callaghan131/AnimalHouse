@@ -10,6 +10,8 @@ import HomePage from './components/HomePage';
 import App from './components/App';
 import VideoBuffi from './components/videoBuffi';
 import ImmaginiBuffe from './components/immaginiBuffe';
+import Curiosity2 from './components/curiosity2';
+import Quiz from './components/Quiz';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

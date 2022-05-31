@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 
-
 class VideoBuffi extends Component{
     render(){
         return(
