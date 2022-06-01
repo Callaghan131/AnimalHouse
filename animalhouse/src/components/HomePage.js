@@ -3,7 +3,6 @@ import CardSfondo from './cardSfondo';
 import ImmagineSfondo from '../images/sfondo.jpg';
 import React, {Component} from "react";
 import { withRouter } from '../withRouter';
-import Card from './card';
 import Bottone from './Button';
 
 
@@ -13,14 +12,14 @@ class HomePage extends Component {
       {
         id:0,
         immagine:ImmagineSfondo,
-        descrizione:"Da sempre Animal House si occupa di sviluppare software per prodotti e servizi per animali domestici. Metti alla prova le tue capacità all'interno dell'area game con tanti giochi divertenti e accedi con le tue credenziali alla tua area personale per poter interagire con altri amanti degli animali.",
+        descrizione:"Da sempre Animal House si occupa di sviluppare software per prodotti e servizi per animali domestici. Metti alla prova le tue capacità all'interno dell'area game con tanti giochi divertenti e accedi con le tue credenziali alla tua area personale per poter interagire con altri amanti degli animali."
         
       }
     ],
     Bottone:[
       {
         id:1,
-        tipo:"Game"
+        tipo:"Game",
       },
       {
         id:2,
@@ -44,8 +43,8 @@ class HomePage extends Component {
     return (
       <>
       <Navbar/>
-      <div className='container'>
-        <h1>La pagina preferita dagli amanti degli animali!</h1>
+        <h1 style={{textAlign:"center", color:"white"}}>La pagina preferita dagli amanti degli animali!</h1>
+        <div className='container'>
          {
           this.state.Bottone.map(bottone=>(
             <Bottone
@@ -53,18 +52,14 @@ class HomePage extends Component {
             bottone={bottone}
             onClick={this.handleClick}
             />
-          ))
-          }
-        <div className='row'>
+          ))}
           {
             this.state.CardSfondo.map(cardSfondo=>(
               <CardSfondo
               key={cardSfondo.id}
               cardSfondo={cardSfondo}
               />
-            ))
-          }
-        </div>
+            ))}
       </div>
       </>
     );

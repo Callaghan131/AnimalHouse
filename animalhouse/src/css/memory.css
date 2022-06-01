@@ -13,7 +13,7 @@
 }
 
 body{
-    background-color: orange;
+    background-color: #965059;
 }
 
 .cardMemory{
@@ -90,7 +90,7 @@ body{
     display: absolute;
     top: 5vh;
     width: 15vw;
-    background-color: aqua;
+    background-color: white;
     margin-left: 8vw;
     margin-top:8vh;
     float:left;

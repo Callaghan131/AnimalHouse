@@ -20,28 +20,28 @@ class GamePage extends Component{
           id:1,
           immagine:ImmagineCuriosità,
           tipo:"Curiosità",
-          descrizione:"Arrichisci la tua conoscenza sugli animali con tanti brevi ma interessanti fatti",
+          descrizione:"Arrichisci la tua conoscenza sugli animali con tante curiosità e brevi fatti a tema",
           bottone:"Curiosità"
         },
         {
           id:2,
           immagine:ImmagineBuffa,
           tipo:"ImgBuffe",
-          descrizione:"Immagini Buffe",
+          descrizione:"Ti piace immortalare momenti buffi dei tuoi animali? Ecco ciò che fa al caso tuo",
           bottone:"Immagini",
         },
         {
           id:3,
           immagine:VideoBuffi,
           tipo:"VideoBuffi",
-          descrizione:"Video Buffi",
+          descrizione:"Prendi i pop-corn e mettiti comodo perchè qui troverai dei brevi video buffi a tema animale",
           bottone:"Video"
         },
         {
           id:4,
           immagine:Quiz,
           tipo:"Quiz",
-          descrizione:"Quiz",
+          descrizione:"Credi di sapere tutto sul mondo animale? Mettiti alla prova e rispondi a delle semplici domande",
           bottone:"Quiz"
         }
       ],
@@ -68,8 +68,8 @@ class GamePage extends Component{
    render(){
     return (
       <>
-      <h1>Area Giochi</h1>
-      <div className='row'>
+      <h1 style={{textAlign:"center", marginTop:"15px", marginBottom:"15px", color:"white"}}>Area Giochi</h1>
+      <div className='row' style={{ marginLeft:"10px",width:"90vw",textAlign:"center", display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1fr", gridTemplateRows: "1fr 1fr", gridGap:"20px"}}>
           {
             this.state.Cards.map(card=>(
               <Card
