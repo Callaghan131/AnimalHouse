@@ -3,8 +3,8 @@ import React, {Component} from "react";
 import EndGame from './EndGame';
 import CardMemory from './cardMemory';
 import BoxScore from "./boxScore";
-import '../css/memory.css';
-import { withRouter } from '../withRouter';
+import '../../css/memory.css';
+import { withRouter } from '../../withRouter';
 
 
 

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { ZooService } from "./utilities/ZooAPI";
+import { ZooService } from "../utilities/ZooAPI";
 
 class Curiosità extends Component{
     render()

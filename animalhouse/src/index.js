@@ -1,17 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Home from './components/HomePage';
-import Game from './components/GamePage';
-import Curiosità from './components/curiosity';
-import GamePage from './components/GamePage';
-import HomePage from './components/HomePage';
+
 import App from './components/App';
-import VideoBuffi from './components/videoBuffi';
-import ImmaginiBuffe from './components/immaginiBuffe';
-import Curiosity2 from './components/curiosity2';
-import Quiz from './components/Quiz';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

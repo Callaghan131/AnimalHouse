@@ -3,11 +3,11 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import HomePage from "../components/HomePage";
 import GamePage from "../components/GamePage";
 import LoginPage from "../components/LoginPage";
-import Curiosità from "../components/curiosity2";
-import Memory from "../components/memory";
-import ImmaginiBuffe from "../components/immaginiBuffe";
-import VideoBuffi from "../components/videoBuffi";
-import Quiz from "../components/Quiz";
+import Curiosità from "./curiosity/curiosity2";
+import Memory from "./memory/memory";
+import ImmaginiBuffe from "./immaginiBuffe/immaginiBuffe";
+import VideoBuffi from "./videoBuffi/videoBuffi";
+import Quiz from "./quiz/QuizPage";
   
 function App() {
     

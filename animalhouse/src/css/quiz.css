@@ -1,0 +1,77 @@
+.cardQuiz{
+    background-color: #252d4a;
+    width: 60vw;
+    height: 60vh;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+    justify-content: space-evenly;
+    margin-top:23vh;
+    margin-left:23vw;
+}
+
+.question-section {
+    width: 43%;
+    color:white;
+    float:left;
+}
+
+.question-count {
+margin-bottom: 20px;
+}
+
+.question-count span {
+font-size: 28px;
+}
+
+.question-text {
+margin-bottom: 12px;
+font-size:18px;
+}
+
+.answer-section {
+    width: 27vw;
+    position: absolute;
+    top: 40vh;
+    margin-left:30vw;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+  
+button {
+width: 100%;
+font-size: 16px;
+color: #ffffff;
+background-color: #252d4a;
+border-radius: 15px;
+display: flex;
+text-align: center;
+padding: 5px;
+margin-bottom: 3vh;
+justify-content: flex-start;
+align-items: center;
+border: 5px solid #234668;
+cursor: pointer;
+}
+
+.correct {
+background-color: #2f922f;
+}
+
+.incorrect {
+background-color: #ff3333;
+}
+
+button:hover {
+background-color: #555e7d;
+}
+
+button:focus {
+outline: none;
+}
+
+
+
