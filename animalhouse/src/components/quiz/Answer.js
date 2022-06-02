@@ -4,7 +4,7 @@ class Answer extends Component{
     render(){
         return(
             
-                <button onClick={() => this.props.onClick(this.props.answer.isCorrect)}>{this.props.answer.testoRisposta}</button>
+                <button className="option" onClick={() => this.props.onClick(this.props.answer.isCorrect)}>{this.props.answer.testoRisposta}</button>
            
         );
     }
