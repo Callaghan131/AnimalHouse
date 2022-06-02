@@ -4,11 +4,16 @@ import reportWebVitals from './reportWebVitals';
 
 import App from './components/App';
 
+import VideoBuffi from './components/videoBuffi/videoBuffi';
+import ImmaginiBuffe from './components/immaginiBuffe/immaginiBuffe';
+import Curiosity2 from './components/curiosity/curiosity2';
+import Quiz from './components/quiz/QuizPage';
+import Board from './components/board';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App/>
+    <App />
   </React.StrictMode>
 );
 
