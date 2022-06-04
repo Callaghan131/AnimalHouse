@@ -1,17 +1,17 @@
 .cardQuiz{
     background-color: #252d4a;
     width: 60vw;
-    height: 60vh;
+    height: 65vh;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
     justify-content: space-evenly;
-    margin-top:23vh;
-    margin-left:23vw;
+    margin-top:20vh;
+    margin-left:20vw;
 }
 
 .question-section {
-    width: 43%;
+    width: 60%;
     color:white;
     float:left;
 }
@@ -50,9 +50,12 @@ text-align: center;
 padding: 5px;
 margin-bottom: 3vh;
 justify-content: flex-start;
-align-items: center;
 border: 5px solid #234668;
-cursor: pointer;
+}
+
+.img-quiz{
+    width: 28vw;
+    height: 40vh;
 }
 
 .correct {
@@ -71,5 +74,45 @@ button:focus {
 outline: none;
 }
 
+.score-section {
+    
+    font-size: 36px;
+    align-items: center;
+    color: white;
+    margin-left: 15vw;
+    margin-top: 5vh;
+    
+}
+
+.score {
+    font-size: 36px;
+    align-items: center;
+    color: white;
+    margin-left: 8vw;
+    margin-top: 5vh;
+   
+}
+
+.gamePage{
+    padding: 15px;
+    background-color: blue;
+    border-radius:10px;
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    left:33vw;
+    top: 55vh;
+}
+
+.restart{
+    padding: 15px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border-radius:10px;
+    position: absolute;
+    left:53vw;
+    top: 55vh;
+}
 
 

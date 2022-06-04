@@ -8,7 +8,7 @@ class Question extends Component{
                     <span>Question {this.props.currentQuestion + 1}</span>/{this.props.length}
                 </div>
                 <div className='question-text'>{this.props.currentQuestionText}</div>
-                <img src={this.props.img}/>
+                <img className="img-quiz" src={this.props.img}/>
             </div>
         );
     }
