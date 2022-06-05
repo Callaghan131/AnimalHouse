@@ -39,7 +39,7 @@ class Memory extends Component{
 
     }
 
-    componentDidMount() {
+    componentWillMount() {
         var data=[];
         var newArray=[...this.state.CardMemory];
         fetch("https://zoo-animal-api.herokuapp.com/animals/rand/8")
