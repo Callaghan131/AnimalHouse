@@ -8,6 +8,7 @@ import Memory from "./memory/memory";
 import ImmaginiBuffe from "./immaginiBuffe/immaginiBuffe";
 import VideoBuffi from "./videoBuffi/videoBuffi";
 import Quiz from "./quiz/QuizPage";
+import HomePageUser from "./UserSection/HomePageUser";
   
 function App() {
     
@@ -23,6 +24,8 @@ function App() {
         <Route exact path="/GamePage/ImmaginiBuffe" element={<ImmaginiBuffe/>}/>
         <Route exact path="/GamePage/VideoBuffi" element={<VideoBuffi/>}/>
         <Route exact path="/GamePage/Quiz" element={<Quiz/>}/>
+        <Route exact path="/LoginPage/HomePageUser" element={<HomePageUser/>}/>
+
       </Routes>
       </BrowserRouter>
       </>

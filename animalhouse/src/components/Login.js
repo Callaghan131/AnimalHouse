@@ -23,7 +23,7 @@ class Login extends Component{
                     <label className="form-check-label ml-3"></label>
                 </div>
                 <div className="d-flex align-items-center justify-content-between mt-4 mb-0">
-                    <button className="btn btn-primary" type="submit">Login</button>
+                    <button className="btn btn-primary" onClick={() => this.props.onClick()}>Login</button>
                 </div>
             </form>
         </div>

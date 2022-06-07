@@ -1,8 +1,10 @@
 import React, {Component} from "react";
+import { Table } from "react-bootstrap";
 
 class Classifica extends Component{
     render(){
         return(
+            
             <table id="tabella" cellPadding={15}>
                 <tr id="riga1" style={{height:100, color: "green", background: "lightgreen"}}>
                     <th>Username Utente</th>
