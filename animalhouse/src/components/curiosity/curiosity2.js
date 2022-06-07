@@ -7,12 +7,11 @@ class Curiosity2 extends Component{
             <section id="animal" style={{ color:"white",margin: 20}}>
                 <p style={{fontWeight:"bold", fontSize:25}}> Ecco alcune curiosità relative a cani e gatti:</p>
                          <button style={{marginBottom:20, background: "white"}} id="btn" className="button-1" type="button" onClick={this.getCats}>Curiosità feline</button>
-                         <button style={{marginBottom:20, marginLeft:20, background: "white"}} id="btn" className="button-1" type="button" onClick={this.getDogs}>Curiosità canine</button>
                          <button style={{marginBottom:20, marginLeft:20, background: "white"}} id="btn" className="button-1" type="button" onClick={this.getZoo}>Fatti animali</button>
                 <div id="contenitore" style={{display: "grid", gridTemplateColumns:"1fr 1fr 1fr", gridGap:10}}>
                 <img id="image_link" src="https://http2.mlstatic.com/D_NQ_NP_967840-MLM26976300618_032018-W.jpg" height="550px" width="400px"/>
                 <div id="testo" style={{ padding:10, border:"3px dashed black", width:550 , height:550,fontWeight:"bold",  lineHeight:2, fontSize:17, fontFamily:"Courier" , fontStyle:"italic"}}>
-                    Curiosità canine/feline
+                    Curiosità feline
                 </div>
                     <div id="testo2" style={{padding: 10, border:"3px dashed black", width:550 , height:550,fontWeight:"bold",  lineHeight:2, fontSize:17, fontFamily:"Courier" , fontStyle:"italic"}}>
                     <p> Ecco alcune info su <span style={{color:"green", background:"lightgreen"}} id="name"></span>:</p>
@@ -37,12 +36,6 @@ class Curiosity2 extends Component{
         this.Service.getCats()
         .then(data1 => {
             this.JSONsetupCats(data1);
-        });
-    }
-    getDogs = () => {
-        this.Service.getDogs()
-        .then(data2 => {
-            this.JSONsetupDogs(data2);
         });
     }
      getZoo = () => {

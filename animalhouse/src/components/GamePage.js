@@ -8,16 +8,8 @@ import Quiz from '../images/quiz.jpg';
 import { withRouter } from '../withRouter';
 class GamePage extends Component{
     state={
-      Cards:[
-        {
-          id:0,
-          immagine:ImmagineMemory,
-          tipo:"Memory",
-          descrizione:"La memoria gioca brutti scherzi? Testate le vostre capacità con questo stimolante gioco!",
-          bottone:"Memory"
-        },
-        {
-          id:1,
+      Cards1:[
+        { id:1,
           immagine:ImmagineCuriosità,
           tipo:"Curiosità",
           descrizione:"Arrichisci la tua conoscenza sugli animali con tante curiosità e brevi fatti a tema",
@@ -36,6 +28,16 @@ class GamePage extends Component{
           tipo:"VideoBuffi",
           descrizione:"Prendi i pop-corn e mettiti comodo perchè qui troverai dei brevi video buffi a tema animale",
           bottone:"Video"
+        }
+
+      ],
+      Cards2:[
+        {
+          id:0,
+          immagine:ImmagineMemory,
+          tipo:"Memory",
+          descrizione:"La memoria gioca brutti scherzi? Testate le vostre capacità con questo stimolante gioco!",
+          bottone:"Memory"
         },
         {
           id:4,
@@ -44,7 +46,7 @@ class GamePage extends Component{
           descrizione:"Credi di sapere tutto sul mondo animale? Mettiti alla prova e rispondi a delle semplici domande",
           bottone:"Quiz"
         }
-      ],
+      ]
   }
   handleClick=cardId=>{
     if(cardId==0){
@@ -69,9 +71,20 @@ class GamePage extends Component{
     return (
       <>
       <h1 style={{textAlign:"center", marginTop:"15px", marginBottom:"15px", color:"white"}}>Area Giochi</h1>
-      <div className='row' style={{ marginLeft:"10px",width:"90vw",textAlign:"center", display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1fr", gridTemplateRows: "1fr 1fr", gridGap:"20px"}}>
+      <div className='row' style={{ marginLeft:"330px",width:"50vw",textAlign:"center", display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gridTemplateRows: "1fr", gridGap:"20px"}}>
           {
-            this.state.Cards.map(card=>(
+            this.state.Cards1.map(card=>(
+              <Card
+              key={card.id}
+              onClick= {this.handleClick}
+              card={card}
+              />
+            ))
+          }
+        </div>
+         <div className='row' style={{ marginLeft:"500px",marginTop:"50px",width:"40vw",textAlign:"center", display:"grid", gridTemplateColumns:"1fr 1fr", gridTemplateRows: "1fr"}}>
+          {
+            this.state.Cards2.map(card=>(
               <Card
               key={card.id}
               onClick= {this.handleClick}

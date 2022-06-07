@@ -4,10 +4,6 @@ export class Service
         return fetch("https://cat-fact.herokuapp.com/facts")
         .then(response => response.json())
     }
-    getDogs = () => {
-        return fetch("https://dog-api.kinduff.com/api/facts")
-        .then(response => response.json())
-    }
     getAnimals = () => {
         return fetch("https://zoo-animal-api.herokuapp.com/animals/rand")
         .then(response => response.json())

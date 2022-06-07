@@ -1,11 +1,10 @@
 import React, {Component} from "react";
-import Navbar from './navbar';
-import Board from './board';
+import Login from './Login';
 
 class LoginPage extends Component{
     render(){
         return(
-            <Board/>
+            <Login/>
         );
     }
 }
