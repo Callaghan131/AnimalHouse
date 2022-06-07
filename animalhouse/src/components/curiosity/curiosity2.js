@@ -33,13 +33,6 @@ class Curiosity2 extends Component{
             </section>
         );
     }
-    // componentWillMount(){
-    //     window.addEventListener('load', this.handleLoad);
-    // }
-    // handleLoad(){
-    //     var div=document.getElementById('testo2');
-    //     div.innerHTML="";
-    // }
     getCats = () => {
         this.Service.getCats()
         .then(data1 => {
@@ -67,7 +60,10 @@ class Curiosity2 extends Component{
     {  
         var arrayFacts=[];
         var random=this.getRandomInt(4);
+        var div2=document.getElementById('testo2');
         var div=document.getElementById('testo');
+        div2.style.display="none";
+        div.style.display="block"
         var stringa=""
         for(var a=0;a<5;a++){
             arrayFacts.push(json1[a]["text"])
@@ -79,8 +75,12 @@ class Curiosity2 extends Component{
     }
     JSONsetupAnimals(json3)
     {  
+        
         var array=["name","latin_name", "animal_type","active_time","lifespan", "habitat","diet","length_min","length_max","weight_min","weight_max"]
-
+        var div=document.getElementById('testo');
+        var div2=document.getElementById('testo2');
+        div.style.display="none";
+        div2.style.display="block"
         for(var a=0;a<array.length;a++){
             var indice=array[a];
             var contenuto=json3[indice];
