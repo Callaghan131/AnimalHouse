@@ -53,18 +53,17 @@ justify-content: flex-start;
 border: 5px solid #234668;
 }
 
-.img-quiz{
+.img-conteiner{
     width: 28vw;
     height: 40vh;
+   
 }
 
-.correct {
-background-color: #2f922f;
+.img-quiz{
+    max-height: 100%;
+    object-fit: contain;
 }
 
-.incorrect {
-background-color: #ff3333;
-}
 
 button:hover {
 background-color: #555e7d;
@@ -113,6 +112,25 @@ outline: none;
     position: absolute;
     left:53vw;
     top: 55vh;
+}
+
+.modal-footer-username{
+    text-align: center;
+}
+
+.modal-card-username {
+    margin: 0 auto;
+    display: block;
+    margin-top: 30vh;
+    width: 30vw;
+    height: 30vh;
+    background-color: white;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+#username{
+    margin-left: 3vw;
 }
 
 

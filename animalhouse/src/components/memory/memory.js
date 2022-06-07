@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import EndGame from './EndGame';
 import CardMemory from './cardMemory';
 import BoxScore from "./boxScore";
+import BoxUsername from "../../BoxUsername";
 import '../../css/memory.css';
 import { withRouter } from '../../withRouter';
 
@@ -35,7 +36,8 @@ class Memory extends Component{
         punteggio: 0,
         trovati: 0,
         showEndGame:false,
-        restart:true
+        restart:true,
+        insertUsername:true
 
     }
 
@@ -170,13 +172,38 @@ class Memory extends Component{
         this.props.navigate("/GamePage");
     }
 
+    handleClickQuizPage=()=>{
+        this.setState({insertUsername:false});
+    }
+
     render(){
-        const { punteggio, showEndGame } = this.state;
+        const { punteggio, showEndGame, insertUsername } = this.state;
      
         return(
             <div id="sfondo">
-                
-                <div className="conteiner" id="memory">
+                {
+                    insertUsername ? <BoxUsername onClick={this.handleClickQuizPage}/>
+                    :(
+                        <>
+                            <div className="conteiner" id="memory">
+                        {
+                            this.state.CardMemory.map((card, index)=>(
+                                
+                                <CardMemory
+                                key={index}
+                                card={card}
+                                onClick={this.handleClick}
+                                />
+                                
+                            ))
+                        }
+                        </div>
+                        <BoxScore score={punteggio}/>
+                        {showEndGame ? <EndGame score={punteggio} onClick={this.handleEndGame} onClickGamePage={this.handleGamePage}/>:null }
+                        </>
+                    )
+                }
+                {/* <div className="conteiner" id="memory">
                 {
                     this.state.CardMemory.map((card, index)=>(
                         
@@ -190,7 +217,7 @@ class Memory extends Component{
                 }
                 </div>
                 <BoxScore score={punteggio}/>
-                {showEndGame ? <EndGame score={punteggio} onClick={this.handleEndGame} onClickGamePage={this.handleGamePage}/>:null }
+                {showEndGame ? <EndGame score={punteggio} onClick={this.handleEndGame} onClickGamePage={this.handleGamePage}/>:null } */}
             </div>
         );
     }

@@ -46,8 +46,9 @@ body{
 }
 
 .cardMemory img{
-    max-width: 15vw;
-    max-height: 15vh;
+    max-width: 100%;
+    max-height: 80%;
+    object-fit: contain;
     transition: transform 0.5s;
     transform: scale(0);
     margin-top: 2vh;

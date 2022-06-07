@@ -3,6 +3,7 @@ import Navbar from '../navbar';
 import { withRouter } from '../../withRouter';
 import Question from './Question';
 import Answer from './Answer';
+import BoxUsername from "../../BoxUsername";
 import ScoreQuiz from "./ScoreQuiz";
 import '../../css/quiz.css';
 
@@ -103,11 +104,13 @@ class QuizPage extends Component{
         ].sort(()=>Math.random()-0.5),
         currentQuestion: 0,
         score:0,
-        showScore: false
+        showScore: false,
+        insertUsername:true
     }
 
     componentWillMount=()=>{
         this.getData();
+        console.log("ciao");
     }
 
     /**
@@ -342,41 +345,48 @@ class QuizPage extends Component{
         this.props.navigate("/GamePage");
     }
 
+    handleClickQuizPage=()=>{
+        this.setState({insertUsername:false});
+    }
+
     render(){
-        const { isLoaded, currentQuestion, quiz, showScore, score } = this.state;
+        const { isLoaded, currentQuestion, quiz, showScore, score, insertUsername } = this.state;
         return(
                 <div className="cardQuiz">
                     {
-                        showScore ? (
-                            <ScoreQuiz
-                                score={score}
-                                length={quiz.length}
-                                onClickGamePage={this.handleClickGamePage}
-                                onClickStartQuiz={this.handleClickRestart}
-                            />
-                        ):(
-                            <>
-                                <Question
-                                    currentQuestion={currentQuestion}
+                        insertUsername ? <BoxUsername onClick={this.handleClickQuizPage}/>
+                        :(
+                            showScore ? (
+                                <ScoreQuiz
+                                    score={score}
                                     length={quiz.length}
-                                    currentQuestionText={quiz[currentQuestion].testoDomanda}
-                                    img={quiz[currentQuestion].img}
+                                    onClickGamePage={this.handleClickGamePage}
+                                    onClickStartQuiz={this.handleClickRestart}
                                 />
-                                <div className="answer-section">
-                                {
-                                    quiz[currentQuestion].opzioniRisposte.map((risposta)=>(
-
-                                        <Answer
-                                            answer={risposta}
-                                            onClick={this.handleAnswerClick}
-                                        />
-                                    ))
-                                }
-                                </div>
-                            </>
+                            ):(
+                                <>
+                                    <Question
+                                        currentQuestion={currentQuestion}
+                                        length={quiz.length}
+                                        currentQuestionText={quiz[currentQuestion].testoDomanda}
+                                        img={quiz[currentQuestion].img}
+                                    />
+                                    <div className="answer-section">
+                                    {
+                                        quiz[currentQuestion].opzioniRisposte.map((risposta)=>(
+    
+                                            <Answer
+                                                answer={risposta}
+                                                onClick={this.handleAnswerClick}
+                                            />
+                                        ))
+                                    }
+                                    </div>
+                                </>
+                            )
                         )
+
                     }
-                    
                 </div>
             
         );

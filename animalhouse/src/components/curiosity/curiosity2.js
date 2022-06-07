@@ -9,11 +9,13 @@ class Curiosity2 extends Component{
                          <button style={{marginBottom:20, background: "white"}} id="btn" className="button-1" type="button" onClick={this.getCats}>Curiosità feline</button>
                          <button style={{marginBottom:20, marginLeft:20, background: "white"}} id="btn" className="button-1" type="button" onClick={this.getZoo}>Fatti animali</button>
                 <div id="contenitore" style={{display: "grid", gridTemplateColumns:"1fr 1fr 1fr", gridGap:10}}>
-                <img id="image_link" src="https://http2.mlstatic.com/D_NQ_NP_967840-MLM26976300618_032018-W.jpg" height="550px" width="400px"/>
-                <div id="testo" style={{ padding:10, border:"3px dashed black", width:550 , height:550,fontWeight:"bold",  lineHeight:2, fontSize:17, fontFamily:"Courier" , fontStyle:"italic"}}>
+                <div id="img" style={{height:"60vh", width:"30vw"}}>
+                <img id="image_link"  style={{maxHeight:"100%", maxWidth:"100%", objectFit:"contain"}} src="https://http2.mlstatic.com/D_NQ_NP_967840-MLM26976300618_032018-W.jpg" />
+                </div>
+                <div id="testo" style={{ overflowY:"scroll", marginLeft:-40, padding:10, border:"3px dashed black", width:550 , height:600,fontWeight:"bold",  lineHeight:2, fontSize:17, fontFamily:"Courier" , fontStyle:"italic"}}>
                     Curiosità feline
                 </div>
-                    <div id="testo2" style={{padding: 10, border:"3px dashed black", width:550 , height:550,fontWeight:"bold",  lineHeight:2, fontSize:17, fontFamily:"Courier" , fontStyle:"italic"}}>
+                    <div id="testo2" style={{marginLeft:-40,padding: 10, border:"3px dashed black", width:550 , height:600,fontWeight:"bold",  lineHeight:2, fontSize:17, fontFamily:"Courier" , fontStyle:"italic"}}>
                     <p> Ecco alcune info su <span style={{color:"green", background:"lightgreen"}} id="name"></span>:</p>
                             <ol id="list1">
                                 <li>The latin name is <span style={{color:"green", background:"lightgreen"}} id="latin_name"></span></li>
@@ -55,14 +57,20 @@ class Curiosity2 extends Component{
         var random=this.getRandomInt(4);
         var div2=document.getElementById('testo2');
         var div=document.getElementById('testo');
+        div.innerHTML="";
+        div.innerHTML="Curiosità feline"
         div2.style.display="none";
         div.style.display="block"
-        var stringa=""
+        var stringa="";
         for(var a=0;a<5;a++){
             arrayFacts.push(json1[a]["text"])
-            stringa=stringa+" "+a+")"+" "+arrayFacts[a];
+            var p=document.createElement("p");
+            stringa=(a+1)+")"+" "+arrayFacts[a];
+            p.innerHTML=stringa;
+            console.log(arrayFacts[a]);
+            div.appendChild(p);
         }
-        div.innerHTML=stringa+"\n"
+        //div.innerHTML=stringa;
         var img=document.getElementById('image_link');
         img.src="https://static.kodami.it/wp-content/uploads/sites/31/2020/12/Europeo-gatto-3-1200x1200.jpg"
     }
