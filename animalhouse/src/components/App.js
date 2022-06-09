@@ -2,7 +2,7 @@ import React from "react";
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import HomePage from "../components/HomePage";
 import GamePage from "../components/GamePage";
-import LoginPage from "../components/LoginPage";
+import LoginPage from "../components/Login/LoginPage";
 import Curiosità from "./curiosity/curiosity2";
 import Memory from "./memory/memory";
 import ImmaginiBuffe from "./immaginiBuffe/immaginiBuffe";

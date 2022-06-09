@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import jsonData from '../JSON/auth.json'
 
-class Login extends Component{
+
+class FormLogin extends Component{
     render(){
         return(
         <>
@@ -25,6 +25,7 @@ class Login extends Component{
                 </div>
                 <div className="d-flex align-items-center justify-content-between mt-4 mb-0">
                     <button className="btn btn-primary" onClick={() => this.props.onClick()}>Login</button>
+                    <label id="errore">{this.props.error}</label>
                 </div>
             </form>
         </div>
@@ -35,15 +36,15 @@ class Login extends Component{
         </>
         );
     }
-    onClick = () =>
-    {
-        var data = require('../JSON/auth.json');
-        let usernameutente=document.getElementById("inputUsername");
-        let passwordutente= document.getElementById("inputPassword");
-        if(usernameutente==data.username)
-        {
-            alert("Tutto ok");
-        }
-    }
+    // onClick = () =>
+    // {
+    //     var data = require('../JSON/auth.json');
+    //     let usernameutente=document.getElementById("inputUsername");
+    //     let passwordutente= document.getElementById("inputPassword");
+    //     if(usernameutente==data.username)
+    //     {
+    //         alert("Tutto ok");
+    //     }
+    // }
 }
-export default Login;
+export default FormLogin;
