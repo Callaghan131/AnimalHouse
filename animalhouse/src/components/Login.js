@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import jsonData from '../JSON/auth.json'
 
 class Login extends Component{
     render(){
@@ -33,6 +34,16 @@ class Login extends Component{
         </div>
         </>
         );
+    }
+    onClick = () =>
+    {
+        var data = require('../JSON/auth.json');
+        let usernameutente=document.getElementById("inputUsername");
+        let passwordutente= document.getElementById("inputPassword");
+        if(usernameutente==data.username)
+        {
+            alert("Tutto ok");
+        }
     }
 }
 export default Login;
