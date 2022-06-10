@@ -7,7 +7,7 @@ class LoginPage extends Component{
         trovato:false,
         error:""
     }
-    handleClickLogin=()=>{
+    handleClickLogin=(event)=>{
         //this.props.navigate("/LoginPage/HomePageUser");
         const data=require('../../JSON/users.json')
 
@@ -27,6 +27,9 @@ class LoginPage extends Component{
        else{
             this.props.navigate("/LoginPage/HomePageUser");
        }
+
+       event.preventDefault();
+
     }
     render(){
         return(

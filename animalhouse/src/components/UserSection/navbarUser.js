@@ -16,7 +16,7 @@ class NavbarUser extends Component{
                         <Nav className="me-auto">
                             <Nav.Link href="#home">Home</Nav.Link>
                             <Nav.Link href="#link">Shop</Nav.Link>
-                            <Nav.Link href="#link" style={{marginLeft:'60vw'}}>Logout</Nav.Link>
+                            <Nav.Link onClick={this.props.onClickLoginPage} style={{marginLeft:'60vw'}}>Logout</Nav.Link>
                         </Nav>
                         </Navbar.Collapse>
                     </Container>

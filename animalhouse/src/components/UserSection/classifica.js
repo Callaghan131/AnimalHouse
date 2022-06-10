@@ -1,9 +1,6 @@
 import React, {Component} from "react";
 import { Table } from "react-bootstrap";
 
-
-
-/*DA CAPIRE SE UTENTE LOGGATO VEDE SUA CLASSIFICA E UTENTE NON LOGGATO VEDE CLASSIFICA DI TUTTI */
 class Classifica extends Component{
     render(){
         return(

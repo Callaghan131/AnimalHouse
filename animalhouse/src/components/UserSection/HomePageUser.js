@@ -1,13 +1,19 @@
 import React, {Component} from "react";
 import NavbarUser from "./navbarUser";
 import Classifica from "./classifica";
-import ClassificaPlayer from "./classificaplayerform";
+import { withRouter } from '../../withRouter';
 
 class HomePageUser extends Component{
+
+    handleLoginPage=()=>{
+        this.props.navigate("/LoginPage");
+    }
     render(){
         return(
             <>
-                <NavbarUser/>
+                <NavbarUser
+                 onClickLoginPage={this.handleLoginPage}
+                />
                 <div className="row" style={{width:'98vw'}}>
                     <Classifica
                         title={"Classifica Memory"}
@@ -21,4 +27,4 @@ class HomePageUser extends Component{
         );
     }
 }
-export default HomePageUser;
+export default withRouter(HomePageUser);
