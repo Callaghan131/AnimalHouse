@@ -9,7 +9,11 @@ import ImmaginiBuffe from "./immaginiBuffe/immaginiBuffe";
 import VideoBuffi from "./videoBuffi/videoBuffi";
 import Quiz from "./quiz/QuizPage";
 import HomePageUser from "./UserSection/HomePageUser";
-  
+import Ecommerce from "./Ecommerce/Ecommerce";
+import Cibo from "./Ecommerce/Cibo";
+import Giochi from "./Ecommerce/Giochi";
+import Accessori from "./Ecommerce/Accessori";
+import Sanitari from "./Ecommerce/Sanitari";
 function App() {
     
   return (
@@ -25,7 +29,11 @@ function App() {
         <Route exact path="/GamePage/VideoBuffi" element={<VideoBuffi/>}/>
         <Route exact path="/GamePage/Quiz" element={<Quiz/>}/>
         <Route exact path="/LoginPage/HomePageUser" element={<HomePageUser/>}/>
-
+        <Route exact path="/Ecommerce/Ecommerce" element={<Ecommerce/>}/>
+        <Route exact path="/Ecommerce/Cibo" element={<Cibo/>}/>
+        <Route exact path="/Ecommerce/Accessori" element={<Accessori/>}/>
+        <Route exact path="/Ecommerce/Sanitari" element={<Sanitari/>}/>
+        <Route exact path="/Ecommerce/Giochi" element={<Giochi/>}/>
       </Routes>
       </BrowserRouter>
       </>

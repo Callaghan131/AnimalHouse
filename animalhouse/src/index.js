@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-
+import 'bootstrap/dist/css/bootstrap.css'
 import App from './components/App';
-
-import VideoBuffi from './components/videoBuffi/videoBuffi';
-import ImmaginiBuffe from './components/immaginiBuffe/immaginiBuffe';
-import Curiosity2 from './components/curiosity/curiosity2';
-import Quiz from './components/quiz/QuizPage';
-import Board from './components/board';
+import Ecommerce from './components/Ecommerce/Ecommerce';
+import HomePageUser from './components/UserSection/HomePageUser';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
