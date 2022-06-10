@@ -8,7 +8,11 @@ class HomePageUser extends Component{
     handleLoginPage=()=>{
         this.props.navigate("/LoginPage");
     }
+
+  
     render(){
+        const scoreQuiz=require('../../JSON/scoreQuiz.json')
+        const scoreMemory=require('../../JSON/scoreMemory.json')
         return(
             <>
                 <NavbarUser
@@ -17,9 +21,12 @@ class HomePageUser extends Component{
                 <div className="row" style={{width:'98vw'}}>
                     <Classifica
                         title={"Classifica Memory"}
+                        data={scoreMemory}
+                        
                     />
                     <Classifica
                         title={"Classifica Quiz"}
+                        data={scoreQuiz}
                     />
                 </div>
             </>

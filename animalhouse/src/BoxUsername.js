@@ -11,7 +11,7 @@ class BoxUsername extends React.Component {
                 </div>
                 <div className="modal-body">
                     <label>Username:</label>
-                    <input id="username" type="text"></input>
+                    <input id="username" name="usernameUtente" type="text"></input>
                 </div>
                 <div className="modal-footer-username">
                     <button className="btn btn-primary" onClick={()=>this.props.onClick()}>START</button>

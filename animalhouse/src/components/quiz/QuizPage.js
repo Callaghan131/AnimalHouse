@@ -105,7 +105,8 @@ class QuizPage extends Component{
         currentQuestion: 0,
         score:0,
         showScore: false,
-        insertUsername:true
+        insertUsername:true,
+        currentPlayer:""
     }
 
     componentWillMount=()=>{
@@ -312,6 +313,7 @@ class QuizPage extends Component{
         }
         else{
             this.setState({showScore:true});
+            this.handleSaveScore();
         }
     }
 
@@ -346,7 +348,37 @@ class QuizPage extends Component{
     }
 
     handleClickQuizPage=()=>{
+        var id=document.getElementById("username").value;
+        this.setState({currentPlayer:id});
         this.setState({insertUsername:false});
+    }
+
+    handleSaveScore=()=>{
+        var data=require("../../JSON/scoreQuiz.json");
+        var id=this.state.currentPlayer;
+        var score=this.state.score;
+        var presente=false;
+
+        for(var i=0; i<data.length; i++){
+            if(data[i]["username"]==id){
+                if(data[i]["punteggio"]<score){
+                    var obj={"username" : id, "punteggio": score}
+                    presente=true;
+                    data.push(obj);
+                }
+            }
+        }
+
+        if(!presente){
+            var obj={"username" : id, "punteggio": score}
+            data.push(obj);
+        }
+
+        var fs=require("fs");
+        fs.writeFile("../../JSON/scoreQuiz.json", JSON.stringify(data), (err)=>{
+            if(err) throw err;
+            console.log("Il file è stato slavato");
+        })
     }
 
     render(){
