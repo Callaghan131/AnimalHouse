@@ -374,11 +374,7 @@ class QuizPage extends Component{
             data.push(obj);
         }
 
-        var fs=require("fs");
-        fs.writeFile("../../JSON/scoreQuiz.json", JSON.stringify(data), (err)=>{
-            if(err) throw err;
-            console.log("Il file è stato slavato");
-        })
+       
     }
 
     render(){

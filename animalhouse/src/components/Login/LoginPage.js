@@ -9,24 +9,34 @@ class LoginPage extends Component{
     }
     handleClickLogin=(event)=>{
         //this.props.navigate("/LoginPage/HomePageUser");
-        const data=require('../../JSON/users.json')
+      
 
         var username=document.formLogin.username.value;
         var password= document.formLogin.password.value;
-        for(var i=0; i<data.length;i++){
-            if(data[i].username==username&&data[i].password==password){
-                this.state.trovato=true;
-                break;
+        var data=[];
+
+        fetch("http://localhost:2700/users")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              data=result;
+              for(var i=0; i<data.length;i++){
+                if(data[i].username==username&&data[i].password==password){
+                    this.state.trovato=true;
+                }
             }
-        }
-       if((this.state.trovato)==false){
-           this.setState({error:"Username o password non corretti"})
-           //this.state.error="Username o password non corretti";
-           
-       }
-       else{
-            this.props.navigate("/LoginPage/HomePageUser");
-       }
+            if((this.state.trovato)==false){
+               this.setState({error:"Username o password non corretti"})
+               //this.state.error="Username o password non corretti";
+               
+           }
+           else{
+                this.props.navigate("/LoginPage/HomePageUser");
+           }
+            }
+        )
+
+      
 
        event.preventDefault();
 
