@@ -6,6 +6,7 @@ import BoxScore from "./boxScore";
 import BoxUsername from "../../BoxUsername";
 import '../../css/memory.css';
 import { withRouter } from '../../withRouter';
+import ScritturaJSON from "./scritturajson";
 
 
 
@@ -198,6 +199,7 @@ class Memory extends Component{
                             ))
                         }
                         </div>
+                        {/* <ScritturaJSON score={punteggio}/>da capire come inserire dentro anche l'utente */}
                         <BoxScore score={punteggio}/>
                         {showEndGame ? <EndGame score={punteggio} onClick={this.handleEndGame} onClickGamePage={this.handleGamePage}/>:null }
                         </>
