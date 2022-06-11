@@ -1,3 +1,7 @@
+// N.B. se si vuole dividere in controller si puo' seguire questa guida 
+// https://lo-victoria.com/build-a-rest-api-with-nodejs-routes-and-controllers
+// il server si avvia con node .\server.js posizionandosi nella stessa route di server.js
+
 const express=require('express');
 
 ///////////////////
