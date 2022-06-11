@@ -19,7 +19,7 @@ const AddOrUpdateScore = function(score){
 }
 
 const GetScore = function(callBack){
-    FileService.ReadFile(quizFile, true, function(quizUsers){
+    FileService.ReadFile(quizFile, false, function(quizUsers){
         callBack(quizUsers);
     });
 }
