@@ -6,6 +6,7 @@ import Answer from './Answer';
 import BoxUsername from "../../BoxUsername";
 import ScoreQuiz from "./ScoreQuiz";
 import '../../css/quiz.css';
+import { QuizService } from "./service/QuizService";
 
 class QuizPage extends Component{
     state={
@@ -354,25 +355,37 @@ class QuizPage extends Component{
     }
 
     handleSaveScore=()=>{
-        var data=require("../../JSON/scoreQuiz.json");
-        var id=this.state.currentPlayer;
-        var score=this.state.score;
-        var presente=false;
+        let quizService = new QuizService();
 
-        for(var i=0; i<data.length; i++){
-            if(data[i]["username"]==id){
-                if(data[i]["punteggio"]<score){
-                    var obj={"username" : id, "punteggio": score}
-                    presente=true;
-                    data.push(obj);
-                }
+        quizService.saveScore(
+            {
+                username: this.state.currentPlayer,
+                punteggio: this.state.score
             }
-        }
+        )
+        .then(data1 => {
+            console.log(data1)
+        });
 
-        if(!presente){
-            var obj={"username" : id, "punteggio": score}
-            data.push(obj);
-        }
+        // var data=require("../../JSON/scoreQuiz.json");
+        // var id=this.state.currentPlayer;
+        // var score=this.state.score;
+        // var presente=false;
+
+        // for(var i=0; i<data.length; i++){
+        //     if(data[i]["username"]==id){
+        //         if(data[i]["punteggio"]<score){
+        //             var obj={"username" : id, "punteggio": score}
+        //             presente=true;
+        //             data.push(obj);
+        //         }
+        //     }
+        // }
+
+        // if(!presente){
+        //     var obj={"username" : id, "punteggio": score}
+        //     data.push(obj);
+        // }
 
        
     }
