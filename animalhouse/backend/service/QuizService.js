@@ -1,8 +1,8 @@
 var FileService = require('./FileService')
+const quizFile = "quiz/quizScore.json";
 
 const AddOrUpdateScore = function(score){
-    let quizFile = "quiz/quizScore.json";
-    FileService.ReadFile(quizFile, function(quizUsers){
+    FileService.ReadFile(quizFile, true, function(quizUsers){
         let userToUpdate = quizUsers.find(x=>x.username == score.username);
         if(userToUpdate){
             userToUpdate.punteggio = score.punteggio
@@ -18,6 +18,13 @@ const AddOrUpdateScore = function(score){
     });
 }
 
+const GetScore = function(callBack){
+    FileService.ReadFile(quizFile, true, function(quizUsers){
+        callBack(quizUsers);
+    });
+}
+
 module.exports = {
-    AddOrUpdateScore
+    AddOrUpdateScore,
+    GetScore
 };

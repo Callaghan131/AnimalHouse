@@ -34,6 +34,8 @@ app.post('/scoreQuiz', function(req, res){
 })
 // se prende i dati e' una get
 app.get('/scoreQuiz', function(req, res){
-    res.send("eccomi")
+    QuizService.GetScore(function(result){
+        res.json(result);
+    });
 })
 //#endregion

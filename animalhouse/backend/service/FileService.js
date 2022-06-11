@@ -1,7 +1,7 @@
 var fs = require("fs");
 const basePath = '../backend/model/';
 
-const ReadFile = function(filePath, callBack){
+const ReadFile = function(filePath, serialize, callBack){
     let completePath = `${basePath}${filePath}`;
 
     fs.readFile(completePath, 'utf8' , (err, data) => {
@@ -9,13 +9,15 @@ const ReadFile = function(filePath, callBack){
           console.error(err);
           return
         }
-        callBack(JSON.parse(data));
+        console.log(data);
+        callBack(serialize ? JSON.parse(data) : data);
     });
 }
 
 const SaveFile = function(data, filePath){
     let dataToSave = JSON.stringify(data);
     let completePath = `${basePath}${filePath}`;
+    console.log(data);
 
     fs.writeFile(completePath, dataToSave, (err) => {
         // throws an error, you could also catch it here
