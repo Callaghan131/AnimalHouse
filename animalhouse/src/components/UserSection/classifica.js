@@ -3,11 +3,12 @@ import { Table } from "react-bootstrap";
 import QuizResult from '../../JSON/scoreQuiz.json';
 
 class Classifica extends Component{
-
+    
   
     render(){
         
         const dataQuiz=require('../../JSON/scoreQuiz.json')
+       
         return(
             <>
                 

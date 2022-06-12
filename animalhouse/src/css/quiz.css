@@ -61,6 +61,7 @@ border: 5px solid #234668;
 
 .img-quiz{
     max-height: 100%;
+    max-width: 100%;
     object-fit: contain;
 }
 

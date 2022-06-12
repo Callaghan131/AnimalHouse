@@ -1,4 +1,7 @@
 const express=require('express');
+const users=require('../src/JSON/users.json')
+const scoreMemory=require('../src/JSON/scoreMemory.json')
+const scoreQuiz1=require('../src/JSON/scoreQuiz.json')
 
 ///////////////////
 //Configurazione server
@@ -47,13 +50,13 @@ app.post('/scoreQuiz', function(req, res){
 })
 // se prende i dati e' una get
 app.get('/scoreQuiz', function(req, res){
-    res.send("eccomi")
+    res.send(scoreQuiz1)
 })
 //#endregion
 
 // Ritorna gia' deserializzato
 function readQuizFile(){
-    let readedFile = require("./model/quiz/quizScore.json");
+    let readedFile = require("../src/JSON/scoreQuiz.json");
     if(!readedFile)
         readedFile = [];
 
@@ -63,8 +66,9 @@ function readQuizFile(){
 function saveQuizFile(data){
     let dataToSave = JSON.stringify(data);
 
-    fs.writeFile("./model/quiz/quizScore.json", dataToSave, (err) => {
+    fs.writeFile("../src/JSON/scoreQuiz.json", dataToSave, (err) => {
         // throws an error, you could also catch it here
         if (err) throw err;
+        console.log('Saved!');
     });
 }

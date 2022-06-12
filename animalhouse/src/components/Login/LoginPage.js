@@ -44,8 +44,6 @@ class LoginPage extends Component{
     render(){
         return(
             <FormLogin error={this.state.error} onClick={this.handleClickLogin}/>
-            //document.formLogin.error.value=this.state.error
-            //<label id="errore" name="errore">{this.props.error}</label>
         );
     }
 }
