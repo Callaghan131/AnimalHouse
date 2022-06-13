@@ -27,6 +27,7 @@ import pelo from '../../images/sanitari/pelo.jpg';
 import { withRouter } from '../../withRouter';
 import CardProdotto from "./CardProdotto";
 import NavbarCarrello from './NavbarCarrello';
+import Carrello from './Carrello';
 
 import Sanitari from "./Sanitari";
 import Cibo from "./Cibo";
@@ -38,6 +39,7 @@ class Ecommerce extends Component{
         selectAccessori: false,
         selectSanitari: false,
         selectCibo: false,
+        selectCarrello: false,
         cardProdotto:[
             [
                 {
@@ -227,12 +229,14 @@ class Ecommerce extends Component{
         this.setState({selectAccessori:true});
         this.setState({selectSanitari:false});
         this.setState({selectCibo:false});
+        this.setState({selectCarrello:false});
     }
     handleSelectSanitari(){
         this.setState({selectGiochi:false});
         this.setState({selectAccessori:false});
         this.setState({selectSanitari:true});
         this.setState({selectCibo:false});
+        this.setState({selectCarrello:false});
         
     }
     handleSelectCibo(){
@@ -240,6 +244,15 @@ class Ecommerce extends Component{
         this.setState({selectAccessori:false});
         this.setState({selectSanitari:false});
         this.setState({selectCibo:true});
+        this.setState({selectCarrello:false});
+    }
+    handleSelectCarrello(){
+        this.setState({selectGiochi:false});
+        this.setState({selectAccessori:false});
+        this.setState({selectSanitari:false});
+        this.setState({selectCibo:false});
+        this.setState({selectCarrello:true});
+
     }
     handleDelete=cardId=>{
         const updatedCards=this.state.cardProdotto.filter(card=>card.id !== cardId);
@@ -247,27 +260,27 @@ class Ecommerce extends Component{
     }
     handleIncrement=(num,type)=>{
         const updatedIncrementedCards=[...this.state.cardProdotto];
-        var totale=parseFloat(this.state.totale);
-        const prezzo=parseFloat(updatedIncrementedCards[type][num].prezzo);
+        var totale=parseInt(this.state.totale);
         updatedIncrementedCards[type][num].quantità++;
         this.setState({cardProdotto: updatedIncrementedCards});
-        totale+=prezzo;
+        // totale+=updatedIncrementedCards[type][num].quantità;
+        totale+=1;
         this.setState({totale:totale});
     }
     handleDecrement=(num,type)=>{
         const updatedIncrementedCards=[...this.state.cardProdotto];
-        var totale=parseFloat(this.state.totale);
-        const prezzo=parseFloat(updatedIncrementedCards[type][num].prezzo);
+        var totale=parseInt(this.state.totale);
         if(updatedIncrementedCards[type][num].quantità>0){
         updatedIncrementedCards[type][num].quantità--;
-        totale-=prezzo;
+        // totale-=updatedIncrementedCards[type][num].quantità;
+        totale-=1
         this.setState({cardProdotto: updatedIncrementedCards});
         this.setState({totale:totale});
         }
     }
 
     render(){
-        const{selectGiochi,selectAccessori,selectSanitari,selectCibo}=this.state;
+        const{selectGiochi,selectAccessori,selectSanitari,selectCibo, selectCarrello}=this.state;
         const{totale}=this.state;
     return(
         <><NavbarCarrello
@@ -275,9 +288,11 @@ class Ecommerce extends Component{
         onClickAccessori={this.handleSelectAccessori.bind(this)}
         onClickSanitari={this.handleSelectSanitari.bind(this)}
         onClickCibo={this.handleSelectCibo.bind(this)}
+        onClickCarrello={this.handleSelectCarrello.bind(this)}
         totale={totale}/>
             <div className='container'>
                 <div className="row" style={{display: "grid", gridTemplateColumns:"1fr 1fr 1fr", marginTop:"60px"}}>
+
                     {selectGiochi ? (
                         this.state.cardProdotto[0].map(card => (
                             <CardProdotto
@@ -315,10 +330,12 @@ class Ecommerce extends Component{
                                 onDelete={this.handleDelete}
                                 onIncrement={this.handleIncrement} 
                                 onDecrement={this.handleDecrement}/>
-                        ))) : null
-                        )
-                        )
-                        )
+                        ))) : selectCarrello ? (
+                            <Carrello/>
+                        ):null
+                        )))
+                        
+                        
                     }
                 </div>
             </div>
