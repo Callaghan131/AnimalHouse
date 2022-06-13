@@ -367,27 +367,6 @@ class QuizPage extends Component{
             console.log(data1)
         });
 
-        // var data=require("../../JSON/scoreQuiz.json");
-        // var id=this.state.currentPlayer;
-        // var score=this.state.score;
-        // var presente=false;
-
-        // for(var i=0; i<data.length; i++){
-        //     if(data[i]["username"]==id){
-        //         if(data[i]["punteggio"]<score){
-        //             var obj={"username" : id, "punteggio": score}
-        //             presente=true;
-        //             data.push(obj);
-        //         }
-        //     }
-        // }
-
-        // if(!presente){
-        //     var obj={"username" : id, "punteggio": score}
-        //     data.push(obj);
-        // }
-
-       
     }
 
     render(){

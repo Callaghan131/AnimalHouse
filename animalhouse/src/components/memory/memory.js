@@ -6,7 +6,7 @@ import BoxScore from "./boxScore";
 import BoxUsername from "../../BoxUsername";
 import '../../css/memory.css';
 import { withRouter } from '../../withRouter';
-import ScritturaJSON from "./scritturajson";
+import {MemoryService} from './service/MemoryService';
 
 
 
@@ -38,7 +38,8 @@ class Memory extends Component{
         trovati: 0,
         showEndGame:false,
         restart:true,
-        insertUsername:true
+        insertUsername:true,
+        currentPlayer: ""
 
     }
 
@@ -136,6 +137,7 @@ class Memory extends Component{
             this.setState({trovati:find});
             if(find==16){
                 const endgame=true;
+                this.handleSaveScore();
                 this.setState({showEndGame:endgame});
             }
 
@@ -174,7 +176,24 @@ class Memory extends Component{
     }
 
     handleClickQuizPage=()=>{
+        var id=document.getElementById("username").value;
+        this.setState({currentPlayer:id});
         this.setState({insertUsername:false});
+    }
+
+    handleSaveScore=()=>{
+        let quizService = new MemoryService();
+
+        quizService.saveScore(
+            {
+                username: this.state.currentPlayer,
+                punteggio: parseInt(this.state.punteggio)+5
+            }
+        )
+        .then(data1 => {
+            console.log(data1)
+        });
+
     }
 
     render(){

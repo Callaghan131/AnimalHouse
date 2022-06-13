@@ -5,11 +5,11 @@ import { withRouter } from '../../withRouter';
 class LoginPage extends Component{
     state={
         trovato:false,
-        error:""
+        error:"",
+        logged: false
     }
     handleClickLogin=(event)=>{
-        //this.props.navigate("/LoginPage/HomePageUser");
-      
+        
 
         var username=document.formLogin.username.value;
         var password= document.formLogin.password.value;
