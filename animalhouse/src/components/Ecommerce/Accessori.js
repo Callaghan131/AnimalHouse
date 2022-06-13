@@ -6,9 +6,10 @@ import cuccia from '../../images/accessori/cuccia.jpg';
 import pettorina from '../../images/accessori/pettorina.jpg';
 import sassi from '../../images/accessori/sassi.jpg';
 import CardProdotto from "./CardProdotto";
-import Navbar from "../navbar";
+import NavbarCarrello from './NavbarCarrello';
 class Accessori extends Component{
      state={
+        totale:0,
         cardProdotto:[
             {
                 id:0,
@@ -51,8 +52,8 @@ class Accessori extends Component{
                 nome:"Sassi per decorare il tuo acquario",
                 prezzo:"5.99$",
                 quantità: 0
-            },
-        ]
+            }
+        ],
     }
     handleDelete=cardId=>{
         const updatedCards=this.state.cardProdotto.filter(card=>card.id !== cardId);
@@ -61,14 +62,32 @@ class Accessori extends Component{
     handleIncrement=cardProdotto=>{
         const updatedIncrementedCards=[...this.state.cardProdotto];
         const id=updatedIncrementedCards.indexOf(cardProdotto);
+        var totale=parseFloat(this.state.totale);
+        const prezzo=parseFloat(cardProdotto.prezzo);
         updatedIncrementedCards[id]={...cardProdotto};
         updatedIncrementedCards[id].quantità++;
         this.setState({cardProdotto: updatedIncrementedCards});
+        totale+=prezzo;
+        this.setState({totale:totale});
     }
+    handleDecrement=cardProdotto=>{
+        const updatedIncrementedCards=[...this.state.cardProdotto];
+        const id=updatedIncrementedCards.indexOf(cardProdotto);
+        var totale=parseFloat(this.state.totale);
+        const prezzo=parseFloat(cardProdotto.prezzo);
+        updatedIncrementedCards[id]={...cardProdotto};
+        if(updatedIncrementedCards[id].quantità>0){
+        updatedIncrementedCards[id].quantità--;
+        totale-=prezzo;
+        this.setState({cardProdotto: updatedIncrementedCards});
+        this.setState({totale:totale});
+    }
+}
     render(){
+        const{totale}=this.state;
         return(
             
-        <><Navbar /><div className='container'>
+        <><NavbarCarrello totale={totale}/><div className='container'>
                 <h1 style={{ textAlign: "center", marginBottom: "50px" }}>Accessori per animali</h1>
                 <div className="row"  style={{display: "grid", gridTemplateColumns:"1fr 1fr 1fr"}}>
                     {this.state.cardProdotto.map(card => (
@@ -76,7 +95,8 @@ class Accessori extends Component{
                             key={card.id}
                             cardProdotto={card}
                             onDelete={this.handleDelete}
-                            onIncrement={this.handleIncrement} />
+                            onIncrement={this.handleIncrement} 
+                            onDecrement={this.handleDecrement}/>
                     ))}
                 </div>
             </div></>
