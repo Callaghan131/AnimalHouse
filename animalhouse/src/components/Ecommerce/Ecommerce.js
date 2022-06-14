@@ -35,7 +35,7 @@ import Cibo from "./Cibo";
 class Ecommerce extends Component{
     state={
         totale:0,
-        selectGiochi: false,
+        selectGiochi: true,
         selectAccessori: false,
         selectSanitari: false,
         selectCibo: false,
@@ -46,42 +46,42 @@ class Ecommerce extends Component{
                 id:0,
                 immagine: corda,
                 nome:"Corda per il tuo cane",
-                prezzo:"2.99$",
+                prezzo:"2.99€",
                 quantità: 0
             },
             {
                 id:1,
                 immagine: gioco,
                 nome:"Gioco interattivo per il tuo gatto",
-                prezzo:"15.99$",
+                prezzo:"15.99€",
                 quantità: 0
             },
             {
                 id:2,
                 immagine: palla,
                 nome:"Palla per il tuo cane",
-                prezzo:"2.99$",
+                prezzo:"2.99€",
                 quantità: 0
             },
             {
                 id:3,
                 immagine: piume,
                 nome:"Bastoncino con piume per il tuo gatto",
-                prezzo:"2.59$",
+                prezzo:"2.59€",
                 quantità: 0
             },
             {
                 id:4,
                 immagine: ruota,
                 nome:"Ruota per il tuo canarino",
-                prezzo:"9.99$",
+                prezzo:"9.99€",
                 quantità: 0
             },
             {
                 id:5,
                 immagine: tunnel,
                 nome:"Tunnel per il tuo coniglio",
-                prezzo:"29.99$",
+                prezzo:"29.99€",
                 quantità: 0
             }],
             [
@@ -89,42 +89,42 @@ class Ecommerce extends Component{
                 id:0,
                 immagine: casetta,
                 nome:"Casetta per il tuo canarino",
-                prezzo:"19.99$",
+                prezzo:"19.99€",
                 quantità: 0
             },
             {
                 id:1,
                 immagine: castello,
                 nome:"Gioco per il tuo gatto",
-                prezzo:"49.99$",
+                prezzo:"49.99€",
                 quantità: 0
             },
             {
                 id:2,
                 immagine: ciotola,
                 nome:"Ciotola cibo per tutti gli animali",
-                prezzo:"5.99$",
+                prezzo:"5.99€",
                 quantità: 0
             },
             {
                 id:3,
                 immagine: cuccia,
                 nome:"Cuccia per il tuo cane",
-                prezzo:"15.59$",
+                prezzo:"15.59€",
                 quantità: 0
             },
             {
                 id:4,
                 immagine: pettorina,
                 nome:"Pettorina e guinzaglio per il tuo coniglio",
-                prezzo:"9.99$",
+                prezzo:"9.99€",
                 quantità: 0
             },
             {
                 id:5,
                 immagine: sassi,
                 nome:"Sassi per decorare il tuo acquario",
-                prezzo:"5.99$",
+                prezzo:"5.99€",
                 quantità: 0
             }
             ],
@@ -133,42 +133,42 @@ class Ecommerce extends Component{
                 id:0,
                 immagine: canarino,
                 nome:"Cibo per il tuo canarino",
-                prezzo:"1.99$",
+                prezzo:"1.99€",
                 quantità: 0
             },
             {
                 id:1,
                 immagine: coniglio,
                 nome:"Cibo per il tuo coniglio",
-                prezzo:"2.99$",
+                prezzo:"2.99€",
                 quantità: 0
             },
             {
                 id:2,
                 immagine: manzo,
                 nome:"Cibo per il tuo cane (manzo)",
-                prezzo:"0.99$",
+                prezzo:"0.99€",
                 quantità: 0
             },
             {
                 id:3,
                 immagine: manzosal,
                 nome:"Cibo per il tuo cane (manzo e salmone)",
-                prezzo:"1.59$",
+                prezzo:"1.59€",
                 quantità: 0
             },
             {
                 id:4,
                 immagine: pesce,
                 nome:"Cibo per il tuo pesce",
-                prezzo:"0.99$",
+                prezzo:"0.99€",
                 quantità: 0
             },
             {
                 id:5,
                 immagine: pollotacch,
                 nome:"Cibo per il tuo gatto",
-                prezzo:"1.99$",
+                prezzo:"1.99€",
                 quantità: 0
             }
         ],
@@ -177,46 +177,47 @@ class Ecommerce extends Component{
                 id:0,
                 immagine: antiparass,
                 nome:"Antiparassitario per il tuo cane",
-                prezzo:"9.99$",
+                prezzo:"9.99€",
                 quantità: 0
             },
             {
                 id:1,
                 immagine: collare,
                 nome:"Collare rigido per il tuo cane",
-                prezzo:"5.99$",
+                prezzo:"5.99€",
                 quantità: 0
             },
             {
                 id:2,
                 immagine: insetti,
                 nome:"Prodotto anti-zecche e pulci per i tuou animali",
-                prezzo:"9.99$",
+                prezzo:"9.99€",
                 quantità: 0
             },
             {
                 id:3,
                 immagine: pannolini,
                 nome:"Pannolini per il tuo cane",
-                prezzo:"5.59$",
+                prezzo:"5.59€",
                 quantità: 0
             },
             {
                 id:4,
                 immagine: pelo,
                 nome:"Pasta rimuovi pelo per il tuo gatto",
-                prezzo:"9.99$",
+                prezzo:"9.99€",
                 quantità: 0
             },
             {
                 id:5,
                 immagine: sfigmo,
                 nome:"Sfigmomanomentro per i tuoi animali",
-                prezzo:"19.99$",
+                prezzo:"19.99€",
                 quantità: 0
             }
         ]
-        ]
+        ],
+        cart:[]
     }
     handleSelectGiochi(){
         this.setState({selectGiochi:true});
@@ -265,8 +266,53 @@ class Ecommerce extends Component{
         this.setState({cardProdotto: updatedIncrementedCards});
         // totale+=updatedIncrementedCards[type][num].quantità;
         totale+=1;
+        this.addProductToCart(updatedIncrementedCards[type][num]);
         this.setState({totale:totale});
     }
+
+    addProductToCart=(product)=>{
+        const carrello=[...this.state.cart];
+        var presente=false;
+        var cont=0;
+
+        if(carrello.length==0){
+            var obj={
+                nome:product.nome,
+                img:product.immagine,
+                prezzo:parseFloat(product.prezzo),
+                quantita: product.quantità
+            }
+            carrello.push(obj);
+        }
+        else{
+            for(var i=0; i<carrello.length;i++){
+                if(carrello[i].nome==product.nome){
+                    presente=true;
+                    cont=i;
+                }
+            }
+    
+            if(!presente){
+                var obj={
+                    nome:product.nome,
+                    img:product.immagine,
+                    prezzo:parseFloat(product.prezzo),
+                    quantita: parseInt(product.quantità)
+                }
+                carrello.push(obj);
+            }
+            else{
+                carrello[i].prezzo+=product.prezzo
+            }
+        }
+
+        console.log(carrello)
+        this.setState({cart:carrello})
+        console.log(this.state.cart);
+
+        
+    }
+
     handleDecrement=(num,type)=>{
         const updatedIncrementedCards=[...this.state.cardProdotto];
         var totale=parseInt(this.state.totale);

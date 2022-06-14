@@ -2,11 +2,7 @@ const apiUrl = `http://localhost:2700/`;
 
 export class QuizService
 {
-    // score deve essere un oggetto del tipo
-    // {
-    //     "username": "pippo",
-    //     "punteggio": 78,
-    // }
+   
     saveScore = (score) =>{
         const requestOptions = {
             method: 'POST',

@@ -3,6 +3,9 @@
 // il server si avvia con node .\server.js posizionandosi nella stessa route di server.js
 
 const express=require('express');
+const users=require('../src/JSON/users.json');
+const scoreQuiz1=require('../src/JSON/scoreQuiz.json');
+const scoreMemory=require('../src/JSON/scoreMemory.json');
 
 ///////////////////
 //Configurazione server
