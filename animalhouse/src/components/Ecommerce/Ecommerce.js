@@ -35,11 +35,13 @@ import Cibo from "./Cibo";
 class Ecommerce extends Component{
     state={
         totale:0,
+        prezzo:0,
         selectGiochi: true,
         selectAccessori: false,
         selectSanitari: false,
         selectCibo: false,
         selectCarrello: false,
+        cart:[],
         cardProdotto:[
             [
                 {
@@ -216,8 +218,8 @@ class Ecommerce extends Component{
                 quantità: 0
             }
         ]
-        ],
-        cart:[]
+        ]
+      
     }
     handleSelectGiochi(){
         this.setState({selectGiochi:true});
@@ -262,12 +264,15 @@ class Ecommerce extends Component{
     handleIncrement=(num,type)=>{
         const updatedIncrementedCards=[...this.state.cardProdotto];
         var totale=parseInt(this.state.totale);
+        var prezzo=parseFloat(this.state.prezzo)
         updatedIncrementedCards[type][num].quantità++;
         this.setState({cardProdotto: updatedIncrementedCards});
-        // totale+=updatedIncrementedCards[type][num].quantità;
+        prezzo+=parseFloat(updatedIncrementedCards[type][num].prezzo);
+        
         totale+=1;
         this.addProductToCart(updatedIncrementedCards[type][num]);
         this.setState({totale:totale});
+        this.setState({prezzo:prezzo})
     }
 
     addProductToCart=(product)=>{
@@ -302,7 +307,10 @@ class Ecommerce extends Component{
                 carrello.push(obj);
             }
             else{
-                carrello[i].prezzo+=product.prezzo
+                console.log("prezzo: "+carrello[cont].prezzo)
+                carrello[cont].prezzo+=parseFloat(product.prezzo)
+                carrello[cont].quantita+=1
+                
             }
         }
 
@@ -316,18 +324,48 @@ class Ecommerce extends Component{
     handleDecrement=(num,type)=>{
         const updatedIncrementedCards=[...this.state.cardProdotto];
         var totale=parseInt(this.state.totale);
+        var prezzo=parseFloat(this.state.prezzo);
         if(updatedIncrementedCards[type][num].quantità>0){
         updatedIncrementedCards[type][num].quantità--;
-        // totale-=updatedIncrementedCards[type][num].quantità;
+        prezzo-=parseFloat(updatedIncrementedCards[type][num].prezzo);
         totale-=1
+        this.deleteProductToCart(updatedIncrementedCards[type][num])
         this.setState({cardProdotto: updatedIncrementedCards});
         this.setState({totale:totale});
+        this.setState({prezzo:prezzo})
         }
     }
 
+    deleteProductToCart=(product)=>{
+        const carrello=[...this.state.cart];
+        var cont=0;
+        
+
+        for(var i=0; i<carrello.length;i++){
+            if(carrello[i].nome==product.nome){
+                carrello[i].quantita-=1
+                carrello[i].prezzo-=parseFloat(product.prezzo)
+                cont=i;
+            }
+        }
+
+        if(carrello[cont].quantita==0){
+            carrello.splice(cont,1);
+        }
+
+       
+
+        console.log(carrello)
+        this.setState({cart:carrello})
+        console.log(this.state.cart);
+
+        
+    }
+
+
+
     render(){
-        const{selectGiochi,selectAccessori,selectSanitari,selectCibo, selectCarrello}=this.state;
-        const{totale}=this.state;
+        const{selectGiochi,selectAccessori,selectSanitari,selectCibo, selectCarrello, cart, totale, prezzo}=this.state;
     return(
         <><NavbarCarrello
         onClickGiochi={this.handleSelectGiochi.bind(this)}
@@ -377,7 +415,10 @@ class Ecommerce extends Component{
                                 onIncrement={this.handleIncrement} 
                                 onDecrement={this.handleDecrement}/>
                         ))) : selectCarrello ? (
-                            <Carrello/>
+                            <Carrello
+                            itemCart={cart}
+                            prezzo={prezzo}
+                            />
                         ):null
                         )))
                         

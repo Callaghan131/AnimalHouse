@@ -22,7 +22,7 @@ class NavbarCarrello extends Component{
             <Dropdown.Item>{this.props.totale}</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown> */}
-        <Badge badgeContent={this.props.totale} color="primary">
+        <Badge id="iconCarrello" badgeContent={this.props.totale} color="primary">
             <ShoppingCartIcon style={{color:"white"}} onClick={()=>this.props.onClickCarrello()}></ShoppingCartIcon>
         </Badge>
       </div>

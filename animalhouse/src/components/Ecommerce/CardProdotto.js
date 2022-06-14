@@ -15,7 +15,7 @@ class CardProdotto extends Component{
                     <h5 className="card-title">{this.props.cardProdotto.nome}</h5>
                     <p className="card-text">{this.props.cardProdotto.prezzo}
                     </p>
-                    <button className="btn btn-outline-danger" onClick={()=>this.props.onDelete(this.props.cardProdotto.id)}>Elimina</button>
+                   
                 </div>
             </div>
         </div>
