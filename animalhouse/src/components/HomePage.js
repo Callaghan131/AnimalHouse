@@ -7,60 +7,22 @@ import Bottone from './Button';
 
 
 class HomePage extends Component {
-  state={
-    CardSfondo:[
-      {
-        id:0,
-        immagine:ImmagineSfondo,
-        descrizione:"Da sempre Animal House si occupa di sviluppare software per prodotti e servizi per animali domestici. Metti alla prova le tue capacità all'interno dell'area game con tanti giochi divertenti e accedi con le tue credenziali alla tua area personale per poter interagire con altri amanti degli animali."
-        
-      }
-    ],
-    Bottone:[
-      {
-        id:1,
-        tipo:"Game",
-      },
-      {
-        id:2,
-        tipo:"Login"
-      }
-    ]
+  
+  handleClickGamePage=()=>{
+    this.props.navigate('/GamePage');
   }
-
-  handleClick=cardId=>{
-    if(cardId==1){
-      this.props.navigate('/GamePage');
-      
-    }
-    else if(cardId==2){
-      this.props.navigate('/LoginPage');
-      
-    }
-  };
+  handleClickLoginPage=()=>{
+    this.props.navigate('/LoginPage');
+  }
 
   render(){
     return (
       <>
-      <Navbar/>
-        <h1 style={{textAlign:"center", color:"white"}}>La pagina preferita dagli amanti degli animali!</h1>
-        <div className='container'>
-         {
-          this.state.Bottone.map(bottone=>(
-            <Bottone
-            key={bottone.id}
-            bottone={bottone}
-            onClick={this.handleClick}
-            />
-          ))}
-          {
-            this.state.CardSfondo.map(cardSfondo=>(
-              <CardSfondo
-              key={cardSfondo.id}
-              cardSfondo={cardSfondo}
-              />
-            ))}
-      </div>
+      <CardSfondo></CardSfondo>
+      <h1 style={{textAlign:"center", color:"white", position:"absolute", top:"30vh", width:"100vw", fontSize:"100px"}}>ANIMAL HOUSE</h1>
+      <button style={{fontWeight:"bold", color:"lightblue", fontSize:"50px", border:"5px solid lightblue", float:"left", marginRight:"10px", backgroundColor:"transparent", position:"absolute", top:"57vh", left:"50vw"}} type="submit" onClick={this.handleClickGamePage} className="btn">GAME</button>
+      <button style={{fontWeight:"bold", color:"lightblue", fontSize:"50px", border:"5px solid lightblue", float:"left", marginRight:"10px", backgroundColor:"transparent", position:"absolute", top:"57vh", left:"35vw"}} type="submit" onClick={this.handleClickLoginPage} className="btn">LOGIN</button>
+      
       </>
     );
   }

@@ -6,6 +6,7 @@ import ImmagineBuffa from '../images/immagineBuffa.jpg';
 import VideoBuffi from '../images/videoBuffi.jpg';
 import Quiz from '../images/quiz.jpg';
 import { withRouter } from '../withRouter';
+import Navbar from './navbar';
 class GamePage extends Component{
     state={
       Cards1:[
@@ -67,11 +68,16 @@ class GamePage extends Component{
       this.props.navigate('/GamePage/Quiz'); 
     }
   };
+
+  handleReturnHomePage=()=>{
+    this.props.navigate('/');
+  }
+
    render(){
     return (
       <>
-      <h1 style={{textAlign:"center", marginTop:"15px", marginBottom:"15px", color:"white"}}>Area Giochi</h1>
-      <div className='row' style={{ marginLeft:"330px",width:"50vw",textAlign:"center", display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gridTemplateRows: "1fr", gridGap:"20px"}}>
+      <Navbar click={this.handleReturnHomePage}></Navbar>
+      <div className='row' style={{ marginTop:"3vh", marginLeft:"330px",width:"50vw",textAlign:"center", display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gridTemplateRows: "1fr", gridGap:"20px"}}>
           {
             this.state.Cards1.map(card=>(
               <Card
