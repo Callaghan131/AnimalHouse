@@ -15,7 +15,7 @@ class NavbarUser extends Component{
                         <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="../Ecommerce/Ecommerce">Shop</Nav.Link>
+                            <Nav.Link href="../Ecommerce">Shop</Nav.Link>
                             <Nav.Link onClick={this.props.onClickLoginPage} style={{marginLeft:'60vw'}}>Logout</Nav.Link>
                         </Nav>
                         </Navbar.Collapse>

@@ -7,17 +7,17 @@ class Prodotto extends Component{
         <>
             <div id="product" style={{display:"flex", justifyContent:"space-between"}}>
                 <div id="productDetail" style={{flex:"2", display:"flex"}}>
-                    <img></img>
+                    <div style={{width:"200px"}}>
+                        <img style={{maxWidth:"100%", maxHeight:"100%", objectFit:"contain"}}></img>
+                    </div>
                     <div id="details" style={{padding:"20px", display:"flex", flexDirection:"column", justifyContent:"space-around"}}>
                         <span id="productName">
-                            <b>Nome: </b><label id="name"></label>
+                            <b>Nome: </b><label id="name">Corda per il tuo cane</label>
                         </span>
-                        <span id="productDesc">
-                            <b>Descrizione: </b><label id="desc"></label>
-                        </span>
+                    
                     </div>
                 </div>
-                <div id="priceDetail">
+                <div id="priceDetail" style={{flex:1, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
                     <div id="productAmountConteiner" style={{display:"flex", alignItems:"center", marginBottom:"20px"}}>
                         <AddIcon />
                         <div id="productAmount" style={{fontSize:"24px", margin:"5px"}}>2</div>

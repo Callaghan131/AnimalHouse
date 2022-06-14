@@ -29,11 +29,8 @@ function App() {
         <Route exact path="/GamePage/VideoBuffi" element={<VideoBuffi/>}/>
         <Route exact path="/GamePage/Quiz" element={<Quiz/>}/>
         <Route exact path="/LoginPage/HomePageUser" element={<HomePageUser/>}/>
-        <Route exact path="/Ecommerce/Ecommerce" element={<Ecommerce/>}/>
-        <Route exact path="/Ecommerce/Cibo" element={<Cibo/>}/>
-        <Route exact path="/Ecommerce/Accessori" element={<Accessori/>}/>
-        <Route exact path="/Ecommerce/Sanitari" element={<Sanitari/>}/>
-        <Route exact path="/Ecommerce/Giochi" element={<Giochi/>}/>
+        <Route exact path="/Ecommerce" element={<Ecommerce/>}/>
+       
       </Routes>
       </BrowserRouter>
       </>
