@@ -126,7 +126,62 @@ function saveMemoryFile(data){
         console.log('Saved!');
     });
 }
+function readBachecaFile(){
+    let readedFile = require("../src/JSON/bacheca.json");
+    if(!readedFile)
+        readedFile = [];
 
+    return readedFile;
+}
+function saveBacheca(data){
+    let dataToSave = JSON.stringify(data);
+
+    fs.writeFile(path.join(__dirname, '../src/JSON/bacheca.json'), dataToSave, (err) => {
+        // throws an error, you could also catch it here
+        if (err) throw err;
+        console.log('Saved!');
+    });
+}
+app.post('/bacheca', function(req, res){
+    let messaggi=readBachecaFile();
+    let requestBody=req.body;
+    messaggi.push({
+        messaggio: requestBody.messaggio
+    });
+    saveBacheca(messaggi);
+})
+const bacheca=require('../src/JSON/bacheca.json');
+app.get('/bacheca', function(req, res){
+    res.send(bacheca);
+})
 //dirname=risolve le dipendenze assolute e relative dei percorsi in node
 
 
+function readBachecaFotoFile(){
+    let readedFile = require("../src/JSON/bachecaFoto.json");
+    if(!readedFile)
+        readedFile = [];
+
+    return readedFile;
+}
+function saveBachecaFoto(data){
+    let dataToSave = JSON.stringify(data);
+
+    fs.writeFile(path.join(__dirname, '../src/JSON/bachecaFoto.json'), dataToSave, (err) => {
+        // throws an error, you could also catch it here
+        if (err) throw err;
+        console.log('Saved!');
+    });
+}
+app.post('/bachecaFoto', function(req, res){
+    let foto=readBachecaFotoFile();
+    let requestBody=req.body;
+    foto.push({
+        indirizzo: requestBody.indirizzo
+    });
+    saveBachecaFoto(foto);
+})
+const bachecaFoto=require('../src/JSON/bachecaFoto.json');
+app.get('/bachecaFoto', function(req, res){
+    res.send(bachecaFoto);
+})

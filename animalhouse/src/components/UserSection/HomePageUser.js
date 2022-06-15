@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import NavbarUser from "./navbarUser";
 import Classifica from "./classifica";
 import { withRouter } from '../../withRouter';
+import Bacheca from "./Bacheca";
+import BachecaFoto from "./BachecaFoto";
 
 class HomePageUser extends Component{
 
@@ -41,6 +43,8 @@ class HomePageUser extends Component{
                         data={scoreQuiz}
                     />
                 </div>
+                <Bacheca/>
+                <BachecaFoto/>
             </>
            
         );
