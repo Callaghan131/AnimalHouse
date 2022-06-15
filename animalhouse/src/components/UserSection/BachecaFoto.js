@@ -56,14 +56,14 @@ class BachecaFoto extends Component {
             <div id="bacheca">
                 <h1 className="title">Bacheca foto</h1>
                 <div id="carosello">
-                    <img style={{width:"300px", height:"300px", marginBottom:"20px"}} src="" alt="Clicca su visualizza per vedere lo slideshow delle immagini pubblicate in bacheca"></img>
+                    <img style={{width:"300px", height:"300px", marginBottom:"20px"}} src="" alt="Clicca una volta su visualizza per vedere lo slideshow delle immagini pubblicate in bacheca"></img>
                 </div>
             </div>
             <label>
                 <textarea placeholder="Inserisci l'URL dell'immagine che vuoi pubblicare" id="textarea" rows={2} cols={88}></textarea>
                 <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gridGap:"10px"}}>
-                <button type="submit" onClick={() => { this.testo()}} style={{background:"black", color:"white", fontSize:"20px"}}>Invia</button>
-                <button type="submit" onClick={() => {this.richiesta()}} style={{background:"black", color:"white", fontSize:"20px"}}>Visualizza</button>
+                <button type="submit" onClick={() => { this.testo()}} style={{background:"black", color:"white", fontSize:"20px"}}>Invia foto</button>
+                <button type="submit" onClick={() => {this.richiesta()}} style={{background:"black", color:"white", fontSize:"20px"}}>Visualizza slideshow</button>
                 </div>
             </label>
         </div>

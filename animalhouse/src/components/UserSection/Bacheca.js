@@ -63,8 +63,8 @@ class Bacheca extends Component {
             </div>
             <textarea placeholder="Inserisci l'aneddoto che vuoi pubblicare e poi clicca su visualizza per vederli tutti" rows={2} cols={88}></textarea>
             <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gridGap:"10px"}}>
-                <button type="submit" onClick={() => { this.testo()}} style={{background:"black", color:"white", fontSize:"20px"}}>Invia</button>
-                <button type="submit" onClick={() => { this.richiesta()}} style={{background:"black", color:"white", fontSize:"20px"}}>Visualizza</button>
+                <button type="submit" onClick={() => { this.testo()}} style={{background:"black", color:"white", fontSize:"20px"}}>Invia aneddoto</button>
+                <button type="submit" onClick={() => { this.richiesta()}} style={{background:"black", color:"white", fontSize:"20px"}}>Visualizza aneddoti</button>
             </div>
         </div>
         </>
