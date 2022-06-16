@@ -10,6 +10,7 @@ import VideoBuffi from "./videoBuffi/videoBuffi";
 import Quiz from "./quiz/QuizPage";
 import HomePageUser from "./UserSection/HomePageUser";
 import Ecommerce from "./Ecommerce/Ecommerce";
+import RegisterPage from "./Register/RegisterPage";
 import Cibo from "./Ecommerce/Cibo";
 import Giochi from "./Ecommerce/Giochi";
 import Accessori from "./Ecommerce/Accessori";
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/" element={<HomePage/>}/>
         <Route exact path="/GamePage" element={<GamePage/>}/>
         <Route exact path="/LoginPage" element={<LoginPage/>}/>
+        <Route exact path="/Register/RegisterPage" element={<RegisterPage/>}/>
         <Route exact path="/GamePage/curiosity2" element={<Curiosità/>}/>
         <Route exact path="/GamePage/Memory" element={<Memory/>}/>
         <Route exact path="/GamePage/ImmaginiBuffe" element={<ImmaginiBuffe/>}/>

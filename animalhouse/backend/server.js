@@ -105,7 +105,63 @@ app.get('/scoreMemory', function(req, res){
     res.send(scoreMemory)
 })
 //#endregion
+//POST server
 
+app.post('/login', function(req, res){
+    let requestBody = req.body;
+    let Users = readUserFile();
+
+    let user = Users.find(x=>
+        x.username == requestBody.username
+        && x.password == requestBody.password
+        );
+
+    res.status(user ? 200 : 401);
+    res.send();
+})
+
+app.post('/users', function(req, res){
+
+    let requestBody = req.body;
+    let Users = readUserFile();
+    console.log(Users);
+
+    let userToUpdate = Users.find(x=>x.username == requestBody.username);
+    if(!userToUpdate){
+        // userToUpdate.punteggio = requestBody.punteggio
+        Users.push({
+                username: requestBody.username,
+                password: requestBody.password
+            });
+            
+        saveUserFile(Users);
+        res.status(201);
+        res.send("Utente registrato");
+    }
+    else{
+        res.status(304);
+        res.send("Utente già registrato");
+    }
+    console.log(Users);
+})
+
+function readUserFile(){
+    let readedFile = require("../src/JSON/users.json");
+    if(!readedFile)
+        readedFile = [];
+
+    return readedFile;
+}
+
+function saveUserFile(data){
+    let dataToSave = JSON.stringify(data);
+
+    fs.writeFile(path.join(__dirname, '../src/JSON/users.json'), dataToSave, (err) => {
+        // throws an error, you could also catch it here
+        if (err) throw err;
+        console.log('Saved!');
+    });
+}
 // Ritorna gia' deserializzato
 function readMemoryFile(){
     let readedFile = require("../src/JSON/scoreMemory.json");
