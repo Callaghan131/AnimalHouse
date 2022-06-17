@@ -2,11 +2,11 @@ import Sidebar from "./sidebar/Sidebar";
 import Topbar from "./Topbar";
 import '../../css/admin.css';
 import UserList from "./pages/UserList";
+import NavbarAdmin from "./navabarAdmin";
 function HomePageAdmin(){
     return(
-        <><Topbar />
+        <><NavbarAdmin />
         <div className="adminContainer">
-            <Sidebar />
             <UserList/>
         </div></>
     );

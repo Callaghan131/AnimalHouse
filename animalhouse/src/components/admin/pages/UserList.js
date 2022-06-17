@@ -5,6 +5,8 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 import Paper from '@mui/material/Paper';export default function UserList(){
    function createData(
   username,
@@ -24,13 +26,14 @@ const rows = [
 ];
     return(
       <TableContainer component={Paper} style={{padding:"20px", paddingRight:"30px"}}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table style={{ width:"95vw", height:"87vh" }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Username</TableCell>
             <TableCell align="right">Password</TableCell>
             <TableCell align="right">Punteggio memory</TableCell>
             <TableCell align="right">Punteggio quiz</TableCell>
+            <TableCell align="right">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -43,6 +46,10 @@ const rows = [
               <TableCell align="right">{row.password}</TableCell>
               <TableCell align="right">{row.pMemory}</TableCell>
               <TableCell align="right">{row.pQuiz}</TableCell>
+              <TableCell align="right">
+                <button className="userListEdit" style={{border:"none", borderRadius:"10px", padding:"5px 10px", backgroundColor:"green", color:"white", cursor:"pointer", marginRight:"20px"}}>Edit</button>
+                <DeleteIcon style={{color:"red", cursor:"pointer"}}></DeleteIcon>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -10,7 +10,7 @@ import HomePageAdmin from './components/admin/HomePageAdmin';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HomePageAdmin/>
+    <App></App>                                                                                                                                                                                            />
   </React.StrictMode>
 );
 
