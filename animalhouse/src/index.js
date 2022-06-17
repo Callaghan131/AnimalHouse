@@ -5,11 +5,12 @@ import 'bootstrap/dist/css/bootstrap.css'
 import App from './components/App';
 import Ecommerce from './components/Ecommerce/Ecommerce';
 import HomePageUser from './components/UserSection/HomePageUser';
+import HomePageAdmin from './components/admin/HomePageAdmin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <HomePageAdmin/>
   </React.StrictMode>
 );
 
