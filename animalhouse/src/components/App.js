@@ -15,6 +15,9 @@ import Cibo from "./Ecommerce/Cibo";
 import Giochi from "./Ecommerce/Giochi";
 import Accessori from "./Ecommerce/Accessori";
 import Sanitari from "./Ecommerce/Sanitari";
+import HomePageAdmin from "./admin/HomePageAdmin";
+import User from "./admin/pages/User";
+
 function App() {
     
   return (
@@ -30,8 +33,10 @@ function App() {
         <Route exact path="/GamePage/ImmaginiBuffe" element={<ImmaginiBuffe/>}/>
         <Route exact path="/GamePage/VideoBuffi" element={<VideoBuffi/>}/>
         <Route exact path="/GamePage/Quiz" element={<Quiz/>}/>
-        <Route exact path="/LoginPage/HomePageUser" element={<HomePageUser/>}/>
+        <Route exact path="/LoginPage/HomePageUser/:userUsername" element={<HomePageUser/>}/>
         <Route exact path="/Ecommerce" element={<Ecommerce/>}/>
+        <Route exact path="/LoginPage/HomePageAdmin" element={<HomePageAdmin/>}/>
+        <Route exact path="/LoginPage/HomePageAdmin/UserList/:userUsername" element={<User/>}/>
        
       </Routes>
       </BrowserRouter>

@@ -27,7 +27,11 @@ class HomePageUser extends Component{
         this.handleOrder(scoreQuiz,"punteggio")
         const scoreMemory=require('../../JSON/scoreMemory.json')
         this.handleOrder(scoreMemory,"punteggio")
+        const path=window.location.href.split("/");
+        
+
         return(
+            
             <>
                 <NavbarUser
                  onClickLoginPage={this.handleLoginPage}
@@ -36,11 +40,13 @@ class HomePageUser extends Component{
                     <Classifica
                         title={"Classifica Memory"}
                         data={scoreMemory}
+                        activeUser={path[5]}
                         
                     />
                     <Classifica
                         title={"Classifica Quiz"}
                         data={scoreQuiz}
+                        activeUser={path[5]}
                     />
                 </div>
                 <Bacheca/>
@@ -48,6 +54,8 @@ class HomePageUser extends Component{
             </>
            
         );
+
+       
     }
 }
 export default withRouter(HomePageUser);

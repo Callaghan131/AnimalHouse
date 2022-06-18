@@ -4,6 +4,9 @@ import { LoginService } from './LoginService';
 
 
 class FormLogin extends Component{
+    state={
+        error:""
+    }
     render(){
         return(
             <div className="container" style={{marginTop:100}}>
@@ -22,15 +25,15 @@ class FormLogin extends Component{
                                         <label>Password</label>
                                     </div>
                                     <div className="form-check mb-3">
-                                        <label style={{color:'red'}} id="errore" name="errore">{this.props.error}</label>
+                                        <label style={{color:'red'}} id="errore" name="errore">{this.state.error}</label>
                                     </div>
                                     <div className="d-flex align-items-center justify-content-between mt-4 mb-0">
                                         <button className="btn btn-primary" onClick={this.login}>Login</button>
-                                        <a onClick={this.redirect}>Registrati</a>
+                                        <a className="btn btn-primary" onClick={this.redirect}>Registrati</a>
                                         {/* <button className="btn btn-primary">Registrati</button> */}
                                         
                                     </div>
-                                    <label> { this.error } </label>
+                                    
                                 </form>
                             </div>
                         </div>
@@ -54,10 +57,10 @@ class FormLogin extends Component{
         .then(data =>{
             switch(data.status){
                 case 200: //Login riuscito
-                    this.props.navigate("/LoginPage/HomePageUser");
+                    this.props.navigate("/LoginPage/HomePageUser/"+username);
                     break;
                 case 401: //Login fallito
-                    this.error = "Errore login"
+                    this.setState({error:"Username o password non corretti"}) 
                     break;
                 default:
                 throw 'Eccezione non gestita';
