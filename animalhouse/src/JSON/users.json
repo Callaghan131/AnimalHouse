@@ -1,1 +1,1 @@
-[{"username":"Username1","password":"admin"},{"username":"Musso97","password":"mediaset"},{"username":"corbeluzz","password":"sandrone"},{"username":"Sbelluz","password":"caio"},{"username":"test2","password":"passowrdo"},{"username":"Corbellix","password":"test4"},{"username":"Corbelluxx","password":"test5"},{"username":"Micio","password":"Macio"},{"username":"Corbellixxx","password":"admin"},{"username":"bella ","password":"bella"}]
+[{"username":"Username1","password":"admin","admin":true},{"username":"Musso97","password":"mediaset","admin":false}]

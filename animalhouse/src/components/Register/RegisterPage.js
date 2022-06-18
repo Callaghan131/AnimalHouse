@@ -40,7 +40,8 @@ class RegisterPage extends Component{
         registerService.saveUser(
             {
                 username: username,
-                password: password
+                password: password,
+                admin:false
             }
         )
         .then(data1 => {
@@ -49,6 +50,7 @@ class RegisterPage extends Component{
                 this.props.navigate("/LoginPage/HomePageUser");
                 break;
                 case 304: //Utente gia' esistente
+                    this.error="Utente già esistente";
                 break;
                 default:
                     throw 'Stato non gestito';
@@ -63,7 +65,7 @@ class RegisterPage extends Component{
     }
     render(){
         return(
-            <RegisterForm error={this.state.error} onClick={this.handleClickLogin}/>
+            <RegisterForm error={this.props.error} onClick={this.handleClickLogin}/>
             //document.formLogin.error.value=this.state.error
             //<label id="errore" name="errore">{this.props.error}</label>
         );

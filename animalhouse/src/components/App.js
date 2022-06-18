@@ -21,7 +21,6 @@ import User from "./admin/pages/User";
 function App() {
     
   return (
-      <>
       <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<HomePage/>}/>
@@ -40,7 +39,6 @@ function App() {
        
       </Routes>
       </BrowserRouter>
-      </>
   );
 }
   

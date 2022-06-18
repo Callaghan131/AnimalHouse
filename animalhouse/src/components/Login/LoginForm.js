@@ -43,29 +43,51 @@ class FormLogin extends Component{
         );
     }
     login = (e) =>{
+        this.state={value:''};
         var username=document.formLogin.username.value;
         var password= document.formLogin.password.value;
         this.error = ""
-
-        let data = {
+        // NON AMMINISTRATORE
+        let data1 = {
             username: username,
-            password: password
+            password: password,
+            admin: false
+        }
+        //AMMINISTRATORE 
+        let data2 = {
+            username: username,
+            password: password,
+            admin: true
         }
 
         let loginService = new LoginService();
-        loginService.login(data)
+        let trovato=false;
+        let indice="";
+        loginService.login(data1)
         .then(data =>{
-            switch(data.status){
-                case 200: //Login riuscito
+            switch(data.status)
+            {
+                case 200:
+                    trovato=true;
                     this.props.navigate("/LoginPage/HomePageUser/"+username);
-                    break;
-                case 401: //Login fallito
-                    this.setState({error:"Username o password non corretti"}) 
-                    break;
                 default:
-                throw 'Eccezione non gestita';
+                    trovato=false;
             }
         });
+        if(!trovato)
+        {
+            loginService.login(data2)
+            .then(data =>{
+                switch(data.status)
+                {
+                    case 200:
+                        trovato=true;
+                        this.props.navigate("/LoginPage/HomePageAdmin");
+                    default:
+                        trovato=false;
+                }
+            });
+        }
 
         e.preventDefault();
     }

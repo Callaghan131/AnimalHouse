@@ -109,14 +109,23 @@ app.get('/scoreMemory', function(req, res){
 
 app.post('/login', function(req, res){
     let requestBody = req.body;
+    console.log(req.body);
     let Users = readUserFile();
-
+    console.log(Users);
     let user = Users.find(x=>
         x.username == requestBody.username
         && x.password == requestBody.password
+        && x.admin == requestBody.admin
         );
-
-    res.status(user ? 200 : 401);
+    console.log(user)
+    if(user)
+    {
+        res.status=200;
+    }
+    else{
+        res.status=400;
+    }
+    console.log(res.status);
     res.send();
 })
 
@@ -131,7 +140,8 @@ app.post('/users', function(req, res){
         // userToUpdate.punteggio = requestBody.punteggio
         Users.push({
                 username: requestBody.username,
-                password: requestBody.password
+                password: requestBody.password,
+                admin: requestBody.admin
             });
             
         saveUserFile(Users);
