@@ -33,7 +33,7 @@ function App() {
         <Route exact path="/GamePage/VideoBuffi" element={<VideoBuffi/>}/>
         <Route exact path="/GamePage/Quiz" element={<Quiz/>}/>
         <Route exact path="/LoginPage/HomePageUser/:userUsername" element={<HomePageUser/>}/>
-        <Route exact path="/Ecommerce" element={<Ecommerce/>}/>
+        <Route exact path="LoginPage/Ecommerce" element={<Ecommerce/>}/>
         <Route exact path="/LoginPage/HomePageAdmin" element={<HomePageAdmin/>}/>
         <Route exact path="/LoginPage/HomePageAdmin/UserList/:userUsername" element={<User/>}/>
        

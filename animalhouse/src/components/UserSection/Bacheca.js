@@ -34,7 +34,7 @@ class Bacheca extends Component {
     presenta(json){
         var div=document.getElementById('bacheca');
         div.style.overflowY="scroll";
-        div.style.height="450px";
+        div.style.height="65.2vh";
         var stringa="";
         var elimina=document.getElementsByClassName('paragrafo');
         for(var b=0;b<elimina.length;b++){
@@ -60,7 +60,7 @@ class Bacheca extends Component {
     render() {
       return (
         <>
-        <div className="wrap" style={{width:"720px", margin:"15px auto",padding:"15px 10px",background:"white",border:"2px solid #DBDBDB",WebkitBorderRadius:"5px",MozBorderRadius:"5px",borderRadius:"5px", textAlign:"center"}}>
+        <div className="wrap" style={{width:"45vw", margin:"15px auto",padding:"15px 10px",background:"white",border:"2px solid #DBDBDB",WebkitBorderRadius:"5px",MozBorderRadius:"5px",borderRadius:"5px", textAlign:"center"}}>
             <div id="bacheca">
                 <h1 className="title">Bacheca aneddoti</h1>
             </div>

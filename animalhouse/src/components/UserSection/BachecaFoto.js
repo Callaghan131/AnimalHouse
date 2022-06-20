@@ -63,11 +63,11 @@ class BachecaFoto extends Component {
     render() {
       return (
         <>
-        <div className="wrap" style={{width:"720px", margin:"15px auto",padding:"15px 10px",background:"white",border:"2px solid #DBDBDB",WebkitBorderRadius:"5px",MozBorderRadius:"5px",borderRadius:"5px", textAlign:"center"}}>
+        <div className="wrap" style={{width:"45vw", margin:"15px auto",padding:"15px 10px",background:"white",border:"2px solid #DBDBDB",WebkitBorderRadius:"5px",MozBorderRadius:"5px",borderRadius:"5px", textAlign:"center"}}>
             <div id="bacheca">
                 <h1 className="title">Bacheca foto</h1>
                 <div id="carosello">
-                    <img style={{width:"300px", height:"300px", marginBottom:"20px"}} src="" alt="Clicca una volta su visualizza per vedere lo slideshow delle immagini pubblicate in bacheca"></img>
+                    <img style={{width:"35vw", height:"49vh", marginBottom:"20px"}} src="" alt="Clicca una volta su visualizza per vedere lo slideshow delle immagini pubblicate in bacheca"></img>
                 </div>
             </div>
             <label>

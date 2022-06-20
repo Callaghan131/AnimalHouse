@@ -2,8 +2,6 @@ import React, {Component} from "react";
 import NavbarUser from "./navbarUser";
 import Classifica from "./classifica";
 import { withRouter } from '../../withRouter';
-import Bacheca from "./Bacheca";
-import BachecaFoto from "./BachecaFoto";
 
 class HomePageUser extends Component{
 
@@ -48,10 +46,6 @@ class HomePageUser extends Component{
                         data={scoreQuiz}
                         activeUser={path[5]}
                     />
-                </div>
-                <div className="bachece" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"1fr"}}>
-                    <Bacheca/>
-                    <BachecaFoto/>
                 </div>
             </>
            

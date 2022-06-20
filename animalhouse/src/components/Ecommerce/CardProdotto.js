@@ -3,7 +3,7 @@ class CardProdotto extends Component{
     render(){
     return(
         <div className="col">
-            <div className="card" style={{width: "300px", height:"400px", textAlign:"center", marginBottom:"30px"}}>
+            <div className="card" style={{width: "300px", height:"300px", textAlign:"center", marginBottom:"30px"}}>
                 <div className="bottoni" style={{display:"grid", gridTemplateColumns:"1fr 1fr"}}>
                 <button className="btn btn-primary" onClick={()=>this.props.onIncrement(this.props.cardProdotto.id, this.props.type)}>
                     Aggiungi<span style={{marginLeft:"10px",background:"white",color:"black"}}className="badge badge-light">{this.props.cardProdotto.quantità}</span></button>

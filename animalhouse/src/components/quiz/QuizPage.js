@@ -12,7 +12,7 @@ class QuizPage extends Component{
     state={
         quiz:[
             {
-                testoDomanda:"what's animal's name in the photo?",
+                testoDomanda:"What's animal's name in the photo?",
                 opzioniRisposte: [
                     {id:0, testoRisposta: "", corretto:false},
                     {id:1, testoRisposta: "", corretto:false},
@@ -22,7 +22,7 @@ class QuizPage extends Component{
                 img:""
             },
             {
-                testoDomanda:"what's the latin name of the animal in the photo?",
+                testoDomanda:"What's the latin name of the animal in the photo?",
                 opzioniRisposte: [
                     {id:0, testoRisposta: "", corretto:false},
                     {id:1, testoRisposta: "", corretto:false},
@@ -32,7 +32,7 @@ class QuizPage extends Component{
                 img:""
             },
             {
-                testoDomanda:"what kind of animal is it?",
+                testoDomanda:"What kind of animal is it?",
                 opzioniRisposte: [
                     {id:0, testoRisposta: "", corretto:false},
                     {id:1, testoRisposta: "", corretto:false},
@@ -42,7 +42,7 @@ class QuizPage extends Component{
                 img:""
             },
             {
-                testoDomanda:"what's the lenght of this animal?(m)",
+                testoDomanda:"What's the lenght of this animal?(m)",
                 opzioniRisposte: [
                     {id:0, testoRisposta: "", corretto:false},
                     {id:1, testoRisposta: "", corretto:false},
@@ -52,7 +52,7 @@ class QuizPage extends Component{
                 img:""
             },
             {
-                testoDomanda:"how heavy is the animal?(kg)",
+                testoDomanda:"How heavy is the animal?(kg)",
                 opzioniRisposte: [
                     {id:0, testoRisposta: "", corretto:false},
                     {id:1, testoRisposta: "", corretto:false},
@@ -62,7 +62,7 @@ class QuizPage extends Component{
                 img:""
             },
             {
-                testoDomanda:"how long does the animal's life last?",
+                testoDomanda:"How long does the animal's life last?",
                 opzioniRisposte: [
                     {id:0, testoRisposta: "", corretto:false},
                     {id:1, testoRisposta: "", corretto:false},
@@ -72,7 +72,7 @@ class QuizPage extends Component{
                 img:""
             },
             {
-                testoDomanda:"what's the animal's natural habitat ?",
+                testoDomanda:"What's the animal's natural habitat ?",
                 opzioniRisposte: [
                     {id:0, testoRisposta: "", corretto:false},
                     {id:1, testoRisposta: "", corretto:false},
@@ -82,7 +82,7 @@ class QuizPage extends Component{
                 img:""
             },
             {
-                testoDomanda:"what does the animal in the photo eat?",
+                testoDomanda:"What does the animal in the photo eat?",
                 opzioniRisposte: [
                     {id:0, testoRisposta: "", corretto:false},
                     {id:1, testoRisposta: "", corretto:false},
@@ -92,7 +92,7 @@ class QuizPage extends Component{
                 img:""
             },
             {
-                testoDomanda:"where does the animal live?",
+                testoDomanda:"Where does the animal live?",
                 opzioniRisposte: [
                     {id:0, testoRisposta: "", corretto:false},
                     {id:1, testoRisposta: "", corretto:false},
@@ -147,63 +147,63 @@ class QuizPage extends Component{
     setAllQuestion=(newArr, data)=>{
         for(var i=0; i<newArr.length; i++){
             switch(newArr[i].testoDomanda){
-                case "what's animal's name in the photo?":
+                case "What's animal's name in the photo?":
                     this.setQuestion(newArr[i].opzioniRisposte, data, "name");
                     newArr[i].img=data[0]["image_link"];
                     var element=data[0];
                     data.shift();
                     data.push(element);
                     break;
-                case "what's the latin name of the animal in the photo?":
+                case "What's the latin name of the animal in the photo?":
                     this.setQuestion(newArr[i].opzioniRisposte, data, "latin_name");
                     newArr[i].img=data[0]["image_link"];
                     var element=data[0];
                     data.shift();
                     data.push(element);
                     break;
-                case "what kind of animal is it?":
+                case "What kind of animal is it?":
                     this.setQuestion(newArr[i].opzioniRisposte, data, "animal_type");
                     newArr[i].img=data[0]["image_link"];
                     var element=data[0];
                     data.shift();
                     data.push(element);
                     break;
-                case "what's the lenght of this animal?(m)":
+                case "What's the lenght of this animal?(m)":
                     this.setQuestion(newArr[i].opzioniRisposte, data, "length_max");
                     newArr[i].img=data[0]["image_link"];
                     var element=data[0];
                     data.shift();
                     data.push(element);
                     break;
-                case "how heavy is the animal?(kg)":
+                case "How heavy is the animal?(kg)":
                     this.setQuestion(newArr[i].opzioniRisposte, data, "weight_max");
                     newArr[i].img=data[0]["image_link"];
                     var element=data[0];
                     data.shift();
                     data.push(element);
                     break;
-                case "how long does the animal's life last?":
+                case "How long does the animal's life last?":
                     this.setQuestion(newArr[i].opzioniRisposte, data, "lifespan");
                     newArr[i].img=data[0]["image_link"];
                     var element=data[0];
                     data.shift();
                     data.push(element);
                     break;
-                case "what's the animal's natural habitat ?":
+                case "What's the animal's natural habitat ?":
                     this.setQuestion(newArr[i].opzioniRisposte, data, "habitat");
                     newArr[i].img=data[0]["image_link"];
                     var element=data[0];
                     data.shift();
                     data.push(element);
                     break;
-                case "what does the animal in the photo eat?":
+                case "What does the animal in the photo eat?":
                     this.setQuestion(newArr[i].opzioniRisposte, data, "diet");
                     newArr[i].img=data[0]["image_link"];
                     var element=data[0];
                     data.shift();
                     data.push(element);
                     break;
-                case "where does the animal live?":
+                case "Where does the animal live?":
                     this.setQuestion(newArr[i].opzioniRisposte, data, "geo_range");
                     newArr[i].img=data[0]["image_link"];
                     var element=data[0];
