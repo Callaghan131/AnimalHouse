@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 class CardProdotto extends Component{
     render(){
+        const data=this.props.cardProdotto.immagine;
     return(
         <div className="col">
             <div className="card" style={{width: "300px", height:"300px", textAlign:"center", marginBottom:"30px"}}>
@@ -10,7 +11,7 @@ class CardProdotto extends Component{
                 <button className="btn btn-danger" onClick={()=>this.props.onDecrement(this.props.cardProdotto.id, this.props.type)}>
                     Rimuovi<span style={{marginLeft:"10px",background:"white",color:"black"}}className="badge badge-light">{this.props.cardProdotto.quantità}</span></button>
                 </div>
-                <img src={this.props.cardProdotto.immagine} style={{maxHeight:"50%", objectFit:"contain"}} className="card-img-top" alt="..."/>
+                <img src={`data:image/jpeg;base64,${data}`} style={{maxHeight:"50%", objectFit:"contain"}} className="card-img-top" alt="..."/>
                 <div className="card-body">
                     <h5 className="card-title">{this.props.cardProdotto.nome}</h5>
                     <p className="card-text">{this.props.cardProdotto.prezzo}
@@ -20,6 +21,14 @@ class CardProdotto extends Component{
             </div>
         </div>
     );
-}
+    }
+
+    // Base64ToImage=(base64img, callback)=> {
+    //     var img = new Image();
+    //     img.onload = function() {
+    //         callback(img);
+    //     };
+    //     img.src = base64img;
+    // }
 }
 export default CardProdotto;

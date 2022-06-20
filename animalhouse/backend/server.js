@@ -7,6 +7,7 @@ const users=require('../src/JSON/users.json');
 const scoreQuiz1=require('../src/JSON/scoreQuiz.json');
 const scoreMemory=require('../src/JSON/scoreMemory.json');
 
+
 ///////////////////
 //Configurazione server
 const app=express();
@@ -14,6 +15,7 @@ app.listen(2700);
 // abilita le cors per tutti gli ip
 const cors = require('cors');
 app.use(cors());
+app.use(express.static('public'));
 // Accetta il json in entrata negli endpoint
 let bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -212,8 +214,7 @@ app.post('/bacheca', function(req, res){
     let messaggi=readBachecaFile();
     let requestBody=req.body;
     messaggi.push({
-        messaggio: requestBody.messaggio,
-        utente: requestBody.utente
+        messaggio: requestBody.messaggio
     });
     saveBacheca(messaggi);
 })
@@ -243,15 +244,58 @@ function saveBachecaFoto(data){
 app.post('/bachecaFoto', function(req, res){
     let foto=readBachecaFotoFile();
     let requestBody=req.body;
-    console.log(requestBody.utente);
     foto.push({
-        indirizzo: requestBody.indirizzo,
-        utente: requestBody.utente
+        indirizzo: requestBody.indirizzo
     });
     saveBachecaFoto(foto);
 })
 const bachecaFoto=require('../src/JSON/bachecaFoto.json');
-const { request } = require('http');
 app.get('/bachecaFoto', function(req, res){
     res.send(bachecaFoto);
 })
+
+function readMagazzinoFile(){
+    let readedFile = require("../src/JSON/magazzino.json");
+    if(!readedFile)
+        readedFile = [];
+
+    return readedFile;
+}
+
+var path = require('path');
+
+function saveMagazzinoFile(data){
+    let dataToSave = JSON.stringify(data);
+
+    fs.writeFile(path.join(__dirname, '../src/JSON/magazzino.json'), dataToSave, (err) => {
+        // throws an error, you could also catch it here
+        if (err) throw err;
+        console.log('Saved!');
+    });
+}
+
+// app.post('/magazzino', function(req, res){
+//     // req.body contiene la richieste in json
+//     let requestBody = req.body;
+//     let product = readMagazzinoFile();
+//     console.log(memoryUsers);
+
+//     let productToUpdate = product.find(x=>x.username == requestBody.username);
+//     if(productToUpdate){
+//         productToUpdate.punteggio = requestBody.punteggio
+//     }
+//     else{
+//         memoryUsers.push({
+//             username: requestBody.username,
+//             punteggio: requestBody.punteggio
+//         });
+//     }
+
+//     saveMemoryFile(memoryUsers);
+//     res.send("Punteggio user salvato");
+// })
+// se prende i dati e' una get
+app.get('/magazzino', function(req, res){
+    res.send(magazzino)
+})
+const magazzino=require('../src/JSON/magazzino.json');

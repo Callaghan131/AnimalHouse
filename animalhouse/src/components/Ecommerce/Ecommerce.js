@@ -28,6 +28,7 @@ import { withRouter } from '../../withRouter';
 import CardProdotto from "./CardProdotto";
 import NavbarCarrello from './NavbarCarrello';
 import Carrello from './Carrello';
+import Magazzino from '../../JSON/magazzino.json'
 
 import Sanitari from "./Sanitari";
 import Cibo from "./Cibo";
@@ -42,185 +43,38 @@ class Ecommerce extends Component{
         selectCibo: false,
         selectCarrello: false,
         cart:[],
-        cardProdotto:[
-            [
-                {
-                id:0,
-                immagine: corda,
-                nome:"Corda per il tuo cane",
-                prezzo:"2.99€",
-                quantità: 0
-            },
-            {
-                id:1,
-                immagine: gioco,
-                nome:"Gioco interattivo per il tuo gatto",
-                prezzo:"15.99€",
-                quantità: 0
-            },
-            {
-                id:2,
-                immagine: palla,
-                nome:"Palla per il tuo cane",
-                prezzo:"2.99€",
-                quantità: 0
-            },
-            {
-                id:3,
-                immagine: piume,
-                nome:"Bastoncino con piume per il tuo gatto",
-                prezzo:"2.59€",
-                quantità: 0
-            },
-            {
-                id:4,
-                immagine: ruota,
-                nome:"Ruota per il tuo canarino",
-                prezzo:"9.99€",
-                quantità: 0
-            },
-            {
-                id:5,
-                immagine: tunnel,
-                nome:"Tunnel per il tuo coniglio",
-                prezzo:"29.99€",
-                quantità: 0
-            }],
-            [
-                     {
-                id:0,
-                immagine: casetta,
-                nome:"Casetta per il tuo canarino",
-                prezzo:"19.99€",
-                quantità: 0
-            },
-            {
-                id:1,
-                immagine: castello,
-                nome:"Gioco per il tuo gatto",
-                prezzo:"49.99€",
-                quantità: 0
-            },
-            {
-                id:2,
-                immagine: ciotola,
-                nome:"Ciotola cibo per tutti gli animali",
-                prezzo:"5.99€",
-                quantità: 0
-            },
-            {
-                id:3,
-                immagine: cuccia,
-                nome:"Cuccia per il tuo cane",
-                prezzo:"15.59€",
-                quantità: 0
-            },
-            {
-                id:4,
-                immagine: pettorina,
-                nome:"Pettorina e guinzaglio per il tuo coniglio",
-                prezzo:"9.99€",
-                quantità: 0
-            },
-            {
-                id:5,
-                immagine: sassi,
-                nome:"Sassi per decorare il tuo acquario",
-                prezzo:"5.99€",
-                quantità: 0
-            }
-            ],
-            [
-            {
-                id:0,
-                immagine: canarino,
-                nome:"Cibo per il tuo canarino",
-                prezzo:"1.99€",
-                quantità: 0
-            },
-            {
-                id:1,
-                immagine: coniglio,
-                nome:"Cibo per il tuo coniglio",
-                prezzo:"2.99€",
-                quantità: 0
-            },
-            {
-                id:2,
-                immagine: manzo,
-                nome:"Cibo per il tuo cane (manzo)",
-                prezzo:"0.99€",
-                quantità: 0
-            },
-            {
-                id:3,
-                immagine: manzosal,
-                nome:"Cibo per il tuo cane (manzo e salmone)",
-                prezzo:"1.59€",
-                quantità: 0
-            },
-            {
-                id:4,
-                immagine: pesce,
-                nome:"Cibo per il tuo pesce",
-                prezzo:"0.99€",
-                quantità: 0
-            },
-            {
-                id:5,
-                immagine: pollotacch,
-                nome:"Cibo per il tuo gatto",
-                prezzo:"1.99€",
-                quantità: 0
-            }
-        ],
-        [
-            {
-                id:0,
-                immagine: antiparass,
-                nome:"Antiparassitario per il tuo cane",
-                prezzo:"9.99€",
-                quantità: 0
-            },
-            {
-                id:1,
-                immagine: collare,
-                nome:"Collare rigido per il tuo cane",
-                prezzo:"5.99€",
-                quantità: 0
-            },
-            {
-                id:2,
-                immagine: insetti,
-                nome:"Prodotto anti-zecche e pulci per i tuou animali",
-                prezzo:"9.99€",
-                quantità: 0
-            },
-            {
-                id:3,
-                immagine: pannolini,
-                nome:"Pannolini per il tuo cane",
-                prezzo:"5.59€",
-                quantità: 0
-            },
-            {
-                id:4,
-                immagine: pelo,
-                nome:"Pasta rimuovi pelo per il tuo gatto",
-                prezzo:"9.99€",
-                quantità: 0
-            },
-            {
-                id:5,
-                immagine: sfigmo,
-                nome:"Sfigmomanomentro per i tuoi animali",
-                prezzo:"19.99€",
-                quantità: 0
-            }
-        ]
-        ]
+        cardProdotto:[],
+        loaded: false
       
     }
+
+    componentWillMount=()=>{
+        var data=[];
+        var newArray=[...this.state.cardProdotto];
+        fetch("http://localhost:2700/magazzino")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              data=result;
+              var cont=0;
+              for(var i=0; i<data.length;i++){
+                newArray.push(data[i])
+                
+              }
+              console.log(1);
+              this.setState({cardProdotto:newArray});
+              this.setState({loaded:true})
+            }
+        )
+        // console.log(Magazzino);
+        // for(var i=0; i<Magazzino.length;i++){
+        //     newArray.push(Magazzino[i]);
+        // }
+        // this.setState({cardProdotto:newArray});
+        // this.setState({loaded:true})
+    }
+    
+
     handleSelectGiochi(){
         this.setState({selectGiochi:true});
         this.setState({selectAccessori:false});
@@ -365,7 +219,7 @@ class Ecommerce extends Component{
 
 
     render(){
-        const{selectGiochi,selectAccessori,selectSanitari,selectCibo, selectCarrello, cart, totale, prezzo}=this.state;
+        const{selectGiochi,selectAccessori,selectSanitari,selectCibo, selectCarrello, cart, totale, prezzo, loaded}=this.state;
     return(
         <><NavbarCarrello
         onClickGiochi={this.handleSelectGiochi.bind(this)}
@@ -377,7 +231,7 @@ class Ecommerce extends Component{
             <div className='container'>
                 <div className="row" style={{display: "grid", gridTemplateColumns:"1fr 1fr 1fr", marginTop:"60px"}}>
 
-                    {selectGiochi ? (
+                    {loaded ? (selectGiochi ? (
                         this.state.cardProdotto[0].map(card => (
                             <CardProdotto
                                 key={card.id}
@@ -423,7 +277,8 @@ class Ecommerce extends Component{
                         )))
                         
                         
-                    }
+                    ):null}
+                    
                 </div>
             </div>
         </>
