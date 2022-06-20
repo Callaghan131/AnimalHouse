@@ -49,8 +49,10 @@ class HomePageUser extends Component{
                         activeUser={path[5]}
                     />
                 </div>
-                <Bacheca/>
-                <BachecaFoto/>
+                <div className="bachece" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"1fr"}}>
+                    <Bacheca/>
+                    <BachecaFoto/>
+                </div>
             </>
            
         );

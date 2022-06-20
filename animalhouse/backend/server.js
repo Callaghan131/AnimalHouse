@@ -212,7 +212,8 @@ app.post('/bacheca', function(req, res){
     let messaggi=readBachecaFile();
     let requestBody=req.body;
     messaggi.push({
-        messaggio: requestBody.messaggio
+        messaggio: requestBody.messaggio,
+        utente: requestBody.utente
     });
     saveBacheca(messaggi);
 })
@@ -242,12 +243,15 @@ function saveBachecaFoto(data){
 app.post('/bachecaFoto', function(req, res){
     let foto=readBachecaFotoFile();
     let requestBody=req.body;
+    console.log(requestBody.utente);
     foto.push({
-        indirizzo: requestBody.indirizzo
+        indirizzo: requestBody.indirizzo,
+        utente: requestBody.utente
     });
     saveBachecaFoto(foto);
 })
 const bachecaFoto=require('../src/JSON/bachecaFoto.json');
+const { request } = require('http');
 app.get('/bachecaFoto', function(req, res){
     res.send(bachecaFoto);
 })

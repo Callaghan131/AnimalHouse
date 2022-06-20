@@ -1,5 +1,3 @@
-import Sidebar from "./sidebar/Sidebar";
-import Topbar from "./Topbar";
 import '../../css/admin.css';
 import UserList from "./pages/UserList";
 import NavbarAdmin from "./navabarAdmin";

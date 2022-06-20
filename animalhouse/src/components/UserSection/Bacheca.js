@@ -7,9 +7,12 @@ class Bacheca extends Component {
         let bachecaService = new BachecaService();
         var textarea=document.getElementsByTagName('textarea');
         var testo=textarea[0].value;
+        var path=window.location.href.split("/");
+        var user=path[5];
         bachecaService.savePost(
             {
-                messaggio: testo
+                messaggio: testo,
+                utente: user 
             }
         )
         .then(data1 => {
@@ -33,7 +36,7 @@ class Bacheca extends Component {
     presenta(json){
         var div=document.getElementById('bacheca');
         div.style.overflowY="scroll";
-        div.style.height="150px";
+        div.style.height="450px";
         var stringa="";
         var elimina=document.getElementsByClassName('paragrafo');
         for(var b=0;b<elimina.length;b++){
@@ -49,7 +52,9 @@ class Bacheca extends Component {
             div.appendChild(p);
             var testo=JSON.stringify(json[a]);
             var testo2=testo.split('"');
-            stringa=(a+1)+")"+" "+testo2[3];
+            var utente=testo2[7];
+            var utenteG=utente.bold();
+            stringa=utenteG+":"+" "+testo2[3];
 
             p.innerHTML=stringa;
         }

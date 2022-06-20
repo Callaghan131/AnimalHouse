@@ -5,10 +5,12 @@ class BachecaFoto extends Component {
         let bachecaFotoService = new BachecaFotoService();
         var textarea=document.getElementById('textarea');
         var valore=textarea.value;
-        console.log(valore);
+        var path=window.location.href.split("/");
+        var user=path[5];
         bachecaFotoService.savePost(
             {
-                indirizzo: valore
+                indirizzo: valore,
+                utente: user
             }
         )
         .then(data1 => {
@@ -30,19 +32,28 @@ class BachecaFoto extends Component {
     }
     presenta(json){
         var immagini=[];
+        var utenti=[];
         for(var a=0;a<json.length;a++){
             var indirizzo=JSON.stringify(json[a]);
             var indirizzo2=indirizzo.split('"');
             immagini[a]=indirizzo2[3];
+            utenti[a]=indirizzo2[7];
         }
         var img=document.getElementsByTagName('img');
+        var p=document.getElementsByClassName('user');
         img[0].src=immagini[0];
-        setTimeout(this.ripeti(json,img,immagini),3000);
+        if(utenti[0]!=undefined){
+        p[0].innerHTML=utenti[0];
+        p[0].style.fontWeight="bold";
+        setTimeout(this.ripeti(json,img,immagini,p,utenti),3000);
     }
-    ripeti(json,img,immagini){
+}
+    ripeti(json,img,immagini,p,utenti){
         var contatore=1;
         setInterval(function(){
             img[0].src=immagini[contatore];
+            p[0].innerHTML=utenti[contatore];
+            p[0].style.fontWeight="bold";
             contatore++;
             if(contatore==json.length){
                 contatore=0;
@@ -60,6 +71,7 @@ class BachecaFoto extends Component {
                 </div>
             </div>
             <label>
+                <p className="user"></p>
                 <textarea placeholder="Inserisci l'URL dell'immagine che vuoi pubblicare" id="textarea" rows={2} cols={88}></textarea>
                 <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gridGap:"10px"}}>
                 <button type="submit" onClick={() => { this.testo()}} style={{background:"black", color:"white", fontSize:"20px"}}>Invia foto</button>
