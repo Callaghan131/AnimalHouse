@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import { Carousel } from "react-bootstrap";
-import '../../css/Bacheca.css';
 import { BachecaService } from "./service/BachecaService";
 class Bacheca extends Component {
     testo(){
@@ -47,7 +45,7 @@ class Bacheca extends Component {
             p.className="paragrafo";
             p.style.borderBottom="1px dashed black"
             p.style.textAlign="left";
-            p.style.fontSize="20px";
+            p.style.fontSize="17px";
             p.style.fontStyle="italic";
             div.appendChild(p);
             var testo=JSON.stringify(json[a]);
@@ -62,7 +60,7 @@ class Bacheca extends Component {
     render() {
       return (
         <>
-        <div className="wrap">
+        <div className="wrap" style={{width:"720px", margin:"15px auto",padding:"15px 10px",background:"white",border:"2px solid #DBDBDB",WebkitBorderRadius:"5px",MozBorderRadius:"5px",borderRadius:"5px", textAlign:"center"}}>
             <div id="bacheca">
                 <h1 className="title">Bacheca aneddoti</h1>
             </div>

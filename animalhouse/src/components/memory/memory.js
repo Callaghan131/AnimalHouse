@@ -224,21 +224,6 @@ class Memory extends Component{
                         </>
                     )
                 }
-                {/* <div className="conteiner" id="memory">
-                {
-                    this.state.CardMemory.map((card, index)=>(
-                        
-                        <CardMemory
-                        key={index}
-                        card={card}
-                        onClick={this.handleClick}
-                        />
-                        
-                    ))
-                }
-                </div>
-                <BoxScore score={punteggio}/>
-                {showEndGame ? <EndGame score={punteggio} onClick={this.handleEndGame} onClickGamePage={this.handleGamePage}/>:null } */}
             </div>
         );
     }

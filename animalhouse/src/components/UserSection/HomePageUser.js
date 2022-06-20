@@ -36,7 +36,7 @@ class HomePageUser extends Component{
                 <NavbarUser
                  onClickLoginPage={this.handleLoginPage}
                 />
-                <div className="row" style={{width:'98vw'}}>
+                <div className="row" style={{width:'98vw',marginTop:"-30px"}}>
                     <Classifica
                         title={"Classifica Memory"}
                         data={scoreMemory}

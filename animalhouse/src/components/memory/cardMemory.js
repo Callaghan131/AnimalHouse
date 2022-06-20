@@ -3,7 +3,7 @@ import React, {Component} from "react";
 class CardMemory extends Component{
     render(){
         return(
-            <div className={"cardMemory " + this.props.card.stat}  onClick={() => this.props.onClick(this.props.card.id)} >
+            <div className={"cardMemory " + this.props.card.stat}  onClick={() => this.props.onClick(this.props.card.id)}>
                 <img className='img-memory' src={this.props.card.img} />
             </div>
         );

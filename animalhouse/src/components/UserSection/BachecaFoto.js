@@ -63,7 +63,7 @@ class BachecaFoto extends Component {
     render() {
       return (
         <>
-        <div className="wrap">
+        <div className="wrap" style={{width:"720px", margin:"15px auto",padding:"15px 10px",background:"white",border:"2px solid #DBDBDB",WebkitBorderRadius:"5px",MozBorderRadius:"5px",borderRadius:"5px", textAlign:"center"}}>
             <div id="bacheca">
                 <h1 className="title">Bacheca foto</h1>
                 <div id="carosello">
