@@ -1,5 +1,5 @@
 import UserList from "./pages/UserList";
-import NavbarAdmin from "./navabarAdmin";
+import NavbarAdmin from "./NavbarAdmin";
 function HomePageAdmin(){
     return(
         <><NavbarAdmin />
