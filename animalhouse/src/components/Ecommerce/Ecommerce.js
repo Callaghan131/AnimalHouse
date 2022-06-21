@@ -1,37 +1,10 @@
 
 import React, {Component} from 'react';
-import corda from '../../images/giochi/corda.jpg';
-import gioco from '../../images/giochi/gioco.jpg';
-import palla from '../../images/giochi/palla.jpg';
-import piume from '../../images/giochi/piume.jpg';
-import ruota from '../../images/giochi/ruota.jpg';
-import tunnel from '../../images/giochi/tunnel.jpg';
-import casetta from '../../images/accessori/casetta.jpg';
-import castello from '../../images/accessori/castello.jpg';
-import ciotola from '../../images/accessori/ciotola.jpg';
-import cuccia from '../../images/accessori/cuccia.jpg';
-import pettorina from '../../images/accessori/pettorina.jpg';
-import sassi from '../../images/accessori/sassi.jpg';
-import canarino from '../../images/cibi/canarino.jpg';
-import coniglio from '../../images/cibi/coniglio.jpg';
-import manzo from '../../images/cibi/manzo.jpg';
-import manzosal from '../../images/cibi/manzosal.jpg';
-import pesce from '../../images/cibi/pesce.jpg';
-import pollotacch from '../../images/cibi/pollotacch.jpg';
-import antiparass from '../../images/sanitari/antiparass.jpg';
-import collare from '../../images/sanitari/collare.jpg';
-import insetti from '../../images/sanitari/insetti.jpg';
-import sfigmo from '../../images/sanitari/sfigmo.jpg';
-import pannolini from '../../images/sanitari/pannolini.jpg';
-import pelo from '../../images/sanitari/pelo.jpg';
 import { withRouter } from '../../withRouter';
 import CardProdotto from "./CardProdotto";
 import NavbarCarrello from './NavbarCarrello';
 import Carrello from './Carrello';
-import Magazzino from '../../JSON/magazzino.json'
 
-import Sanitari from "./Sanitari";
-import Cibo from "./Cibo";
 
 class Ecommerce extends Component{
     state={

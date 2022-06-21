@@ -32,6 +32,7 @@ class HomePageUser extends Component{
             
             <>
                 <NavbarUser
+                 name={path[5]}
                  onClickLoginPage={this.handleLoginPage}
                 />
                 <div className="row" style={{width:'98vw',marginTop:"-30px"}}>

@@ -71,7 +71,7 @@ class BachecaFoto extends Component {
                 </div>
             </div>
             <label>
-                <p className="user"></p>
+                <p className="users"></p>
                 <textarea placeholder="Inserisci l'URL dell'immagine che vuoi pubblicare" id="textarea" rows={2} cols={88}></textarea>
                 <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gridGap:"10px"}}>
                 <button type="submit" onClick={() => { this.testo()}} style={{background:"black", color:"white", fontSize:"20px"}}>Invia foto</button>

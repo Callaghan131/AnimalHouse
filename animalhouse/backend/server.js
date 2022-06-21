@@ -30,8 +30,29 @@ const { Console } = require('console');
 app.get('/users', function(req, res){
     res.send(users)
 })
+
+app.get('/users/:username', function(req,res){
+    const {username}=req.params
+
+    const user=users.find(
+        (user)=> user.username==username
+    )
+
+    res.send(user);
+})
+
 app.get('/scoreMemory', function(req, res){
     res.send(scoreMemory)
+})
+
+app.get('/scoreMemory/:username', function(req,res){
+    const {username}=req.params
+
+    const score=scoreMemory.find(
+        (score)=> score.username==username
+    )
+
+    res.send(score);
 })
 
 //#region "controller quiz"
@@ -58,6 +79,16 @@ app.post('/scoreQuiz', function(req, res){
 // se prende i dati e' una get
 app.get('/scoreQuiz', function(req, res){
     res.send(scoreQuiz1)
+})
+
+app.get('/scoreQuiz/:username', function(req,res){
+    const {username}=req.params
+
+    const score=scoreQuiz1.find(
+        (score)=> score.username==username
+    )
+
+    res.send(score);
 })
 //#endregion
 
@@ -299,3 +330,5 @@ app.get('/magazzino', function(req, res){
     res.send(magazzino)
 })
 const magazzino=require('../src/JSON/magazzino.json');
+
+

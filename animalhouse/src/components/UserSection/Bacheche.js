@@ -10,11 +10,13 @@ class Bacheche extends Component{
         this.props.navigate("/LoginPage");
     }        
     render(){
+        const path=window.location.href.split("/");
         return(
             
             <>
                 <NavbarUser
                  onClickLoginPage={this.handleLoginPage}
+                 name={path[5]}
                 />
                 <div className="bacheche" style={{display:"flex"}}>
                 <div className="sx" style={{ width:"50vw"}}>

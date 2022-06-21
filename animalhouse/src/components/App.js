@@ -17,6 +17,7 @@ import Accessori from "./Ecommerce/Accessori";
 import Sanitari from "./Ecommerce/Sanitari";
 import HomePageAdmin from "./admin/HomePageAdmin";
 import User from "./admin/pages/User";
+import Bacheche from "./UserSection/Bacheche";
 
 function App() {
     
@@ -33,7 +34,8 @@ function App() {
         <Route exact path="/GamePage/VideoBuffi" element={<VideoBuffi/>}/>
         <Route exact path="/GamePage/Quiz" element={<Quiz/>}/>
         <Route exact path="/LoginPage/HomePageUser/:userUsername" element={<HomePageUser/>}/>
-        <Route exact path="LoginPage/Ecommerce" element={<Ecommerce/>}/>
+        <Route exact path="/LoginPage/HomePageUser/:userUsername/Ecommerce" element={<Ecommerce/>}/>
+        <Route exact path="/LoginPage/HomePageUser/:userUsername/Bacheche" element={<Bacheche/>}/>
         <Route exact path="/LoginPage/HomePageAdmin" element={<HomePageAdmin/>}/>
         <Route exact path="/LoginPage/HomePageAdmin/UserList/:userUsername" element={<User/>}/>      
       </Routes>

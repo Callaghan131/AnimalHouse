@@ -1,6 +1,6 @@
 .user{
     padding: 20px;
-    background-color: white;
+    background-color: lightblue;
     width:99vw;
     height: 100vh;
 }
@@ -20,6 +20,7 @@ height: 60vh;
 padding: 20px;
 -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+background-color: white;
 }
 
 .userUpdate {
@@ -30,6 +31,7 @@ height: 60vh;
 padding: 20px;
 -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+background-color: white;
 
 }
 
@@ -131,6 +133,6 @@ color: rgb(175, 170, 170);
     background-color: darkblue;
     color: white;
     font-weight: bold;
-    width:5vw;
+    width:10vw;
     height: 5vh;
 }
