@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import NavbarUser from "./navbarUser";
 import Classifica from "./classifica";
 import { withRouter } from '../../withRouter';
+import Bacheca from "./Bacheca";
+import BachecaFoto from "./BachecaFoto";
 
 class HomePageUser extends Component{
 
@@ -35,8 +37,10 @@ class HomePageUser extends Component{
                  name={path[5]}
                  onClickLoginPage={this.handleLoginPage}
                 />
-                <div className="row" style={{width:'98vw',marginTop:"-30px"}}>
-                    <Classifica
+                <div className="row" style={{width:'98vw'}}>
+                    <Bacheca/>
+                    <BachecaFoto/>
+                    {/* <Classifica
                         title={"Classifica Memory"}
                         data={scoreMemory}
                         activeUser={path[5]}
@@ -46,7 +50,7 @@ class HomePageUser extends Component{
                         title={"Classifica Quiz"}
                         data={scoreQuiz}
                         activeUser={path[5]}
-                    />
+                    /> */}
                 </div>
             </>
            

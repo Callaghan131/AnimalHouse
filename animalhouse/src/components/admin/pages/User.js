@@ -65,7 +65,7 @@ class User extends Component{
         return(
             <>
             <NavbarAdmin/>
-            <div className="user">
+            <div className="userSection">
                 <div className="userConteiner">
                     <div className="userShow">
                         <div className="userShowTop">

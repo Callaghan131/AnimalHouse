@@ -40,7 +40,7 @@ class BachecaFoto extends Component {
             utenti[a]=indirizzo2[7];
         }
         var img=document.getElementsByTagName('img');
-        var p=document.getElementsByClassName('user');
+        var p=document.getElementsByClassName('users');
         img[0].src=immagini[0];
         if(utenti[0]!=undefined){
         p[0].innerHTML=utenti[0];

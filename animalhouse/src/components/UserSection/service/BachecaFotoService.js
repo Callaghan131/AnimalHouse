@@ -13,4 +13,14 @@ export class BachecaFotoService
         return fetch(`${apiUrl}bachecaFoto`, requestOptions)
         .then(response => response.json())
     }
+    aggiornaFoto = (src,put)=>{
+          const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json', 'location':src},
+            body: JSON.stringify(put),
+        };
+    
+        return fetch(`${apiUrl}bachecaFoto`, requestOptions)
+        .then(response => response.json())
+    }
 }

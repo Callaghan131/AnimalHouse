@@ -13,4 +13,14 @@ export class BachecaService
         return fetch(`${apiUrl}bacheca`, requestOptions)
         .then(response => response.json())
     }
+    aggiorna = (text,put)=>{
+          const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json', 'location':text},
+            body: JSON.stringify(put),
+        };
+    
+        return fetch(`${apiUrl}bacheca`, requestOptions)
+        .then(response => response.json())
+    }
 }

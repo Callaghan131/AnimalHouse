@@ -245,7 +245,8 @@ app.post('/bacheca', function(req, res){
     let messaggi=readBachecaFile();
     let requestBody=req.body;
     messaggi.push({
-        messaggio: requestBody.messaggio
+        messaggio: requestBody.messaggio,
+        utente: requestBody.utente
     });
     saveBacheca(messaggi);
 })
@@ -253,9 +254,31 @@ const bacheca=require('../src/JSON/bacheca.json');
 app.get('/bacheca', function(req, res){
     res.send(bacheca);
 })
-//dirname=risolve le dipendenze assolute e relative dei percorsi in node
-
-
+app.delete('/bacheca',function(req,res){
+    let messaggi=readBachecaFile();
+    const testo=req.headers.location;
+    var index=0;
+    for(var a=0;a<messaggi.length;a++){
+        if(messaggi[a].messaggio==testo){
+            index=a;
+        }
+    }
+    messaggi.splice(index,1);
+    saveBacheca(messaggi);
+})
+app.delete('/bachecaFoto',function(req,res){
+    let foto=readBachecaFotoFile();
+    const src=req.headers.location;
+    var index=0;
+    for(var a=0;a<foto.length;a++){
+        if(foto[a].indirizzo==src){
+            index=a;
+        }
+    }
+    console.log(index);
+    foto.splice(index,1);
+    saveBachecaFoto(foto);
+})
 function readBachecaFotoFile(){
     let readedFile = require("../src/JSON/bachecaFoto.json");
     if(!readedFile)
@@ -276,7 +299,8 @@ app.post('/bachecaFoto', function(req, res){
     let foto=readBachecaFotoFile();
     let requestBody=req.body;
     foto.push({
-        indirizzo: requestBody.indirizzo
+        indirizzo: requestBody.indirizzo,
+        username: requestBody.utente
     });
     saveBachecaFoto(foto);
 })
@@ -330,5 +354,6 @@ app.get('/magazzino', function(req, res){
     res.send(magazzino)
 })
 const magazzino=require('../src/JSON/magazzino.json');
+const { request } = require('http');
 
 
