@@ -89,7 +89,10 @@ class UserList extends Component{
           data=result;
           var cont=0;
           for(var i=0; i<data.length;i++){
-            newArray.push(data[i])
+            if(!data[i]["admin"]){
+              newArray.push(data[i])
+            }
+            
             
           }
           console.log(1);
