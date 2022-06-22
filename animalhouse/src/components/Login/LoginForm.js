@@ -15,7 +15,7 @@ class FormLogin extends Component{
                         <div className="card shadow-lg border-0 rounded-lg mt-5">
                             <h3 className="text-center font-weight-light my-4">Login AnimalHouse</h3>
                             <div className="card-body">
-                                <form name="formLogin" onSubmit={(e) => this.props.onClick(e)}>
+                                <form name="formLogin" >
                                     <div className="form-floating mb-3" >
                                         <input className="form-control" id="inputUsername" type="username" placeholder="Username" name="username"/>
                                         <label>Username</label>
@@ -70,6 +70,8 @@ class FormLogin extends Component{
                 case 200:
                     trovato=true;
                     this.props.navigate("/LoginPage/HomePageUser/"+username);
+                case 400:
+                    trovato=false;
                 default:
                     trovato=false;
             }
@@ -81,12 +83,20 @@ class FormLogin extends Component{
                 switch(data.status)
                 {
                     case 200:
+                        console.log(1);
                         trovato=true;
                         this.props.navigate("/LoginPage/HomePageAdmin");
+                    case 400:
+                        trovato=false;
                     default:
                         trovato=false;
                 }
             });
+        }
+
+        if(!trovato){
+            this.setState({error:"Username o password non corretti"});
+            this.props.navigate("/LoginPage");
         }
 
         e.preventDefault();

@@ -41,6 +41,51 @@ app.get('/users/:username', function(req,res){
     res.send(user);
 })
 
+app.put('/users/:username', function(req,res){
+    const {username}=req.params;
+    const user=req.body;
+    let users = readUserFile();
+    const index=users.findIndex(
+        user=>user.username===username
+    )
+    
+    console.log(index);
+    users[index]=user;
+    console.log(users[index]);
+    res.status(200).json({success:true, data: users})
+    saveUserFile(users);
+})
+
+app.put('/scoreMemory/:username', function(req,res){
+    const {username}=req.params;
+    const user=req.body;
+    let users = readMemoryFile();
+    const index=users.findIndex(
+        user=>user.username===username
+    )
+    
+    console.log(index);
+    users[index]=user;
+    console.log(users[index]);
+    res.status(200).json({success:true, data: users})
+    saveMemoryFile(users);
+})
+
+app.put('/scoreQuiz/:username', function(req,res){
+    const {username}=req.params;
+    const user=req.body;
+    let users = readQuizFile();
+    const index=users.findIndex(
+        user=>user.username===username
+    )
+    
+    console.log(index);
+    users[index]=user;
+    console.log(users[index]);
+    res.status(200).json({success:true, data: users})
+    saveQuizFile(users);
+})
+
 app.get('/scoreMemory', function(req, res){
     res.send(scoreMemory)
 })
@@ -154,9 +199,11 @@ app.post('/login', function(req, res){
     if(user)
     {
         res.status=200;
+        console.log(res.status);
     }
     else{
         res.status=400;
+        console.log(res.status);
     }
     console.log(res.status);
     res.send();
@@ -330,5 +377,6 @@ app.get('/magazzino', function(req, res){
     res.send(magazzino)
 })
 const magazzino=require('../src/JSON/magazzino.json');
+
 
 

@@ -47,7 +47,7 @@ class RegisterPage extends Component{
         .then(data1 => {
             switch(data1.status){
                 case 201: //Utente creato
-                this.props.navigate("/LoginPage/HomePageUser");
+                this.props.navigate("/LoginPage/HomePageUser/"+username);
                 break;
                 case 304: //Utente gia' esistente
                     this.error="Utente già esistente";
