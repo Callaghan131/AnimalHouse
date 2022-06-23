@@ -9,6 +9,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from "react-router-dom";
 import NavbarAdmin from "../NavbarAdmin";
 import { withRouter } from '../../../withRouter';
+import { DeleteService } from "../../Delete/DeleteService";
+
+
+import trashIco from '../../../images/trash.svg';
 
 // import Paper from '@mui/material/Paper';export default function UserList(){
 //   function createData(
@@ -165,6 +169,30 @@ class UserList extends Component{
     }
   }
   
+  deleteUser = (username) =>{
+    let deleteService = new DeleteService();
+    deleteService.deleteUser(
+        {
+            username: username
+        }
+    )
+    .then(data1 => {
+        switch(data1.status){
+            case 200: //Utente eliminato
+            // Il redirect non funziona
+            this.props.navigate("/LoginPage/HomePageAdmin");
+            break;
+            case 404: //Utente non trovato e non eliminato
+                this.error="Utente non trovato";
+            break;
+            default:
+                throw 'Stato non gestito';
+                break;
+        }
+        console.log(data1)
+    });
+  }
+
   render(){
   return(
     <>
@@ -194,7 +222,18 @@ class UserList extends Component{
                 <button className="userListEdit" style={{border:"none", borderRadius:"10px", padding:"5px 10px", backgroundColor:"green", color:"white", cursor:"pointer", marginRight:"20px"}}>Edit</button>
               </Link>
                 
-                <DeleteIcon style={{color:"red", cursor:"pointer"}}></DeleteIcon>
+
+                <a style={{cursor: "pointer"}} onClick={() => this.deleteUser(row.username)}>
+
+              <img
+               src= {trashIco}
+               alt="delete"
+               width="24"
+               height="24" />
+              
+
+                </a>
+
               </TableCell>
             </TableRow>
           ))):null}

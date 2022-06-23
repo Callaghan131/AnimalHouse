@@ -47,57 +47,32 @@ class FormLogin extends Component{
         var username=document.formLogin.username.value;
         var password= document.formLogin.password.value;
         this.error = ""
-        // NON AMMINISTRATORE
-        let data1 = {
+
+        let data = {
             username: username,
-            password: password,
-            admin: false
-        }
-        //AMMINISTRATORE 
-        let data2 = {
-            username: username,
-            password: password,
-            admin: true
+            password: password
         }
 
         let loginService = new LoginService();
-        let trovato=false;
-        let indice="";
-        loginService.login(data1)
-        .then(data =>{
-            switch(data.status)
+        loginService.login(data)
+        .then(res =>{
+            switch(res.errorCode)
             {
+                // Trovato
                 case 200:
-                    trovato=true;
-                    this.props.navigate("/LoginPage/HomePageUser/"+username);
-                case 400:
-                    trovato=false;
+                    this.props.navigate(
+                        res.isAdmin 
+                        ? "/LoginPage/HomePageAdmin" 
+                        : `/LoginPage/HomePageUser/${username}`
+                    );
+                    break;
+                // Non trovato
+                case 401:
                 default:
-                    trovato=false;
+                    this.setState({ error: res.errorString });
+                    break;
             }
         });
-        if(!trovato)
-        {
-            loginService.login(data2)
-            .then(data =>{
-                switch(data.status)
-                {
-                    case 200:
-                        console.log(1);
-                        trovato=true;
-                        this.props.navigate("/LoginPage/HomePageAdmin");
-                    case 400:
-                        trovato=false;
-                    default:
-                        trovato=false;
-                }
-            });
-        }
-
-        if(!trovato){
-            this.setState({error:"Username o password non corretti"});
-            this.props.navigate("/LoginPage");
-        }
 
         e.preventDefault();
     }

@@ -13,8 +13,6 @@ export class LoginService
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         };
-    
-        return fetch(`${apiUrl}login`, requestOptions)
-        .then(response => response)
+        return fetch(`${apiUrl}login`, requestOptions).then(response => response.json())
     }
 }

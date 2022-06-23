@@ -136,7 +136,22 @@ app.get('/scoreQuiz/:username', function(req,res){
     res.send(score);
 })
 //#endregion
+app.delete('/users',function(req,res){
+    let requestBody=req.body;
+    let Users= readUserFile();
 
+    let index = Users.findIndex(x=>x.username === requestBody.username);
+    if(index != -1){
+        Users.splice(index, 1)
+        saveUserFile(Users);
+        res.status = 200;
+    }
+    else{
+        res.status = 404;
+    }
+
+    res.send();
+})
 // Ritorna gia' deserializzato
 function readQuizFile(){
     let readedFile = require("../src/JSON/scoreQuiz.json");
@@ -193,20 +208,21 @@ app.post('/login', function(req, res){
     let user = Users.find(x=>
         x.username == requestBody.username
         && x.password == requestBody.password
-        && x.admin == requestBody.admin
+        // && x.admin == requestBody.admin
         );
-    console.log(user)
-    if(user)
-    {
-        res.status=200;
-        console.log(res.status);
-    }
-    else{
-        res.status=400;
-        console.log(res.status);
-    }
-    console.log(res.status);
-    res.send();
+    console.log(`utente ${user?.username} ${user?.password} ${user?.admin}`);
+
+    let statusCode = user ? 200 : 401;
+
+    res.status = statusCode; //200 --> user trovato // 400 --> user non trovato
+    // inserire la reason phrase nel return in modo da stamparla nel frontend
+    res.send(
+        {
+            errorString: statusCode == 401 ? "Username o password non corretti" : null,
+            errorCode: statusCode,
+            isAdmin: user?.admin ?? false 
+        }
+    ); //Se l'utente e' stato trovato si verifica il flag .admin altrimenti in caso di 400 si mette sempre false
 })
 
 app.post('/users', function(req, res){
