@@ -1,22 +1,22 @@
 import React, {Component} from "react";
 import { BachecaService} from "../../UserSection/service/BachecaService";
 class BachecaAdmin extends Component {
-    testo(){
-        let bachecaService = new BachecaService();
-        var textarea=document.getElementsByTagName('textarea');
-        var testo=textarea[0].value;
-        var path=window.location.href.split("/");
-        var username=path[5];
-        bachecaService.savePost(
-            {
-                messaggio: testo,
-                utente: username 
-            }
-        )
-        .then(data1 => {
-            console.log(data1);
-        });
-    }
+    // testo(){
+    //     let bachecaService = new BachecaService();
+    //     var textarea=document.getElementsByTagName('textarea');
+    //     var testo=textarea[0].value;
+    //     var path=window.location.href.split("/");
+    //     var username=path[5];
+    //     bachecaService.savePost(
+    //         {
+    //             messaggio: testo,
+    //             utente: username 
+    //         }
+    //     )
+    //     .then(data1 => {
+    //         console.log(data1);
+    //     });
+    // }
 
     richiesta(){
         let request=new XMLHttpRequest();
@@ -98,11 +98,8 @@ class BachecaAdmin extends Component {
             <div id="bacheca">
                 <h1 className="title">Bacheca aneddoti</h1>
             </div>
-            <textarea placeholder="Inserisci l'aneddoto che vuoi pubblicare e poi clicca su visualizza per vederli tutti" rows={2} cols={88}></textarea>
-            <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gridGap:"10px"}}>
-                <button type="submit" onClick={() => { this.testo()}} style={{background:"black", color:"white", fontSize:"20px"}}>Invia aneddoto</button>
+                {/* <button type="submit" onClick={() => { this.testo()}} style={{background:"black", color:"white", fontSize:"20px"}}>Invia aneddoto</button> */}
                 <button type="submit" onClick={() => { this.richiesta()}} style={{background:"black", color:"white", fontSize:"20px"}}>Visualizza aneddoti</button>
-            </div>
         </div>
         </>
       );

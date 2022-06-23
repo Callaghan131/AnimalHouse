@@ -1,22 +1,22 @@
 import React, {Component} from "react";
 import { BachecaFotoService} from "../../UserSection/service/BachecaFotoService";
 class BachecaFotoAdmin extends Component {
-    testo(){
-        let bachecaFotoService = new BachecaFotoService();
-        var textarea=document.getElementById('textarea');
-        var valore=textarea.value;
-        var path=window.location.href.split("/");
-        var user=path[5];
-        bachecaFotoService.savePost(
-            {
-                indirizzo: valore,
-                utente: user
-            }
-        )
-        .then(data1 => {
-            console.log(data1);
-        });
-    }
+    // testo(){
+    //     let bachecaFotoService = new BachecaFotoService();
+    //     var textarea=document.getElementById('textarea');
+    //     var valore=textarea.value;
+    //     var path=window.location.href.split("/");
+    //     var user=path[5];
+    //     bachecaFotoService.savePost(
+    //         {
+    //             indirizzo: valore,
+    //             utente: user
+    //         }
+    //     )
+    //     .then(data1 => {
+    //         console.log(data1);
+    //     });
+    // }
     richiesta(){
         let request=new XMLHttpRequest();
         request.open("GET","http://localhost:2700/bachecaFoto")
@@ -35,61 +35,33 @@ class BachecaFotoAdmin extends Component {
         div.innerHTML="";
         div.style.display="grid";
         div.style.gridTemplateColumns="1fr 1fr";
+        //div.style.gridGap="5px";
         for(var a=0;a<json.length;a++){
+            var div2=document.createElement('div');
             var indirizzo=JSON.stringify(json[a]);
             var indirizzo2=indirizzo.split('"');
             var img=document.createElement('img');
+            var button=document.createElement('button');
+            button.style.background="red"
+            button.style.width="40px"
+            button.style.height="25px"
+            button.style.color="white";
+            button.style.borderColor="white";
+            button.style.borderRadius="50px"
+            button.innerHTML="X"
             img.style.width="20vw";
-            img.style.height="20vh";
+            img.style.height="30vh";
             img.src=indirizzo2[3];
-            img.addEventListener("click",function(){
+            button.addEventListener("click",function(){
                 let bachecaFotoService=new BachecaFotoService();
-                var testo=this.src;
-                this.style.display="none";
+                this.parentNode.style.display="none";
+                var testo=this.parentNode.firstChild.src;
                 bachecaFotoService.aggiornaFoto(testo);
             })
-            div.appendChild(img);
+            div.appendChild(div2);
+            div2.appendChild(img);
+            div2.appendChild(button);
         }
-//         var immagini=[];
-//         var utenti=[];
-//         for(var a=0;a<json.length;a++){
-//             var indirizzo=JSON.stringify(json[a]);
-//             var indirizzo2=indirizzo.split('"');
-//             immagini[a]=indirizzo2[3];
-//             utenti[a]=indirizzo2[7];
-//         }
-//         var img=document.getElementsByTagName('img');
-//         var p=document.getElementsByClassName('users');
-//         img[0].src=immagini[0];
-//         img[0].addEventListener("click",function(){
-//                 let bachecaFotoService=new BachecaFotoService();
-//                 var testo=this.src;
-//                 bachecaFotoService.aggiornaFoto(testo);
-
-//         })
-//         if(utenti[0]!=undefined){
-//         p[0].innerHTML=utenti[0];
-//         p[0].style.fontWeight="bold";
-//         setTimeout(this.ripeti(json,img,immagini,p,utenti),3000);
-//     }
-// }
-//     ripeti(json,img,immagini,p,utenti){
-//         var contatore=1;
-//         setInterval(function(){
-//             img[0].src=immagini[contatore];
-//             img[0].addEventListener("click",function(){
-//                 let bachecaFotoService=new BachecaFotoService();
-//                 var testo=this.src;
-//                 bachecaFotoService.aggiornaFoto(testo);
-
-//             })
-//             p[0].innerHTML=utenti[contatore];
-//             p[0].style.fontWeight="bold";
-//             contatore++;
-//             if(contatore==json.length){
-//                 contatore=0;
-//             }
-//         },5000);
     }
     render() {
       return (
@@ -98,16 +70,13 @@ class BachecaFotoAdmin extends Component {
             <div id="bacheca">
                 <h1 className="title">Bacheca foto</h1>
                 <div id="carosello">
-                    {/* <img style={{width:"35vw", height:"49vh", marginBottom:"20px"}} src="" alt="Clicca una volta su visualizza per vedere lo slideshow delle immagini pubblicate in bacheca"></img> */}
+
                 </div>
             </div>
             <label>
                 <p className="users"></p>
-                <textarea placeholder="Inserisci l'URL dell'immagine che vuoi pubblicare" id="textarea" rows={2} cols={88}></textarea>
-                <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gridGap:"10px"}}>
-                <button type="submit" onClick={() => { this.testo()}} style={{background:"black", color:"white", fontSize:"20px"}}>Invia foto</button>
-                <button type="submit" onClick={() => {this.richiesta()}} style={{background:"black", color:"white", fontSize:"20px"}}>Visualizza slideshow</button>
-                </div>
+                {/* <button type="submit" onClick={() => { this.testo()}} style={{background:"black", color:"white", fontSize:"20px"}}>Invia foto</button> */}
+                <button type="submit" onClick={() => {this.richiesta()}} style={{background:"black", color:"white", fontSize:"20px"}}>Visualizza le foto in bacheca</button>
             </label>
         </div>
         </>

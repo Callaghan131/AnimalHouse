@@ -67,7 +67,7 @@ class BachecaFoto extends Component {
             <div id="bacheca">
                 <h1 className="title">Bacheca foto</h1>
                 <div id="carosello">
-                    <img style={{width:"35vw", height:"49vh", marginBottom:"20px"}} src="" alt="Clicca una volta su visualizza per vedere lo slideshow delle immagini pubblicate in bacheca"></img>
+                    <img style={{width:"25vw", height:"35vh", marginBottom:"20px"}} src="" alt="Clicca una volta su visualizza per vedere lo slideshow delle immagini pubblicate in bacheca"></img>
                 </div>
             </div>
             <label>
