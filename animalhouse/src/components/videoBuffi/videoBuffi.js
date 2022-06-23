@@ -3,7 +3,7 @@ import React, {Component} from "react";
 class VideoBuffi extends Component{
     render(){
         return(
-        <><h1 id="titolo" style={{height:"60px",borderRadius:"6px",background:"white",color: "purple", textAlign: "center", marginBottom: 20, paddingTop:"5px"}}>Ecco una carrellata di video buffi a tema animale!</h1>
+        <><h1 id="titolo" style={{height:"60px",borderRadius:"6px",background:"white",color: "purple", textAlign: "center", marginBottom: 20, paddingTop:"5px"}}>Carrellata di video buffi a tema animale!</h1>
         <div id="contenitore" style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
                 <table cellPadding="10" id="sx">
                     <tr style={{textAlign:"center"}}>

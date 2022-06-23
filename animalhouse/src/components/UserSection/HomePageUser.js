@@ -38,9 +38,7 @@ class HomePageUser extends Component{
                  onClickLoginPage={this.handleLoginPage}
                 />
                 <div className="row" style={{width:'98vw'}}>
-                    <Bacheca/>
-                    <BachecaFoto/>
-                    {/* <Classifica
+                    <Classifica
                         title={"Classifica Memory"}
                         data={scoreMemory}
                         activeUser={path[5]}
@@ -50,7 +48,7 @@ class HomePageUser extends Component{
                         title={"Classifica Quiz"}
                         data={scoreQuiz}
                         activeUser={path[5]}
-                    /> */}
+                    />
                 </div>
             </>
            

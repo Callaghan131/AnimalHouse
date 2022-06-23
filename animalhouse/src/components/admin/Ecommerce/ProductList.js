@@ -51,10 +51,10 @@ class ProductList extends Component{
                     <TableHead>
                     <TableRow>
                         <TableCell>Immagine</TableCell>
-                        <TableCell align="center">Nome</TableCell>
-                        <TableCell align="center">Prezzo</TableCell>
-                        <TableCell align="center">Qauntità</TableCell>
-                        <TableCell align="center">Action</TableCell>
+                        <TableCell>Nome</TableCell>
+                        <TableCell>Prezzo</TableCell>
+                        <TableCell>Quantità</TableCell>
+                        <TableCell>Action</TableCell>
                     </TableRow>
                     </TableHead>
                     <TableBody>
@@ -65,10 +65,10 @@ class ProductList extends Component{
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                 <TableCell><img src={`data:image/jpeg;base64,${row.immagine}`} style={{widht:"20vw", height:"20vh"}}></img></TableCell>
-                                <TableCell align="right">{row.nome}</TableCell>
-                                <TableCell align="right">{row.prezzo}</TableCell>
-                                <TableCell align="right">{row.disponibilità}</TableCell>
-                                <TableCell align="right">
+                                <TableCell>{row.nome}</TableCell>
+                                <TableCell>{row.prezzo}</TableCell>
+                                <TableCell>{row.disponibilità}</TableCell>
+                                <TableCell>
                                 <Link to={"/LoginPage/HomePageAdmin/ProductList/"+row.nome}>
                                     <button className="userListEdit" style={{border:"none", borderRadius:"10px", padding:"5px 10px", backgroundColor:"green", color:"white", cursor:"pointer", marginRight:"20px"}}>Edit</button>
                                 </Link>

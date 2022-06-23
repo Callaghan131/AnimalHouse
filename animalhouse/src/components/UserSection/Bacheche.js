@@ -1,10 +1,8 @@
 import React, {Component} from "react";
-import NavbarUser from "../../UserSection/navbarUser";
-import { withRouter } from '../../../withRouter';
-import BachecaAdmin from "./BachecaAdmin";
-import Bacheca from "../../UserSection/Bacheca";
-import BachecaFoto from "../../UserSection/BachecaFoto";
-import BachecaFotoAdmin from "./BachecaFotoAdmin";
+import NavbarUser from "../UserSection/navbarUser";
+import { withRouter } from '../../withRouter';
+import Bacheca from "../UserSection/Bacheca";
+import BachecaFoto from "../UserSection/BachecaFoto";
 
 class Bacheche extends Component{
 
@@ -22,10 +20,10 @@ class Bacheche extends Component{
                 />
                 <div className="bacheche" style={{display:"flex"}}>
                 <div className="sx" style={{ width:"50vw"}}>
-                    <BachecaAdmin/>
+                    <Bacheca/>
                 </div>
                 <div className="dx" style={{width:"50vw"}}>
-                    <BachecaFotoAdmin/>
+                    <BachecaFoto/>
                 </div>
                 </div>
             </>

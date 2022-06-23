@@ -17,8 +17,9 @@ import Accessori from "./Ecommerce/Accessori";
 import Sanitari from "./Ecommerce/Sanitari";
 import HomePageAdmin from "./admin/HomePageAdmin";
 import User from "./admin/pages/User";
-import Bacheche from "./admin/Bacheche/Bacheche";
+import Bacheche from "./UserSection/Bacheche.js";
 import ProductList from "./admin/Ecommerce/ProductList";
+import BachecheAdmin from "./admin/Bacheche/BachecheAdmin";
 
 function App() {
     
@@ -39,8 +40,8 @@ function App() {
         <Route exact path="/LoginPage/HomePageUser/:userUsername/Bacheche" element={<Bacheche/>}/>
         <Route exact path="/LoginPage/HomePageAdmin" element={<HomePageAdmin/>}/>
         <Route exact path="/LoginPage/HomePageAdmin/UserList/:userUsername" element={<User/>}/>   
-        <Route exact path="/LoginPage/HomePageAdmin/UserList/Bacheche" element={<Bacheche/>}/>
-        <Route exact path="/LoginPage/HomePageAdmin/ProductList" element={<ProductList/>}/>     
+        <Route exact path="/LoginPage/HomePageAdmin/ProductList" element={<ProductList/>}/> 
+        <Route exact path="/LoginPage/HomePageAdmin/BachecheAdmin" element={<BachecheAdmin/>}/>      
       </Routes>
       </BrowserRouter>
   );
