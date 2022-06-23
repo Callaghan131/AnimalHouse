@@ -84,25 +84,24 @@ class Ecommerce extends Component{
         this.setState({selectCarrello:true});
 
     }
-    handleDelete=cardId=>{
-        const updatedCards=this.state.cardProdotto.filter(card=>card.id !== cardId);
-        this.setState({cardProdotto: updatedCards});
-    }
     handleIncrement=(num,type)=>{
         const updatedIncrementedCards=[...this.state.cardProdotto];
         var totale=parseInt(this.state.totale);
         var prezzo=parseFloat(this.state.prezzo)
-        updatedIncrementedCards[type][num].quantità++;
-        this.setState({cardProdotto: updatedIncrementedCards});
-        prezzo+=parseFloat(updatedIncrementedCards[type][num].prezzo);
-        
-        totale+=1;
-        this.addProductToCart(updatedIncrementedCards[type][num]);
-        this.setState({totale:totale});
-        this.setState({prezzo:prezzo})
+        if(updatedIncrementedCards[type][num].disponibilità>0){
+            updatedIncrementedCards[type][num].quantità++;
+            updatedIncrementedCards[type][num].disponibilità--;
+            this.setState({cardProdotto: updatedIncrementedCards});
+            prezzo+=parseFloat(updatedIncrementedCards[type][num].prezzo);
+            
+            totale+=1;
+            this.addProductToCart(updatedIncrementedCards[type][num],type);
+            this.setState({totale:totale});
+            this.setState({prezzo:prezzo})
+        }
     }
 
-    addProductToCart=(product)=>{
+    addProductToCart=(product,type)=>{
         const carrello=[...this.state.cart];
         var presente=false;
         var cont=0;
@@ -128,6 +127,7 @@ class Ecommerce extends Component{
                 var obj={
                     nome:product.nome,
                     img:product.immagine,
+                    categoria: type,
                     prezzo:parseFloat(product.prezzo),
                     quantita: parseInt(product.quantità)
                 }
@@ -154,6 +154,7 @@ class Ecommerce extends Component{
         var prezzo=parseFloat(this.state.prezzo);
         if(updatedIncrementedCards[type][num].quantità>0){
         updatedIncrementedCards[type][num].quantità--;
+        updatedIncrementedCards[type][num].disponibilità++;
         prezzo-=parseFloat(updatedIncrementedCards[type][num].prezzo);
         totale-=1
         this.deleteProductToCart(updatedIncrementedCards[type][num])
@@ -189,7 +190,12 @@ class Ecommerce extends Component{
         
     }
 
-
+    handleBuy=()=>{
+        var carrello=[...this.state.cart];
+        for(var i=0;i<carrello.length;i++){
+            
+        }
+    }
 
     render(){
         const{selectGiochi,selectAccessori,selectSanitari,selectCibo, selectCarrello, cart, totale, prezzo, loaded}=this.state;
@@ -202,7 +208,7 @@ class Ecommerce extends Component{
         onClickCarrello={this.handleSelectCarrello.bind(this)}
         totale={totale}/>
             <div className='container'>
-                <div className="row" style={{display: "grid", gridTemplateColumns:"1fr 1fr 1fr", marginTop:"60px"}}>
+                <div className="row" style={{display: "grid", gridTemplateColumns:"1fr 1fr 1fr", marginTop:"10px"}}>
 
                     {loaded ? (selectGiochi ? (
                         this.state.cardProdotto[0].map(card => (

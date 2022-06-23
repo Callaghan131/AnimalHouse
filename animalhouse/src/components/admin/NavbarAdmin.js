@@ -8,7 +8,7 @@ class NavbarAdmin extends Component{
           <div className="container">
             <a className="navbar-brand" >Animal House</a>
             <a className="navbar-brand" href="/LoginPage/HomePageAdmin/">Utenti</a>
-            <a className="navbar-brand" >E-commerce</a>
+            <a className="navbar-brand" href="/LoginPage/HomePageAdmin/ProductList">E-commerce</a>
             <a className="navbar-brand" href="/LoginPage">Logout</a>
           </div>
         </nav>
