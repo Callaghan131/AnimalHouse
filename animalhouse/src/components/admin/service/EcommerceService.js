@@ -1,18 +1,23 @@
 const apiUrl = `http://localhost:2800/`;
 
-export class LoginService
+export class EcommerceService
 {
     // score deve essere un oggetto del tipo
     // {
     //     "username": "pippo",
     //     "punteggio": 78,
     // }
-    login = (data) =>{
+    product = (data,id,categoria) =>{
         const requestOptions = {
-            method: 'POST',
+            method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         };
-        return fetch(`${apiUrl}login`, requestOptions).then(response => response.json())
+    
+        var endpoint=`${apiUrl}magazzino/`+id+'/categoria/'+categoria;
+        return fetch(endpoint, requestOptions)
+        .then(response => response)
     }
+
+    
 }

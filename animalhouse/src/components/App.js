@@ -11,15 +11,12 @@ import Quiz from "./quiz/QuizPage";
 import HomePageUser from "./UserSection/HomePageUser";
 import Ecommerce from "./Ecommerce/Ecommerce";
 import RegisterPage from "./Register/RegisterPage";
-import Cibo from "./Ecommerce/Cibo";
-import Giochi from "./Ecommerce/Giochi";
-import Accessori from "./Ecommerce/Accessori";
-import Sanitari from "./Ecommerce/Sanitari";
 import HomePageAdmin from "./admin/HomePageAdmin";
 import User from "./admin/pages/User";
 import Bacheche from "./UserSection/Bacheche.js";
 import ProductList from "./admin/Ecommerce/ProductList";
 import BachecheAdmin from "./admin/Bacheche/BachecheAdmin";
+import Product from "./admin/Ecommerce/Product";
 
 function App() {
     
@@ -41,7 +38,8 @@ function App() {
         <Route exact path="/LoginPage/HomePageAdmin" element={<HomePageAdmin/>}/>
         <Route exact path="/LoginPage/HomePageAdmin/UserList/:userUsername" element={<User/>}/>   
         <Route exact path="/LoginPage/HomePageAdmin/ProductList" element={<ProductList/>}/> 
-        <Route exact path="/LoginPage/HomePageAdmin/BachecheAdmin" element={<BachecheAdmin/>}/>      
+        <Route exact path="/LoginPage/HomePageAdmin/BachecheAdmin" element={<BachecheAdmin/>}/>   
+        <Route exact path="/LoginPage/HomePageAdmin/ProductList/:Categoria/:idProdotto" element={<Product/>}/>     
       </Routes>
       </BrowserRouter>
   );

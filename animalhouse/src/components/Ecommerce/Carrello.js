@@ -20,7 +20,7 @@ class Carrello extends Component{
                         <span>TOTAL</span>
                         <span id="price">{this.props.prezzo}€</span>
                     </div>
-                    <button>CHECKOUT NOW</button>
+                    <button onClick={this.props.onBuy}>CHECKOUT NOW</button>
                 </div>
             </div>
             

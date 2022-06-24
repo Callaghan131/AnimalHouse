@@ -11,7 +11,7 @@ const scoreMemory=require('../src/JSON/scoreMemory.json');
 ///////////////////
 //Configurazione server
 const app=express();
-app.listen(2700);
+app.listen(2800);
 // abilita le cors per tutti gli ip
 const cors = require('cors');
 app.use(cors());
@@ -392,29 +392,51 @@ function saveMagazzinoFile(data){
     });
 }
 
-// app.post('/magazzino', function(req, res){
-//     // req.body contiene la richieste in json
-//     let requestBody = req.body;
-//     let product = readMagazzinoFile();
-//     console.log(memoryUsers);
+app.put('/magazzino/:idProduct/categoria/:categoria', function(req,res){
+    const {categoria}=req.params;
+    const {idProduct}=req.params;
+    const product=req.body;
+    let products = readMagazzinoFile();
+    // const index=products[Number(categoria)].findIndex(
+    //     product=>product.numSerie===Number(idProduct)
+    // )
+    
+    products[(categoria)][(idProduct)]=product;
+   
+    console.log(products[(categoria)][(idProduct)]);
+    //console.log(products);
 
-//     let productToUpdate = product.find(x=>x.username == requestBody.username);
-//     if(productToUpdate){
-//         productToUpdate.punteggio = requestBody.punteggio
-//     }
-//     else{
-//         memoryUsers.push({
-//             username: requestBody.username,
-//             punteggio: requestBody.punteggio
-//         });
-//     }
+    res.status(200).json({success:true, data: products})
+    saveMagazzinoFile(products);
+})
 
-//     saveMemoryFile(memoryUsers);
-//     res.send("Punteggio user salvato");
-// })
-// se prende i dati e' una get
 app.get('/magazzino', function(req, res){
     res.send(magazzino)
+})
+
+app.get('/magazzino/:categoria/:idProduct', function(req,res){
+    const {categoria}=req.params
+    const {idProduct}=req.params
+
+    let catIndex=0;
+    switch(categoria){
+        case "gioco":
+            catIndex=0;
+            break;
+        case "accessori":
+            catIndex=1;
+            break;
+        case "cibo":
+            catIndex=2;
+            break;
+        case "sanitari":
+            catIndex=3;
+            break;
+    }
+
+    
+
+    res.send(magazzino[catIndex][Number(idProduct)]);
 })
 const magazzino=require('../src/JSON/magazzino.json');
 const { request } = require('http');

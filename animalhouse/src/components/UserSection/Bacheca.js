@@ -20,7 +20,7 @@ class Bacheca extends Component {
 
     richiesta(){
         let request=new XMLHttpRequest();
-        request.open("GET","http://localhost:2700/bacheca")
+        request.open("GET","http://localhost:2800/bacheca")
         request.send();
         request.onload=()=>{
             if(request.status==200){

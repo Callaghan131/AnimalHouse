@@ -18,10 +18,10 @@ class ProductList extends Component{
         loaded:false
     }
 
-    getDataProduct=()=>{
+    getDataProducts=()=>{
         var data=[];
         var newArray=[...this.state.product];
-        fetch("http://localhost:2700/magazzino")
+        fetch("http://localhost:2800/magazzino")
           .then(res => res.json())
           .then(
             (result) => {
@@ -38,7 +38,7 @@ class ProductList extends Component{
     }
 
     componentWillMount=()=>{
-        this.getDataProduct();
+        this.getDataProducts();
     }
 
 
@@ -46,12 +46,15 @@ class ProductList extends Component{
         return(
             <>
             <NavbarAdmin/>
+            
             <TableContainer style={{padding:"20px", paddingRight:"30px", background:"white"}}>
+            <button className="userListEdit" style={{border:"none", borderRadius:"10px", padding:"5px 10px", backgroundColor:"green", color:"white", cursor:"pointer", marginLeft:"87vw"}}>Add Product</button>
                 <Table style={{ width:"95vw", height:"87vh" }} aria-label="simple table">
                     <TableHead>
                     <TableRow>
                         <TableCell>Immagine</TableCell>
                         <TableCell>Nome</TableCell>
+                        <TableCell>Categoria</TableCell>
                         <TableCell>Prezzo</TableCell>
                         <TableCell>Quantità</TableCell>
                         <TableCell>Action</TableCell>
@@ -66,10 +69,11 @@ class ProductList extends Component{
                                 >
                                 <TableCell><img src={`data:image/jpeg;base64,${row.immagine}`} style={{widht:"20vw", height:"20vh"}}></img></TableCell>
                                 <TableCell>{row.nome}</TableCell>
+                                <TableCell>{row.categoria}</TableCell>
                                 <TableCell>{row.prezzo}</TableCell>
                                 <TableCell>{row.disponibilità}</TableCell>
                                 <TableCell>
-                                <Link to={"/LoginPage/HomePageAdmin/ProductList/"+row.nome}>
+                                <Link to={"/LoginPage/HomePageAdmin/ProductList/"+row.categoria+"/"+row.id}>
                                     <button className="userListEdit" style={{border:"none", borderRadius:"10px", padding:"5px 10px", backgroundColor:"green", color:"white", cursor:"pointer", marginRight:"20px"}}>Edit</button>
                                 </Link>
                                     

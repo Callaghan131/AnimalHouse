@@ -18,7 +18,7 @@ class User extends Component{
 
     getDataUser=()=>{
         const path=window.location.href.split("/");
-        var url="http://localhost:2700/users/"+path[6];
+        var url="http://localhost:2800/users/"+path[6];
         fetch(url)
           .then(res => res.json())
           .then(
@@ -31,7 +31,7 @@ class User extends Component{
     
     getDataQuiz=()=>{
         const path=window.location.href.split("/");
-        var url="http://localhost:2700/scoreQuiz/"+path[6];
+        var url="http://localhost:2800/scoreQuiz/"+path[6];
         fetch(url)
         .then(res => res.json())
         .then(
@@ -43,7 +43,7 @@ class User extends Component{
 
     getDataMemory=()=>{
         const path=window.location.href.split("/");
-        var url="http://localhost:2700/scoreMemory/"+path[6];
+        var url="http://localhost:2800/scoreMemory/"+path[6];
         fetch(url)
         .then(res => res.json())
         .then(

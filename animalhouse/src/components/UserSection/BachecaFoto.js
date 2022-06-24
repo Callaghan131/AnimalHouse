@@ -19,7 +19,7 @@ class BachecaFoto extends Component {
     }
     richiesta(){
         let request=new XMLHttpRequest();
-        request.open("GET","http://localhost:2700/bachecaFoto")
+        request.open("GET","http://localhost:2800/bachecaFoto")
         request.send();
         request.onload=()=>{
             if(request.status==200){

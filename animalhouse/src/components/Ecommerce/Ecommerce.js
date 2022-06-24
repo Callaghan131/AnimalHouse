@@ -4,6 +4,7 @@ import { withRouter } from '../../withRouter';
 import CardProdotto from "./CardProdotto";
 import NavbarCarrello from './NavbarCarrello';
 import Carrello from './Carrello';
+import {EcommerceService} from '../admin/service/EcommerceService';
 
 
 class Ecommerce extends Component{
@@ -24,7 +25,7 @@ class Ecommerce extends Component{
     componentWillMount=()=>{
         var data=[];
         var newArray=[...this.state.cardProdotto];
-        fetch("http://localhost:2700/magazzino")
+        fetch("http://localhost:2800/magazzino")
           .then(res => res.json())
           .then(
             (result) => {
@@ -110,8 +111,10 @@ class Ecommerce extends Component{
             var obj={
                 nome:product.nome,
                 img:product.immagine,
+                categoria: type,
+                id: product.id,
                 prezzo:parseFloat(product.prezzo),
-                quantita: product.quantità
+                quantita: parseInt(product.quantità)
             }
             carrello.push(obj);
         }
@@ -128,6 +131,7 @@ class Ecommerce extends Component{
                     nome:product.nome,
                     img:product.immagine,
                     categoria: type,
+                    id: product.id,
                     prezzo:parseFloat(product.prezzo),
                     quantita: parseInt(product.quantità)
                 }
@@ -192,8 +196,21 @@ class Ecommerce extends Component{
 
     handleBuy=()=>{
         var carrello=[...this.state.cart];
+        var product=[...this.state.cardProdotto];
+        let shopService=new EcommerceService();
         for(var i=0;i<carrello.length;i++){
-            
+            var cat=Number(carrello[i].categoria);
+            var id=Number(carrello[i].id);
+            console.log(product[cat][id]);
+            product[cat][id].quantità=0;
+            shopService.product(product[cat][id],id,cat)
+            .then(data =>{
+                switch(data.status)
+                {
+                    case 200:
+                        alert("Acquisto avvenuto correttamente");
+                }
+            });
         }
     }
 
@@ -251,6 +268,7 @@ class Ecommerce extends Component{
                             <Carrello
                             itemCart={cart}
                             prezzo={prezzo}
+                            onBuy={this.handleBuy}
                             />
                         ):null
                         )))

@@ -14,65 +14,6 @@ import { DeleteService } from "../../Delete/DeleteService";
 
 import trashIco from '../../../images/trash.svg';
 
-// import Paper from '@mui/material/Paper';export default function UserList(){
-//   function createData(
-//   username,
-//   pMemory,
-//   pQuiz,
-//   password,
-// ) {
-//   return { username, pMemory, pQuiz, password};
-// }
-
-// const rows = [
-//   createData('Davide Urbinati', 159, 0, 'admin'),
-//   createData('Username1', 237, 9, 'admin2'),
-//   createData('MaxCallegari', 262, 16, 'admin3'),
-//   createData('Admin', 305, 3, 'admin4'),
-//   createData('Prova', 356, 16, 'admin5'),
-// ];
-
-// function getData(){
-
-// }
-
-// return(
-//   <TableContainer component={Paper} style={{padding:"20px", paddingRight:"30px"}}>
-//   <Table style={{ width:"95vw", height:"87vh" }} aria-label="simple table">
-//     <TableHead>
-//       <TableRow>
-//         <TableCell>Username</TableCell>
-//         <TableCell align="right">Password</TableCell>
-//         <TableCell align="right">Punteggio memory</TableCell>
-//         <TableCell align="right">Punteggio quiz</TableCell>
-//         <TableCell align="right">Action</TableCell>
-//       </TableRow>
-//     </TableHead>
-//     <TableBody>
-//       {rows.map((row) => (
-//         <TableRow
-//           key={row.name}
-//           sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-//         >
-//           <TableCell>{row.username}</TableCell>
-//           <TableCell align="right">{row.password}</TableCell>
-//           <TableCell align="right">{row.pMemory}</TableCell>
-//           <TableCell align="right">{row.pQuiz}</TableCell>
-//           <TableCell align="right">
-//            <Link to={"/LoginPage/HomePageAdmin/UserList/"+row.username}>
-//             <button className="userListEdit" style={{border:"none", borderRadius:"10px", padding:"5px 10px", backgroundColor:"green", color:"white", cursor:"pointer", marginRight:"20px"}}>Edit</button>
-//            </Link>
-            
-//             <DeleteIcon style={{color:"red", cursor:"pointer"}}></DeleteIcon>
-//           </TableCell>
-//         </TableRow>
-//       ))}
-//     </TableBody>
-//   </Table>
-// </TableContainer>
-// )
-// }
-
 
 class UserList extends Component{
 
@@ -86,20 +27,23 @@ class UserList extends Component{
   getDataUser=()=>{
     var data=[];
     var newArray=[...this.state.user];
-    fetch("http://localhost:2700/users")
+    fetch("http://localhost:2800/users")
       .then(res => res.json())
       .then(
         (result) => {
           data=result;
           var cont=0;
+          
           for(var i=0; i<data.length;i++){
-            if(!data[i]["admin"]){
+            console.log(data[i])
+            if(data[i]["admin"]!=true){
+              
               newArray.push(data[i])
             }
             
             
           }
-          console.log(1);
+          
           this.setState({user:newArray});
           this.setState({loaded:true})
         }
@@ -109,7 +53,7 @@ class UserList extends Component{
   getDataQuiz=()=>{
     var data=[];
     var newArray=[...this.state.scoreQuiz];
-    fetch("http://localhost:2700/scoreQuiz")
+    fetch("http://localhost:2800/scoreQuiz")
       .then(res => res.json())
       .then(
         (result) => {
@@ -127,7 +71,7 @@ class UserList extends Component{
   getDataMemory=()=>{
     var data=[];
     var newArray=[...this.state.scoreMemory];
-    fetch("http://localhost:2700/scoreMemory")
+    fetch("http://localhost:2800/scoreMemory")
       .then(res => res.json())
       .then(
         (result) => {
@@ -219,11 +163,12 @@ class UserList extends Component{
               <TableCell align="right">{this.scoreUserQuiz(row.username)}</TableCell>
               <TableCell align="right">
               <Link to={"/LoginPage/HomePageAdmin/UserList/"+row.username}>
-                <button className="userListEdit" style={{border:"none", borderRadius:"10px", padding:"5px 10px", backgroundColor:"green", color:"white", cursor:"pointer", marginRight:"20px"}}>Edit</button>
+                <button className="userListEdit" style={{border:"none", borderRadius:"10px", padding:"5px 10px", backgroundColor:"green", color:"white", cursor:"pointer", marginRight:"10px"}}>Edit</button>
               </Link>
-                
+              <DeleteIcon style={{color:"red", cursor:"pointer"}} onClick={() => this.deleteUser(row.username)}></DeleteIcon>  
 
-                <a style={{cursor: "pointer"}} onClick={() => this.deleteUser(row.username)}>
+                {/* <a style={{cursor: "pointer"}} >
+                
 
               <img
                src= {trashIco}
@@ -232,7 +177,7 @@ class UserList extends Component{
                height="24" />
               
 
-                </a>
+                </a> */}
 
               </TableCell>
             </TableRow>
