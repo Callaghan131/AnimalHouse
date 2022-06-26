@@ -19,5 +19,29 @@ export class EcommerceService
         .then(response => response)
     }
 
+    deleteProduct = (data) =>{
+        const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        };
+    
+        var endpoint=`${apiUrl}magazzino`;
+        return fetch(endpoint, requestOptions)
+        .then(response => response)
+    }
+
+    addProduct = (data, categoria) =>{
+        const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        };
+    
+        var endpoint=`${apiUrl}magazzino/categoria/`+categoria;
+        return fetch(endpoint, requestOptions)
+        .then(response => response)
+    }
+
     
 }

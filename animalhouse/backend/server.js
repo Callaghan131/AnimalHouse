@@ -1,4 +1,4 @@
-// N.B. se si vuole dividere in controller si puo' seguire questa guida 
+// N.B. se si vuole dividere in controller si puo' seguire questa guida
 // https://lo-victoria.com/build-a-rest-api-with-nodejs-routes-and-controllers
 // il server si avvia con node .\server.js posizionandosi nella stessa route di server.js
 
@@ -48,7 +48,7 @@ app.put('/users/:username', function(req,res){
     const index=users.findIndex(
         user=>user.username===username
     )
-    
+
     console.log(index);
     users[index]=user;
     console.log(users[index]);
@@ -63,7 +63,7 @@ app.put('/scoreMemory/:username', function(req,res){
     const index=users.findIndex(
         user=>user.username===username
     )
-    
+
     console.log(index);
     users[index]=user;
     console.log(users[index]);
@@ -78,7 +78,7 @@ app.put('/scoreQuiz/:username', function(req,res){
     const index=users.findIndex(
         user=>user.username===username
     )
-    
+
     console.log(index);
     users[index]=user;
     console.log(users[index]);
@@ -220,7 +220,7 @@ app.post('/login', function(req, res){
         {
             errorString: statusCode == 401 ? "Username o password non corretti" : null,
             errorCode: statusCode,
-            isAdmin: user?.admin ?? false 
+            isAdmin: user?.admin ?? false
         }
     ); //Se l'utente e' stato trovato si verifica il flag .admin altrimenti in caso di 400 si mette sempre false
 })
@@ -239,7 +239,7 @@ app.post('/users', function(req, res){
                 password: requestBody.password,
                 admin: requestBody.admin
             });
-            
+
         saveUserFile(Users);
         res.status(201);
         res.send("Utente registrato");
@@ -400,9 +400,9 @@ app.put('/magazzino/:idProduct/categoria/:categoria', function(req,res){
     // const index=products[Number(categoria)].findIndex(
     //     product=>product.numSerie===Number(idProduct)
     // )
-    
+
     products[(categoria)][(idProduct)]=product;
-   
+
     console.log(products[(categoria)][(idProduct)]);
     //console.log(products);
 
@@ -434,10 +434,79 @@ app.get('/magazzino/:categoria/:idProduct', function(req,res){
             break;
     }
 
-    
+
 
     res.send(magazzino[catIndex][Number(idProduct)]);
 })
+
+app.delete('/magazzino',function(req,res){
+    let requestBody=req.body;
+
+    let magazzino= readMagazzinoFile();
+
+    let catIndex=0;
+    switch(requestBody.categoria){
+        case "gioco":
+            catIndex=0;
+            break;
+        case "accessori":
+            catIndex=1;
+            break;
+        case "cibo":
+            catIndex=2;
+            break;
+        case "sanitari":
+            catIndex=3;
+            break;
+    }
+
+    // magazzino[catIndex].splice(Number(idProduct),1);
+    // saveUserFile(magazzino);
+    // res.status(200);
+    
+
+    let index = magazzino[catIndex].findIndex(x=>x.id === requestBody.idProduct);
+    if(index != -1){
+        magazzino[catIndex].splice(index, 1)
+        saveMagazzinoFile(magazzino);
+        res.status = 200;
+    }
+    else{
+        res.status = 404;
+    }
+
+    res.send(magazzino);
+})
+
+app.post('/magazzino/categoria/:categoria', function(req, res){
+    const {categoria}=req.params
+    let requestBody = req.body;
+    let magazzino = readMagazzinoFile();
+    console.log(magazzino);
+
+    let newProduct = magazzino[categoria].find(x=>x.id == requestBody.id && x.categoria==requestBody.categoria);
+    if(!newProduct){
+        // userToUpdate.punteggio = requestBody.punteggio
+        magazzino.push({
+                id: requestBody.id,
+                immagine: requestBody.immagine,
+                nome: requestBody.nome,
+                prezzo: requestBody.prezzo,
+                quantità: requestBody.quantità,
+                disponibilità: requestBody.disponibilità
+            });
+
+        saveUserFile(magazzino);
+        res.status(20);
+        res.send("Prodotto creato");
+    }
+    else{
+        res.status(304);
+        res.send("Prodotto gia presente");
+    }
+    console.log(magazzino);
+})
+
 const magazzino=require('../src/JSON/magazzino.json');
 const { request } = require('http');
 

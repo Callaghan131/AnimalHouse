@@ -39,43 +39,64 @@ class product extends Component{
 
     handleUpdate=(e)=>{
         e.preventDefault();
-        var productname=document.getElementById("productname1").textContent;
-        var password=document.form.password.value;
-        var quiz=document.form.quiz.value;
-        var memory=document.form.memory.value;
-        var spanQuiz=document.getElementById('scoreQuiz');
-        var spanMemory=document.getElementById('scoreMemory');
+        const path=window.location.href.split("/");
+        var nome=document.form.nome.value;
+        var prezzo=document.form.prezzo.value;
+        var quantità=document.form.disponibilità.value;
+        var categoria=path[6];
+        var spanNome=document.getElementById('name');
+        var spanQuantità=document.getElementById('disponibilità');
+        var spanPrezzo=document.getElementById('prezzo');
         
-        var cont=0;
+        var prodotto=this.state.product;
 
-        if(password!=""){
-            var data={
-                productname:productname,
-                password:password,
-                admin: false
-            }
-    
-            let productService=new EcommerceService();
-            productService.product(data,productname)
-            .then(data =>{
-                switch(data.status)
-                {
-                    case 200:
-                        if(cont<1){
-                            alert("Dati utente aggiornati correttamente");
-                            cont+=1;
-                        }
-                        
-                }
-            });
+        if(nome!=""){
+            prodotto["nome"]=nome;
+            spanNome.innerHTML=nome;
         }
 
-        
+        if(prezzo!=""){
+            prodotto["prezzo"]=prezzo
+            spanPrezzo.innerHTML=prezzo
+        }
 
-        
+        if(quantità!=""){
+            prodotto["disponibilità"]=quantità
+            spanQuantità.innerHTML=quantità
+        }
 
-       
-        
+
+        let catIndex=0;
+        switch(categoria){
+            case "gioco":
+                catIndex=0;
+                break;
+            case "accessori":
+                catIndex=1;
+                break;
+            case "cibo":
+                catIndex=2;
+                break;
+            case "sanitari":
+                catIndex=3;
+                break;
+        }
+
+        var data=prodotto;
+
+
+        console.log(data);
+        let productService=new EcommerceService();
+        productService.product(data,this.state.product["id"], catIndex)
+        .then(data =>{
+            switch(data.status)
+            {
+                case 200:
+                    alert("Dati prodotto aggiornati correttamente");
+                    
+            }
+        });
+
     }
 
    
@@ -126,11 +147,11 @@ class product extends Component{
                                 </div>
                                 <div className="productUpdateItem">
                                     <label>Prezzo</label>
-                                    <input type="number" name="quiz" placeholder={this.state.product["prezzo"]} className="productUpdateInput"></input>
+                                    <input  name="prezzo" placeholder={this.state.product["prezzo"]} className="productUpdateInput"></input>
                                 </div>
                                 <div className="productUpdateItem">
                                     <label>Quantità</label>
-                                    <input type="number" name="memory" placeholder={this.state.product["disponibilità"]} className="productUpdateInput"></input>
+                                    <input type="number" name="disponibilità" placeholder={this.state.product["disponibilità"]} className="productUpdateInput"></input>
                                 </div>
                             </div>
                             <div className="productUpdateRight">

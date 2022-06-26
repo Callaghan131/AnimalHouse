@@ -10,6 +10,7 @@ import { withRouter } from '../../../withRouter';
 import NavbarAdmin from "../NavbarAdmin";
 import '../../../css/ProductList.css'
 import { TableRow } from "@mui/material";
+import { EcommerceService } from "../service/EcommerceService";
 
 class ProductList extends Component{
 
@@ -37,6 +38,31 @@ class ProductList extends Component{
         )
     }
 
+    handleDelete=(id, categoria)=>{
+        let productService=new EcommerceService();
+        productService.deleteProduct(
+            {
+                categoria: categoria,
+                idProduct: id
+            }
+        )
+        .then(data=>{
+            switch(data.status){
+                case 200: //Utente eliminato
+                    alert("Prodotto eliminato correttamente, aggiornare la pagina.")
+                break;
+                case 404: //Utente non trovato e non eliminato
+                    alert("Prodotto non trovato");
+                break;
+                default:
+                    throw 'Stato non gestito';
+                    break;
+            }
+            console.log(data)
+        })
+
+    }
+
     componentWillMount=()=>{
         this.getDataProducts();
     }
@@ -48,12 +74,14 @@ class ProductList extends Component{
             <NavbarAdmin/>
             
             <TableContainer style={{padding:"20px", paddingRight:"30px", background:"white"}}>
-            <button className="userListEdit" style={{border:"none", borderRadius:"10px", padding:"5px 10px", backgroundColor:"green", color:"white", cursor:"pointer", marginLeft:"87vw"}}>Add Product</button>
+            <Link to={"/LoginPage/HomePageAdmin/addProduct"}>
+                <button className="userListEdit" style={{border:"none", borderRadius:"10px", padding:"5px 10px", backgroundColor:"green", color:"white", cursor:"pointer", marginLeft:"87vw"}}>Add Product</button>
+            </Link>
                 <Table style={{ width:"95vw", height:"87vh" }} aria-label="simple table">
                     <TableHead>
                     <TableRow>
                         <TableCell>Immagine</TableCell>
-                        <TableCell>Nome</TableCell>
+                        <TableCell >Nome</TableCell>
                         <TableCell>Categoria</TableCell>
                         <TableCell>Prezzo</TableCell>
                         <TableCell>Quantità</TableCell>
@@ -77,7 +105,7 @@ class ProductList extends Component{
                                     <button className="userListEdit" style={{border:"none", borderRadius:"10px", padding:"5px 10px", backgroundColor:"green", color:"white", cursor:"pointer", marginRight:"20px"}}>Edit</button>
                                 </Link>
                                     
-                                    <DeleteIcon style={{color:"red", cursor:"pointer"}}></DeleteIcon>
+                                    <DeleteIcon onClick={()=>this.handleDelete(row.id, row.categoria)} style={{color:"red", cursor:"pointer"}}></DeleteIcon>
                                 </TableCell>    
                             </TableRow>
                         ))

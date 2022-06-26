@@ -209,6 +209,10 @@ class Ecommerce extends Component{
                 {
                     case 200:
                         alert("Acquisto avvenuto correttamente");
+                        carrello=[];
+                        this.setState({cart:carrello});
+                        this.setState({totale:0});
+                        this.setState({prezzo:0});
                 }
             });
         }
