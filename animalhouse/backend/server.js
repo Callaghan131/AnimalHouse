@@ -501,26 +501,22 @@ app.post('/magazzino/categoria/:categoria', function(req, res){
     }
     
     
-    let newProduct = magazzino[catIndex].find(x=>x.id == requestBody.id && x.categoria==categoria);
-    if(!newProduct){
-        // userToUpdate.punteggio = requestBody.punteggio
-        magazzino[catIndex].push({
-                id: requestBody.id,
-                immagine: requestBody.immagine,
-                nome: requestBody.nome,
-                prezzo: requestBody.prezzo,
-                quantità: requestBody.quantità,
-                disponibilità: requestBody.disponibilità
-            });
+    
+    var id=magazzino[catIndex].length
+    magazzino[catIndex].push({
+        id: id,
+        immagine: requestBody.immagine,
+        nome: requestBody.nome,
+        prezzo: requestBody.prezzo,
+        quantità: requestBody.quantità,
+        disponibilità: requestBody.disponibilità,
+        categoria: requestBody.categoria
+    });
 
-        //saveUserFile(magazzino);
-        res.status(200);
-        res.send("Prodotto creato");
-    }
-    else{
-        res.status(304);
-        res.send("Prodotto gia presente");
-    }
+    saveMagazzinoFile(magazzino);
+    console.log(magazzino[catIndex][5]);
+    res.status(200);
+   
     
     console.log(requestBody.id);
 })

@@ -7,12 +7,19 @@ class Prodotto extends Component{
     
     render(){
         const data=this.props.product.img;
+        var immagine="";
+        if(data.length>150){
+            immagine=`data:image/jpeg;base64,${data}`;
+        }
+        else{
+            immagine=data;
+        }
     return(
         <>
             <div id="product" style={{display:"flex", justifyContent:"space-between"}}>
                 <div id="productDetail" style={{flex:"2", display:"flex"}}>
                     <div style={{width:"200px"}}>
-                        <img src={`data:image/jpeg;base64,${data}`} style={{maxWidth:"100%", maxHeight:"100%", objectFit:"contain"}}></img>
+                        <img src={immagine} style={{maxWidth:"100%", maxHeight:"100%", objectFit:"contain"}}></img>
                     </div>
                     <div id="details" style={{padding:"20px", display:"flex", flexDirection:"column", justifyContent:"space-around"}}>
                         <span id="productName">

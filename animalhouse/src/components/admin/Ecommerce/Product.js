@@ -104,6 +104,19 @@ class product extends Component{
     render(){
         
         const path=window.location.href.split("/");
+
+        var prodotto=this.state.product;
+        var img=String(prodotto["immagine"])
+        console.log(img.length);
+        var immagine="";
+
+        if(img>150){
+            immagine=`data:image/jpeg;base64,${img}`;
+        }
+        else{
+            immagine=img;
+        }
+
         return(
             <>
             <NavbarAdmin/>
@@ -111,7 +124,7 @@ class product extends Component{
                 <div className="productConteiner">
                     <div className="productShow">
                         <div className="productShowTop">
-                            <img src={`data:image/jpeg;base64,${this.state.product["immagine"]}`} alt="" className="productShowImg"></img>
+                            <img src={immagine} alt="" className="productShowImg"></img>
                             <div className="productShowTopTitle">
                                 <span className="productShowproductname">{this.state.product["nome"]}</span>
                             </div>

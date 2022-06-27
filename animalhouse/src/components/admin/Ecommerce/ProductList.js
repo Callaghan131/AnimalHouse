@@ -16,7 +16,8 @@ class ProductList extends Component{
 
     state={
         product:[],
-        loaded:false
+        loaded:false,
+        base64: false,
     }
 
     getDataProducts=()=>{
@@ -29,7 +30,7 @@ class ProductList extends Component{
               data=result;
               for(var i=0; i<data.length;i++){
                 newArray.push(data[i])
-                
+                console.log(data[0]);
                 
               }
               this.setState({product:newArray});
@@ -95,7 +96,9 @@ class ProductList extends Component{
                                 key={row.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
-                                <TableCell><img src={`data:image/jpeg;base64,${row.immagine}`} style={{widht:"20vw", height:"20vh"}}></img></TableCell>
+                                {row.immagine.length > 150 ? (
+                                    <TableCell><img src={`data:image/jpeg;base64,${row.immagine}`} style={{widht:"20vw", height:"20vh"}}></img></TableCell>
+                                ):(<TableCell><img src={row.immagine} style={{widht:"20vw", height:"20vh"}}></img></TableCell>)}
                                 <TableCell>{row.nome}</TableCell>
                                 <TableCell>{row.categoria}</TableCell>
                                 <TableCell>{row.prezzo}</TableCell>
