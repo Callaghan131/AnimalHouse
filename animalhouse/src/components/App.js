@@ -17,7 +17,7 @@ import Bacheche from "./UserSection/Bacheche.js";
 import ProductList from "./admin/Ecommerce/ProductList";
 import BachecheAdmin from "./admin/Bacheche/BachecheAdmin";
 import Product from "./admin/Ecommerce/Product";
-import addProduct from './admin/Ecommerce/AddProduct';
+import AddProduct from "./admin/Ecommerce/AddProduct";
 
 function App() {
     
@@ -41,7 +41,7 @@ function App() {
         <Route exact path="/LoginPage/HomePageAdmin/ProductList" element={<ProductList/>}/> 
         <Route exact path="/LoginPage/HomePageAdmin/BachecheAdmin" element={<BachecheAdmin/>}/>   
         <Route exact path="/LoginPage/HomePageAdmin/ProductList/:Categoria/:idProdotto" element={<Product/>}/> 
-        <Route exact path="/LoginPage/HomePageAdmin/addProduct" element={<addProduct/>}/>      
+        <Route exact path="/LoginPage/HomePageAdmin/addProduct" element={<AddProduct/>}/>      
       </Routes>
       </BrowserRouter>
   );

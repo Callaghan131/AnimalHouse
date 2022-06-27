@@ -33,7 +33,7 @@ export class EcommerceService
 
     addProduct = (data, categoria) =>{
         const requestOptions = {
-            method: 'DELETE',
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         };

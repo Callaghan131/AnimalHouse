@@ -1,0 +1,85 @@
+.newProductSection{
+    padding: 20px;
+    background-color: lightblue;
+    width:99vw;
+    height: 100vh;
+}
+
+
+
+.newProductContainer {
+margin-top: 20px;
+
+}
+
+
+
+.newProductUpdate {
+margin-left: 20vw;
+margin-top: 10vh;
+width:60vw;
+height: 60vh;
+padding: 20px;
+-webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+background-color: white;
+
+}
+
+
+.newProductUpdateTitle{
+    font-size: 30px;
+    font-weight: bold;
+    
+}
+
+.newProductUpdateForm{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.newProductUpdateItem{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.newProductUpdateItem>label{
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.newProductUpdateInput{
+    border: none;
+    width: 250px;
+    height: 30px;
+    font-size: 25px;
+    border-bottom: 1px solid gray;
+}
+
+.newProductUpdateRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.newProductUpdateButton{
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    background-color: darkblue;
+    color: white;
+    font-weight: bold;
+    width:10vw;
+    height: 5vh;
+}
+
+.rigaForm{
+    display: flex;
+    flex-direction: row;
+    
+}

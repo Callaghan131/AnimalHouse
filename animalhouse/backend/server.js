@@ -482,12 +482,29 @@ app.post('/magazzino/categoria/:categoria', function(req, res){
     const {categoria}=req.params
     let requestBody = req.body;
     let magazzino = readMagazzinoFile();
-    console.log(magazzino);
+    
 
-    let newProduct = magazzino[categoria].find(x=>x.id == requestBody.id && x.categoria==requestBody.categoria);
+    let catIndex=0;
+    switch(requestBody.categoria){
+        case "gioco":
+            catIndex=0;
+            break;
+        case "accessori":
+            catIndex=1;
+            break;
+        case "cibo":
+            catIndex=2;
+            break;
+        case "sanitari":
+            catIndex=3;
+            break;
+    }
+    
+    
+    let newProduct = magazzino[catIndex].find(x=>x.id == requestBody.id && x.categoria==categoria);
     if(!newProduct){
         // userToUpdate.punteggio = requestBody.punteggio
-        magazzino.push({
+        magazzino[catIndex].push({
                 id: requestBody.id,
                 immagine: requestBody.immagine,
                 nome: requestBody.nome,
@@ -496,15 +513,16 @@ app.post('/magazzino/categoria/:categoria', function(req, res){
                 disponibilità: requestBody.disponibilità
             });
 
-        saveUserFile(magazzino);
-        res.status(20);
+        //saveUserFile(magazzino);
+        res.status(200);
         res.send("Prodotto creato");
     }
     else{
         res.status(304);
         res.send("Prodotto gia presente");
     }
-    console.log(magazzino);
+    
+    console.log(requestBody.id);
 })
 
 const magazzino=require('../src/JSON/magazzino.json');
