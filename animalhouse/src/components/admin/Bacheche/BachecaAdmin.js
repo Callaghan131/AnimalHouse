@@ -87,6 +87,7 @@ class BachecaAdmin extends Component {
                 this.parentNode.style.display="none";
                 var testo=this.parentNode.firstChild.textContent.split(":");
                 bachecaService.aggiorna(testo[1]);
+                alert("Aneddoto eliminato correttamente");
 
             })
         }

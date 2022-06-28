@@ -124,7 +124,9 @@ class product extends Component{
                 <div className="productConteiner">
                     <div className="productShow">
                         <div className="productShowTop">
-                            <img src={immagine} alt="" className="productShowImg"></img>
+                           {String(this.state.product["immagine"]).length > 150 ? (<img src={`data:image/jpeg;base64,${this.state.product["immagine"]}`} alt="" className="productShowImg"></img>):(
+                                <img src={this.state.product["immagine"]} alt="" className="productShowImg"></img>
+                            )}
                             <div className="productShowTopTitle">
                                 <span className="productShowproductname">{this.state.product["nome"]}</span>
                             </div>

@@ -1,4 +1,4 @@
-const apiUrl = `http://localhost:27800/`;
+const apiUrl = `http://localhost:2800/`;
 
 export class BachecaService
 {

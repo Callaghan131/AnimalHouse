@@ -6,10 +6,12 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 class NavbarCarrello extends Component{
   render(){
+    const home="/"
     return(
     <nav className="navbar navbar-dark bg-dark">
       <div className="container">
-        <a className="navbar-brand">Shop</a>
+        <a className="navbar-brand" href={home}>Animal House</a>
+        {/* <a className="navbar-brand">Shop</a> */}
         <a className="navbar-brand" onClick={()=>this.props.onClickGiochi()}>Giochi</a>
         <a className="navbar-brand" onClick={()=>this.props.onClickAccessori()}>Accessori</a>
         <a className="navbar-brand" onClick={()=>this.props.onClickSanitari()}>Prodotti sanitari</a>

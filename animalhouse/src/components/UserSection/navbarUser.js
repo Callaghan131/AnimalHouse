@@ -9,10 +9,11 @@ class NavbarUser extends Component{
         const ecommerce="/LoginPage/HomePageUser/"+this.props.name+"/Ecommerce"
         const bacheca="/LoginPage/HomePageUser/"+this.props.name+"/Bacheche"
         const classifiche="/LoginPage/HomePageUser/"+this.props.name
+        const home="/"
         return( 
              <nav className="navbar navbar-dark bg-dark">
                 <div className="container">
-                    <a className="navbar-brand" >Animal House</a>
+                    <a className="navbar-brand" href={home} >Animal House</a>
                     <a className="navbar-brand" href={ecommerce}>E-commerce</a>
                     <a className="navbar-brand" href={bacheca}>Bacheche</a>
                     <a className="navbar-brand" href={classifiche}>Classifiche</a>

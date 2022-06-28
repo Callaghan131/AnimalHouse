@@ -57,6 +57,8 @@ class BachecaFotoAdmin extends Component {
                 this.parentNode.style.display="none";
                 var testo=this.parentNode.firstChild.src;
                 bachecaFotoService.aggiornaFoto(testo);
+                alert("Immagine eliminata correttamente");
+
             })
             div.appendChild(div2);
             div2.appendChild(img);
