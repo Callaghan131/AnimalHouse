@@ -18,7 +18,7 @@ class Carrello extends Component{
                     <h1 id="summaryTtile" style={{fontSize:"30px"}}>ORDER SUMMARY</h1>
                     <div type="total" style={{margin:"30px 0px", display:"flex", justifyContent:"space-between"}}>
                         <span>TOTAL</span>
-                        <span id="price">{this.props.prezzo}€</span>
+                        <span id="price">{(this.props.prezzo).toFixed(2)}€</span>
                     </div>
                     <button onClick={this.props.onBuy}>CHECKOUT NOW</button>
                 </div>

@@ -198,23 +198,29 @@ class Ecommerce extends Component{
         var carrello=[...this.state.cart];
         var product=[...this.state.cardProdotto];
         let shopService=new EcommerceService();
+        var acquistoCompletato=false;
         for(var i=0;i<carrello.length;i++){
             var cat=Number(carrello[i].categoria);
             var id=Number(carrello[i].id);
             console.log(product[cat][id]);
             product[cat][id].quantità=0;
+            acquistoCompletato=true;
             shopService.product(product[cat][id],id,cat)
             .then(data =>{
                 switch(data.status)
                 {
                     case 200:
-                        alert("Acquisto avvenuto correttamente");
+                        
                         carrello=[];
                         this.setState({cart:carrello});
                         this.setState({totale:0});
                         this.setState({prezzo:0});
                 }
             });
+        }
+
+        if(acquistoCompletato==true){
+            alert("Acquisto avvenuto correttamente");
         }
     }
 

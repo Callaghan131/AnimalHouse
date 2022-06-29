@@ -124,7 +124,7 @@ class UserList extends Component{
         switch(data1.status){
             case 200: //Utente eliminato
             // Il redirect non funziona
-            this.props.navigate("/LoginPage/HomePageAdmin");
+              alert("Utente eliminato correttamente, aggiornare la pagina");
             break;
             case 404: //Utente non trovato e non eliminato
                 this.error="Utente non trovato";
