@@ -13,10 +13,10 @@ class Curiosity2 extends Component{
                     <div id="img" style={{height:"60vh", width:"30vw"}}>
                         <img id="image_link"  style={{maxHeight:"100%", maxWidth:"100%", objectFit:"contain"}} src="https://http2.mlstatic.com/D_NQ_NP_967840-MLM26976300618_032018-W.jpg" />
                     </div>
-                    <div id="testo" style={{ overflowY:"scroll", padding:10, color:"green",border:"5px solid green", background:"lightgreen",width:"30vw" , height:550,fontWeight:"bold",  lineHeight:2, fontSize:17, fontFamily:"Courier" , fontStyle:"italic"}}>
+                    <div id="testo" style={{ overflowY:"scroll", padding:10, color:"green",border:"5px solid green", background:"lightgreen",width:"30vw" , height:600,fontWeight:"bold",  lineHeight:2, fontSize:17, fontFamily:"Courier" , fontStyle:"italic"}}>
                     Curiosità feline
                     </div>
-                    <div id="testo2" style={{padding: 10, color:"green",border:"5px dashed green",background:"lightgreen", width:"30vw" , height:550,fontWeight:"bold",  lineHeight:2, fontSize:17, fontFamily:"Courier" , fontStyle:"italic"}}>
+                    <div id="testo2" style={{padding: 10, color:"green",border:"5px dashed green",background:"lightgreen", width:"30vw" , height:600,fontWeight:"bold",  lineHeight:2, fontSize:17, fontFamily:"Courier" , fontStyle:"italic"}}>
                         <p> Ecco alcune info su <span style={{color:"black", background:"lightgreen"}} id="name"></span>:</p>
                             <ol id="list1">
                                 <li>The latin name is <span style={{color:"black", background:"lightgreen"}} id="latin_name"></span></li>

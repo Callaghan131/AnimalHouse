@@ -7,6 +7,7 @@ class BachecaFoto extends Component {
         var valore=textarea.value;
         var path=window.location.href.split("/");
         var user=path[5];
+        textarea.innerHTML="";
         bachecaFotoService.savePost(
             {
                 indirizzo: valore,

@@ -25,7 +25,7 @@ class ImmaginiBuffe extends Component{
     }
       render(){
         return(
-           <><h1 id="titolo" style={{height:"60px",borderRadius:"6px",background:"white",color: "purple", textAlign: "center", marginBottom: 30, paddingTop:"5px"}}>Immagini buffe a tema animale</h1>
+           <><h1 id="titolo" style={{height:"60px",borderRadius:"6px",background:"lightblue",color: "purple", textAlign: "center", marginBottom: 30, paddingTop:"5px"}}>Immagini buffe a tema animale</h1>
            <Carousel>
             <Carousel.Item>
               <img
